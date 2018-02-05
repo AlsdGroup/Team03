@@ -1,0 +1,9 @@
+﻿[
+	{ id: "user", text: "个人中心", iconCls: "icon-add"},
+
+	{ id: "right", text: "综合管理",iconCls: "icon-add"},
+
+	{ id: "project", text: "科研项目管理",iconCls: "icon-add"},
+	{ id: "addProject", pid: "project", text: "科研项目申报与评审", url: "../pages/tab.jsp", iconPosition: "top" },
+
+]

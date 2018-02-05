@@ -9,7 +9,7 @@
 <form action="/login">
     用户名: <input type="text" id="staffUserName" name="staffUserName"/>
     <br>
-    密码哦: <input type="password" id="staffPwd" name="staffPwd"/>
+    密码: <input type="password" id="staffPwd" name="staffPwd"/>
     <br>
     <input type="submit" value="登录"/>
 </form>
