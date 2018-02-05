@@ -36,6 +36,7 @@
             height: 40px;
             text-align: center;
             border: solid white 2px;
+            padding: 0px;
         }
 
         .t {
