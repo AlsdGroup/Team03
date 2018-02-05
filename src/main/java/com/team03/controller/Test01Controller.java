@@ -15,9 +15,14 @@ public class Test01Controller {
     private Test01Service test01Service;
     private List<Test01> test01List;
 
-    @RequestMapping(value = {"", "/", "/index"})
+    @RequestMapping(value = {"/index"})
     public String index() {
         return "index";
+    }
+
+    @RequestMapping(value = {"", "/"})
+    public String login() {
+        return "login";
     }
 
     @RequestMapping(value = {"/test01"})

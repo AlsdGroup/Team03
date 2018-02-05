@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team03.mapper.LoginDao">
+    <sql id="yjStaffColumns">
+        staff_id,
+        staff_name,
+        staff_email,
+        staff_userName,
+        staff_pwd,
+        staff_dep_id
+    </sql>
+
+    <resultMap id="yjStaffMap" type="com.team03.domain.YjStaff">
+        <id property="staffId" column="staff_id"/>
+        <result property="staffName" column="staff_name"/>
+        <result property="staffEmail" column="staff_email"/>
+        <result property="staffUserName" column="staff_userName"/>
+        <result property="staffPwd" column="staff_pwd"/>
+        <result property="staffDepId" column="staff_dep_id"/>
+    </resultMap>
+
+    <select id="login"
+            parameterType="com.team03.domain.YjStaff"
+            resultMap="yjStaffMap">
+        SELECT
+        <include refid="yjStaffColumns"/>
+        FROM yj_staff
+        <where>
+            1=1
+            AND staff_username = #{staffUserName}
+        </where>
+    </select>
+
+</mapper>

@@ -8,7 +8,7 @@
 
 <div>
     <h2>进入测试页1</h2>
-
+    <h2>欢迎您: ${login.staffUserName}</h2>
 </div>
 
 
