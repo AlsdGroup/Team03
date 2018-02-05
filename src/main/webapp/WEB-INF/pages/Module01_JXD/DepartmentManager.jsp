@@ -31,7 +31,6 @@
 
 <br/>
 <h4>可折叠</h4>
-<fieldset id="fd2" style="width:600px;">
     <legend><label><input type="checkbox" checked id="checkbox1" onclick="toggleFieldSet(this, 'fd2')" hideFocus/>详细信息</label></legend>
     <div class="fieldset-body">
         <table class="form-table" border="0" cellpadding="1" cellspacing="2">
@@ -47,7 +46,7 @@
             </tr>
         </table>
     </div>
-</fieldset>
+
 <script type="text/javascript">
     function toggleFieldSet(ck, id) {
         var dom = document.getElementById(id);
