@@ -27,7 +27,7 @@ public class LoginController {
             if(yjStaffLogin.getStaffPwd().equals(yjStaff.getStaffPwd())){
                 session.setAttribute("login",yjStaffLogin);
                 session.setAttribute("loginMsg","登录成功");
-                return "test01";
+                return "main";
             }else{
                 session.setAttribute("loginMsg","密码错误");
                 return "login";

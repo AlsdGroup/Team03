@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team03.mapper.DepDao">
+    <sql id="depColumns">
+        a.dep_id,
+        a.dep_name adn,
+        b.chief_id,
+        b.dep_name bdn
+    </sql>
+
+    <resultMap id="depMap" type="com.team03.domain.DepParameter">
+        <result property="depId" column="dep_id"/>
+        <result property="depName" column="adn"/>
+        <result property="chiefId" column="chief_id"/>
+        <result property="chiefName" column="bdn"/>
+    </resultMap>
+
+    <select id="selectAll"
+            parameterType="com.team03.domain.DepSqlParameter"
+            resultMap="depMap">
+        SELECT
+        <include refid="depColumns"/>
+        FROM yj_department a LEFT JOIN yj_department b
+        ON a.chief_id = b.dep_id
+        <where>
+            1=1
+            <if test="depName != null">
+                AND a.dep_name LIKE '%${depName}%'
+            </if>
+            limit #{pageIndex},#{pageSize}
+        </where>
+    </select>
+
+    <select id="selectTotal"
+            parameterType="java.lang.String"
+            resultType="java.lang.Integer">
+        SELECT
+        count(dep_id)
+        FROM yj_department
+        <where>
+            1=1
+            <if test="value != null">
+                AND dep_name LIKE '%${value}%'
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -20,6 +20,11 @@ public class Test01Controller {
         return "index";
     }
 
+    @RequestMapping(value = {"/firstPage"})
+    public String firstPage() {
+        return "firstPage";
+    }
+
     @RequestMapping(value = {"", "/"})
     public String login() {
         return "login";

@@ -12,6 +12,7 @@
     密码哦: <input type="password" id="staffPwd" name="staffPwd"/>
     <br>
     <input type="submit" value="登录"/>
+    <input type="reset" value="重置">
 </form>
 
 <h2>${loginMsg}</h2>

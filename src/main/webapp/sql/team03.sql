@@ -46,6 +46,9 @@ CREATE TABLE yj_department(
   dep_name VARCHAR(32) NOT NULL,
   chief_id INT
 );
+INSERT  INTO yj_department VALUES (20001,'第一部门',20003);
+INSERT  INTO yj_department VALUES (20002,'第二部门',20003);
+INSERT  INTO yj_department VALUES (20003,'第三部门',88888);
 # SELECT * FROM yj_department;
 
 #角色表
