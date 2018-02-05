@@ -66,7 +66,7 @@
 
     </tr>
     <tr class="trTitle">
-        <td class="t">合同起日期</td>
+        <td class="t">1合同起日期</td>
 
         <td><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 100%"/></td>
 
