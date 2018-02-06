@@ -1,7 +1,7 @@
-package com.team03.controller;
+package com.team03.controller.sxhController;
 
 import com.team03.domain.Test01;
-import com.team03.service.Test01Service;
+import com.team03.service.sxhSercice.Test01Service;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,17 +20,12 @@ public class Test01Controller {
         return "index";
     }
 
-    @RequestMapping(value = {"", "/"})
-    public String login() {
-        return "login";
-    }
-
     @RequestMapping(value = {"/test01"})
     public String test01() {
 
         test01List = test01Service.selectTest01List();
 
-        return "test01";
+        return "test/test01";
     }
 
     public List<Test01> getTest01List() {

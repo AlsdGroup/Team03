@@ -1,8 +1,8 @@
-package com.team03.service.impl;
+package com.team03.service.sxhSercice.impl;
 
 import com.team03.domain.YjStaff;
 import com.team03.mapper.LoginDao;
-import com.team03.service.LoginService;
+import com.team03.service.sxhSercice.LoginService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

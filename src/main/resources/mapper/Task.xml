@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team03.mapper.TaskDao">
+    <sql id="staffColumns">
+        a.staff_id,
+        a.staff_name,
+        b.dep_id,
+        b.dep_name
+    </sql>
+
+    <resultMap id="staffMap" type="com.team03.domain.StaffParameter">
+        <result property="staffId" column="staff_id"/>
+        <result property="staffName" column="staff_name"/>
+        <result property="staffDepId" column="dep_id"/>
+        <result property="staffDepName" column="dep_name"/>
+    </resultMap>
+
+    <select id="selectAll"
+            parameterType="com.team03.domain.StaffSqlParameter"
+            resultMap="staffMap">
+        SELECT
+        <include refid="staffColumns"/>
+        FROM yj_staff a LEFT JOIN yj_department b
+        ON a.staff_dep_id = b.dep_id
+        <where>
+            1=1
+            <if test="staffName != null">
+                AND a.staff_name LIKE '%${staffName}%'
+            </if>
+            limit #{pageIndex},#{pageSize}
+        </where>
+    </select>
+
+    <select id="selectTotal"
+            parameterType="java.lang.String"
+            resultType="java.lang.Integer">
+        SELECT
+        count(a.staff_id)
+        FROM yj_staff a
+        <where>
+            1=1
+            <if test="value != null">
+                AND a.staff_name LIKE '%${value}%'
+            </if>
+        </where>
+    </select>
+</mapper>

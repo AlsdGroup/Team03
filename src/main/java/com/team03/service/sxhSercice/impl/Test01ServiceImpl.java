@@ -1,8 +1,8 @@
-package com.team03.service.impl;
+package com.team03.service.sxhSercice.impl;
 
 import com.team03.domain.Test01;
 import com.team03.mapper.Test01Dao;
-import com.team03.service.Test01Service;
+import com.team03.service.sxhSercice.Test01Service;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
