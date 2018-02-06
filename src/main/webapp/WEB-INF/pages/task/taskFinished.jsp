@@ -7,8 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>已办任务</title>
-    <link href="../../css/demo.css" rel="stylesheet" type="text/css">
-    <script src="../../scripts/boot.js" type="text/javascript"></script>
+    <link href="../../../css/demo.css" rel="stylesheet" type="text/css">
+    <script src="../../../scripts/boot.js" type="text/javascript"></script>
+    <script src="../../../scripts/jquery.min.js" type="text/javascript"></script>
     <style type="text/css">
         table {
             width: 100%;
@@ -39,7 +40,7 @@
 </head>
 <body>
 
-<table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0" >
+<table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
     <tr>
         <td colspan="6">当前位置: 个人工作台 >> 已办任务</td>
@@ -62,18 +63,32 @@
     <tr>
         <td class="td1">申请人</td>
         <td class="td2">
-            <input class="mini-textbox" width="100%" value="" name="username"/>
+            <input id="btnEditStaff"
+                   class="mini-buttonedit"
+                   onbuttonclick="onButtonEditStaff"
+                   style="width:100%;" allowInput="false"
+                   name="staffId" textName="staffName"/>
         </td>
         <td class="td1">&nbsp;</td>
         <td class="td1">所属部门</td>
         <td class="td2">
-            <input class="mini-textbox" width="100%" value="" name="dep"/>
+            <input id="btnEditDep"
+                   class="mini-buttonedit"
+                   onbuttonclick="onButtonEditDep"
+                   style="width:100%;" allowInput="false"
+                   name="depId" textName="depName"/>
         </td>
         <td class="td1">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="6" style="text-align: right">
-            <input type="button" value="查询"/>
+        <td colspan="6">
+            <table id="">
+                <tr>
+                    <td colspan="8" style="text-align: right">
+                        <input type="button" value="查询"/>
+                    </td>
+                </tr>
+            </table>
         </td>
     </tr>
 </table>
@@ -90,10 +105,32 @@
         return data1;
     }
 
-    function onButtonEditClazz(e) {
+    function onButtonEditStaff(e) {
         var btnEdit = this;
         mini.open({
-            url: "SelectClazzWindow.jsp",
+            url: "/selectStaffWindow",
+            title: "选择人员",
+            width: 650,
+            height: 380,
+            ondestroy: function (action) {
+                if (action == "close") return false;
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);
+                    if (data) {
+                        btnEdit.setValue(data.staffId);
+                        btnEdit.setText(data.staffName);
+                    }
+                }
+            }
+        });
+    }
+
+    function onButtonEditDep(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/selectDepWindow",
             title: "选择部门",
             width: 650,
             height: 380,
@@ -102,16 +139,16 @@
                 if (action == "ok") {
                     var iframe = this.getIFrameEl();
                     var data = iframe.contentWindow.GetData();
-                    data = mini.clone(data);    //必须
+                    data = mini.clone(data);
                     if (data) {
-                        btnEdit.setValue(data.cid);
-                        btnEdit.setText(data.cname);
+                        btnEdit.setValue(data.depId);
+                        btnEdit.setText(data.depName);
                     }
                 }
-
             }
         });
     }
+
 </script>
 </body>
 </html>

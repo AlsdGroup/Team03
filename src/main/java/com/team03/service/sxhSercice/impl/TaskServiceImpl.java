@@ -1,10 +1,10 @@
-package com.team03.service.impl;
+package com.team03.service.sxhSercice.impl;
 
 import com.team03.domain.*;
 import com.team03.mapper.DepDao;
 import com.team03.mapper.TaskDao;
 import com.team03.page.PageBean;
-import com.team03.service.TaskService;
+import com.team03.service.sxhSercice.TaskService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -74,5 +74,16 @@ public class TaskServiceImpl implements TaskService {
         result.setTotal(total);
         result.setData(datas);
         return result;
+    }
+
+    @Override
+    public PageBean<YjTaskParameter> selectTask(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep) {
+
+
+
+
+
+
+        return null;
     }
 }

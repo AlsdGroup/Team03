@@ -1,17 +1,16 @@
-package com.team03.controller;
+package com.team03.controller.sxhController;
 
 import com.team03.domain.BaseResult;
 import com.team03.domain.DepParameter;
 import com.team03.domain.StaffParameter;
-import com.team03.domain.YjStaff;
-import com.team03.service.TaskService;
+import com.team03.domain.YjTaskParameter;
+import com.team03.page.PageBean;
+import com.team03.service.sxhSercice.TaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * AlsdGo 2018年02月05日 17:32
@@ -24,22 +23,22 @@ public class TaskController {
 
     @RequestMapping(value = {"/taskInWait"})
     public String taskInWait() {
-        return "taskInWait";
+        return "task/taskInWait";
     }
 
     @RequestMapping(value = {"/taskFinished"})
     public String taskFinished() {
-        return "taskFinished";
+        return "task/taskFinished";
     }
 
     @RequestMapping(value = {"/selectStaffWindow"})
     public String selectStaffWindow() {
-        return "selectStaffWindow";
+        return "utils/selectStaffWindow";
     }
 
     @RequestMapping(value = {"/selectDepWindow"})
     public String selectDepWindow() {
-        return "selectDepWindow";
+        return "utils/selectDepWindow";
     }
 
     /**
@@ -61,4 +60,16 @@ public class TaskController {
         BaseResult<DepParameter> result = taskService.selectAllDep(depName, pageIndex + 1, pageSize);
         return result;
     }
+
+    /**
+     * 主要逻辑 查询任务
+     */
+    @RequestMapping(value = {"/selectTask"})
+    @ResponseBody
+    public PageBean<YjTaskParameter> selectTask(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep) {
+        System.out.println(656565);
+        PageBean<YjTaskParameter> pageBean = taskService.selectTask(pageIndex + 1, pageSize, taskDate, taskName, taskStaff, taskDep);
+        return pageBean;
+    }
+
 }
