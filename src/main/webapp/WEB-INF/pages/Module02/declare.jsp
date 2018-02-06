@@ -19,9 +19,10 @@
     <style>
         table {
             width: 100%;
-            height: 60%;
-            border: 1px solid #CCEEFF;
-            border-collapse: collapse
+            height: auto;
+            border: 0px solid #ffffff;
+            border-collapse: collapse;
+            padding: 0px;
         }
 
         .trTitle {
@@ -66,7 +67,7 @@
 
     </tr>
     <tr class="trTitle">
-        <td class="t">1合同起日期</td>
+        <td class="t">合同起日期</td>
 
         <td><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 100%"/></td>
 

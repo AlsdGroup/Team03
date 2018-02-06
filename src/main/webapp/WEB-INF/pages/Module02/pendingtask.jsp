@@ -1,191 +1,185 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: hxd
-  Date: 18/2/5
-  Time: 下午8:17
-  To change this template use File | Settings | File Templates.
+  AlsdGo 2018年02月05日 17:26
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <link href="../css/demo.css" rel="stylesheet" type="text/css">
-    <script src="../scripts/boot.js" type="text/javascript"></script>
-    <script src="swfupload/swfupload.js" type="text/javascript"></script>
-    <script src="js/ajaxfileupload.js" type="text/javascript"></script>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>待办任务</title>
+    <link href="../../css/demo.css" rel="stylesheet" type="text/css">
+    <script src="../../scripts/boot.js" type="text/javascript"></script>
 
-    <style>
+    <style type="text/css">
         table {
-            width: 50%;
-            height: 40%;
+            width: 100%;
+            height: auto;
+            border: 0px solid #CCEEFF;
+            border-collapse: collapse;
+            padding: 0px;
+        }
+
+        td {
             border: 1px solid #CCEEFF;
-            border-collapse: collapse
+            border-collapse: collapse;
+            padding: 0px;
+            background-color: #d2f0f0;
         }
 
-        .trTitle {
-
-            background-color: #CCEEFF;
-            border: solid white 2px;
-        }
-        .t {
+        .td1 {
             width: 10%;
-            height: 40px;
+            text-align: right;
+            /*background-color: #dddddd;*/
         }
 
+        .td2 {
+            width: 30%;
+            /*background-color: #dddddd;*/
+        }
     </style>
 </head>
 <body>
 <div>
 
-
-<table>
-
-    <tr class="trTitle">
-        <td colspan="4">当前位置:个人工作台>>待办任务</td>
+<table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
+    <%----%>
+    <tr>
+        <td colspan="6">当前位置: 个人工作台 >> 待办任务</td>
     </tr>
-
-
-    <tr class="trTitle">
-        <td colspan="4">查询条件</td>
+    <tr>
+        <td colspan="6">查询条件</td>
     </tr>
-
-    <tr class="trTitle">
-        <td class="t">申请时间</td>
-        <td><input class="mini-textarea" style="width: 100%;height: 100%"/></td>
-
-        <td class="t">关键字</td>
-        <td><input class="mini-textarea" style="width: 100%;height: 100%"/></td>
-    </tr>
-    <tr class="trTitle">
-        <td class="t">申请人</td>
-        <td><input class="mini-textarea" style="width: 100%;height: 100%"/></td>
-
-        <td class="t">所属部门</td>
-        <td><input class="mini-textarea" style="width: 100%;height: 100%"/></td>
+    <tr>
+        <td class="td1">申请时间</td>
+        <td class="td2">
+            <input class="mini-datepicker" width="100%" value="" name="askTime"/>
+        </td>
+        <td class="td1">流程名称</td>
+        <td class="td2">
+            <input class="mini-textbox" width="100%" value="" name="keyValue"/>
+        </td>
+        <td class="td1">&nbsp;</td>
 
     </tr>
+    <tr>
+        <td class="td1">申请人</td>
+        <td class="td2">
+            <input id="btnEditStaff"
+                   class="mini-buttonedit"
+                   onbuttonclick="onButtonEditStaff"
+                   style="width:100%;" allowInput="false"
+                   name="staffId" textName="staffName"/>
+        </td>
+        <td class="td1">关键字</td>
+        <td class="td2">
+            <input class="mini-textbox" width="100%" value="" name="keyValue"/>
+        </td>
+        <td class="td1">&nbsp;</td>
 
+
+    </tr>
+    <tr>
+
+        <td class="td1">所属部门</td>
+        <td class="td2">
+            <input id="btnEditDep"
+                   class="mini-buttonedit"
+                   onbuttonclick="onButtonEditDep"
+                   style="width:100%;" allowInput="false"
+                   name="depId" textName="depName"/>
+        </td>
+        <td class="td1">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="6" style="text-align: right">
+            <input type="button" value="查询"/>
+        </td>
+    </tr>
 </table>
-
-<div style="width:800px;">
-    <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
-
-            <tr>
-                <td style="white-space:nowrap;">
-                    <a class="mini-button" onclick="search()">查询</a>
-                </td>
-            </tr>
-
-    </div>
-</div>
 <div id="datagrid1" class="mini-datagrid" style="width:800px;height:280px;"
      url="../data/AjaxService.aspx?method=SearchEmployees" idField="id"
      allowResize="true" pageSize="20"
      allowCellEdit="true" allowCellSelect="true" multiSelect="true"
-     editNextOnEnterKey="true" editNextRowCell="true"
+     editNextOnEnterKey="true"  editNextRowCell="true"
 
 >
-    <div property="columns">
-        <div type="indexcolumn"></div>
-        <div type="checkcolumn"></div>
-        <div name="LoginName" field="loginname" headerAlign="center" allowSort="true" width="150">流程编号
-            <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
+    <div property="columns" class="mini-fit">
+        <div id="datagrid" class="mini-datagrid" style="width:100%;height:100%;"
+             url="../data/AjaxService.aspx?method=SearchEmployees"  idField="id"
+             sizeList="[5,10,20,50]" pageSize="10"
+        >
+            <div property="columns">
+                <div type="indexcolumn" ></div>
+                <div field="loginname" width="120" headerAlign="center" allowSort="true">流程编号</div>
+                <div field="name" width="120" headerAlign="center" allowSort="true">流程名称</div>
+                <div field="gender" width="100" renderer="onGenderRenderer" align="center" headerAlign="center">申请部门</div>
+                <div field="currentlink" width="100" allowSort="true">当前环节</div>
+                <div field="reportperson" width="100" allowSort="true">提报人</div>
+                <div field="reportingtime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd" allowSort="true">提报时间</div>
+                <div field="operation" width="100" headerAlign="center" dateFormat="yyyy-MM-dd" allowSort="true">操作</div>
+            </div>
         </div>
-        <div field="age" width="100" allowSort="true">流程名称
-            <input property="editor" class="mini-spinner" minValue="0" maxValue="200" value="25" style="width:100%;"/>
-        </div>
-        <div name="birthday" field="birthday" width="100" allowSort="true" dateFormat="yyyy-MM-dd">所属部门
-            <input property="editor" class="mini-datepicker" style="width:100%;"/>
-        </div>
-        <div field="remarks" width="120" headerAlign="center" allowSort="true">当前环节
-            <input property="editor" class="mini-textarea" style="width:200px;" minWidth="200" minHeight="50"/>
-        </div>
-        <!--ComboBox：本地数据-->
-        <div type="comboboxcolumn" autoShowPopup="true" name="gender" field="gender" width="100" allowSort="true"
-             align="center" headerAlign="center">提报人
-            <input property="editor" class="mini-combobox" style="width:100%;" data="Genders"/>
-        </div>
-        <!--ComboBox：远程数据-->
-        <div type="comboboxcolumn" field="country" width="100" headerAlign="center">提报时间
-            <input property="editor" class="mini-combobox" style="width:100%;" url="../data/countrys.txt"/>
-        </div>
-        <div type="checkboxcolumn" field="married" trueValue="1" falseValue="0" width="60" headerAlign="center">操作
-        </div>
+
+    </div>d="married" trueValue="1" falseValue="0" width="60" headerAlign="center">操作</div>
     </div>
 </div>
 </div>
-<script type="text/javascript">
+<script>
 
-    var Genders = [{id: 1, text: '男'}, {id: 2, text: '女'}];
-
+    /* 加载mini组件, 后面的get方法才好用 */
     mini.parse();
 
-    var grid = mini.get("datagrid1");
-    grid.load();
-
-
-    function search() {
-        var key = mini.get("key").getValue();
-
-        grid.load({key: key});
+    function GetFormData() {
+        var form1 = new mini.Form("#form1");
+        var data1 = form1.getData();      //获取表单多个控件的数据
+//        var json1 = mini.encode(data1);   //序列化成JSON
+        return data1;
     }
 
-    function onKeyEnter(e) {
-        search();
-    }
-
-    function addRow() {
-        var newRow = {name: "New Row"};
-        grid.addRow(newRow, 0);
-
-        grid.beginEditCell(newRow, "LoginName");
-    }
-    function removeRow() {
-        var rows = grid.getSelecteds();
-        if (rows.length > 0) {
-
-            grid.removeRows(rows, true);
-        }
-    }
-    function saveData() {
-
-        var data = grid.getChanges();
-        var json = mini.encode(data);
-
-        grid.loading("保存中，请稍后......");
-        $.ajax({
-            url: "../data/AjaxService.aspx?method=SaveEmployees",
-            data: {data: json},
-            type: "post",
-            success: function (text) {
-                grid.reload();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert(jqXHR.responseText);
+    function onButtonEditStaff(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/selectStaffWindow",
+            title: "选择人员",
+            width: 650,
+            height: 380,
+            ondestroy: function (action) {
+                if (action == "close") return false;
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);
+                    if (data) {
+                        btnEdit.setValue(data.staffId);
+                        btnEdit.setText(data.staffName);
+                    }
+                }
             }
         });
     }
 
-
-    grid.on("celleditenter", function (e) {
-        var index = grid.indexOf(e.record);
-        if (index == grid.getData().length - 1) {
-            var row = {};
-            grid.addRow(row);
-        }
-    });
-
-    grid.on("beforeload", function (e) {
-        if (grid.getChanges().length > 0) {
-            if (confirm("有增删改的数据未保存，是否取消本次操作？")) {
-                e.cancel = true;
+    function onButtonEditDep(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/selectDepWindow",
+            title: "选择部门",
+            width: 650,
+            height: 380,
+            ondestroy: function (action) {
+                if (action == "close") return false;
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);
+                    if (data) {
+                        btnEdit.setValue(data.depId);
+                        btnEdit.setText(data.depName);
+                    }
+                }
             }
-        }
-    });
+        });
+    }
 
 </script>
-
-
 </body>
 </html>

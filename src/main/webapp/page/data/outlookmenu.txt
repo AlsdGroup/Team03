@@ -3,7 +3,7 @@
 
 	{ id: "right", text: "综合管理",iconCls: "icon-add"},
 
-	{ id: "project", text: "科研项目管理",iconCls: "icon-add"},
+	{ id: "project", text: "科研项目合同推荐",iconCls: "icon-add"},
 	{ id: "addProject", pid: "project", text: "科研项目合同推荐申报", url: "../pages/tab.jsp", iconPosition: "top" },
 
 ]
