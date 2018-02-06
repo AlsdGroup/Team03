@@ -1,9 +1,11 @@
 package com.team03.domain;
 
+import java.io.Serializable;
+
 /**
  * AlsdGo 2018年02月06日 11:07
  */
-public class YjTask {
+public class YjTask implements Serializable{
     private int id;
     private String taskId;
     private String taskName;

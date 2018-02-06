@@ -1,16 +1,10 @@
 package com.team03.controller.sxhController;
 
-import com.team03.domain.BaseResult;
-import com.team03.domain.DepParameter;
-import com.team03.domain.StaffParameter;
-import com.team03.domain.YjTaskParameter;
+import com.team03.domain.*;
 import com.team03.page.PageBean;
 import com.team03.service.sxhSercice.TaskService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -48,7 +42,7 @@ public class TaskController {
      */
     @RequestMapping(value = {"/selectAllStaff"})
     @ResponseBody
-    public BaseResult<StaffParameter> selectAllStaff(String staffName, int pageIndex, int pageSize) {
+    public BaseResult<StaffParameter> selectAllStaff(String staffName, Integer pageIndex, Integer pageSize) {
         BaseResult<StaffParameter> result = taskService.selectAllStaff(staffName, pageIndex + 1, pageSize);
         return result;
     }
@@ -58,7 +52,7 @@ public class TaskController {
      */
     @RequestMapping(value = {"/selectAllDep"})
     @ResponseBody
-    public BaseResult<DepParameter> selectAllDep(String depName, int pageIndex, int pageSize) {
+    public BaseResult<DepParameter> selectAllDep(String depName, Integer pageIndex, Integer pageSize) {
         BaseResult<DepParameter> result = taskService.selectAllDep(depName, pageIndex + 1, pageSize);
         return result;
     }
@@ -68,9 +62,8 @@ public class TaskController {
      */
     @RequestMapping(value = {"/selectTask"}, method = RequestMethod.POST)
     @ResponseBody
-    public PageBean<YjTaskParameter> selectTask(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep) {
-        System.out.println(656565);
-        PageBean<YjTaskParameter> pageBean = taskService.selectTask(pageIndex + 1, pageSize, taskDate, taskName, taskStaff, taskDep);
+    public PageBean<YjTaskParameter> selectTask(@RequestBody YjTaskRequestParameter yjTaskRequestParameter) {
+        PageBean<YjTaskParameter> pageBean = taskService.selectTask(yjTaskRequestParameter);
         return pageBean;
     }
 

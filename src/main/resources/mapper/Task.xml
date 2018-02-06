@@ -8,11 +8,41 @@
         b.dep_name
     </sql>
 
+    <sql id="taskColumns">
+      a.id,
+      a.task_id,
+      a.task_name,
+      a.task_dep,
+      b.dep_name,
+      a.task_step,
+      a.task_staff,
+      c.staff_name,
+      a.task_date,
+      a.task_state,
+      a.staff_before,
+      a.staff_now
+    </sql>
+
     <resultMap id="staffMap" type="com.team03.domain.StaffParameter">
         <result property="staffId" column="staff_id"/>
         <result property="staffName" column="staff_name"/>
         <result property="staffDepId" column="dep_id"/>
         <result property="staffDepName" column="dep_name"/>
+    </resultMap>
+
+    <resultMap id="taskMap" type="com.team03.domain.YjTaskParameter">
+        <result property="id" column="id"/>
+        <result property="taskId" column="task_id"/>
+        <result property="taskName" column="task_name"/>
+        <result property="taskDep" column="task_dep"/>
+        <result property="taskDepName" column="dep_name"/>
+        <result property="taskStep" column="task_step"/>
+        <result property="taskStaff" column="task_staff"/>
+        <result property="taskStaffName" column="staff_name"/>
+        <result property="taskDate" column="task_date"/>
+        <result property="taskState" column="task_state"/>
+        <result property="staffBefore" column="staff_before"/>
+        <result property="staffNow" column="staff_now"/>
     </resultMap>
 
     <select id="selectAll"
@@ -44,4 +74,55 @@
             </if>
         </where>
     </select>
+
+    <select id="selectAll2"
+            parameterType="com.team03.domain.YjTaskRequestParameter"
+            resultMap="taskMap">
+        SELECT
+        <include refid="taskColumns"/>
+        FROM yj_task a LEFT JOIN yj_department b
+        ON a.task_dep = b.dep_id
+        LEFT JOIN yj_staff c
+        on a.task_staff = c.staff_id
+        <where>
+            1=1
+            <if test="taskDate != null and taskDate != '' ">
+                AND a.task_date LIKE '%${taskDate}%'
+            </if>
+            <if test="taskName != null and taskName != '' ">
+                AND a.task_name LIKE '%${taskName}%'
+            </if>
+            <if test="taskStaff > 0 ">
+                AND a.task_staff = #{taskStaff}
+            </if>
+            <if test="taskDep > 0 ">
+                AND a.task_dep = #{taskDep}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectTotal2"
+            parameterType="com.team03.domain.YjTaskRequestParameter"
+            resultType="java.lang.Integer">
+        SELECT
+        count(a.id)
+        FROM yj_task a
+        <where>
+            1=1
+            <if test="taskDate != null and taskDate != '' ">
+                AND a.task_date LIKE '%${taskDate}%'
+            </if>
+            <if test="taskName != null and taskName != '' ">
+                AND a.task_name LIKE '%${taskName}%'
+            </if>
+            <if test="taskStaff > 0 ">
+                AND a.task_staff = #{taskStaff}
+            </if>
+            <if test="taskDep > 0 ">
+                AND a.task_dep = #{taskDep}
+            </if>
+        </where>
+    </select>
+
+
 </mapper>
