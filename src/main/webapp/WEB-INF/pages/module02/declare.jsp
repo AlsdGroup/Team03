@@ -10,10 +10,8 @@
 <html>
 <head>
     <title>科研合同项目申报</title>
-    <link href="../css/demo.css" rel="stylesheet" type="text/css">
-    <script src="../scripts/boot.js" type="text/javascript"></script>
-    <script src="swfupload/swfupload.js" type="text/javascript"></script>
-    <script src="js/ajaxfileupload.js" type="text/javascript"></script>
+    <link href="../../../css/demo.css" rel="stylesheet" type="text/css">
+    <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
     <style>
@@ -27,7 +25,7 @@
 
         .trTitle {
 
-            background-color: #CCEEFF;
+            background-color: #d2f0f0;
             border: solid white 2px;
 
         }
