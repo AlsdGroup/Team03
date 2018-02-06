@@ -2,56 +2,107 @@
   Created by IntelliJ IDEA.
   User: jbtms940317
   Date: 18/2/5
-  Time: 下午4:35
+  Time: 下午4:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <title>FieldSet</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" /><link href="../demo.css" rel="stylesheet" type="text/css" />
+    <title>部门经理审批</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <link href="/css/demo.css" rel="stylesheet" type="text/css"/>
     <script src="/scripts/boot.js" type="text/javascript"></script>
     <style type="text/css">
-        .hideFieldset
-        {
-            border-left:0;
-            border-right:0;
-            border-bottom:0;
-        }
-        .hideFieldset .fieldset-body
-        {
-            display:none;
+
+
+        .table {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #d5e9fa;
+            border-collapse: collapse;
+            margin: auto;
         }
 
+        .trTitle {
+
+            background-color: #CCEEFF;
+            border: solid white 2px;
+
+        }
+
+        .title {
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            border: solid white 2px;
+            padding: 0px;
+        }
+
+        .t {
+            width: 100%;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
-
-<br/>
-<h4>可折叠</h4>
-    <legend><label><input type="checkbox" checked id="checkbox1" onclick="toggleFieldSet(this, 'fd2')" hideFocus/>详细信息</label></legend>
-    <div class="fieldset-body">
-        <table class="form-table" border="0" cellpadding="1" cellspacing="2">
-            <tr>
-                <td class="form-label" style="width:60px;">身份证：</td>
-                <td style="width:150px">
-                    <input name="name" class="mini-textbox" />
-                </td>
-                <td class="form-label" style="width:60px;">籍贯：</td>
-                <td style="width:150px">
-                    <input name="addr" class="mini-textbox" />
-                </td>
-            </tr>
-        </table>
-    </div>
-
-<script type="text/javascript">
-    function toggleFieldSet(ck, id) {
-        var dom = document.getElementById(id);
-        dom.className = !ck.checked ? "hideFieldset" : "";
-    }
-</script>
+<div id="panel1" class="mini-panel" title="项目基本信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
+    <table class="table">
+        <tr class="trTitle">
+            <td class="title">项目名称</td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
+        </tr>
+        <tr class="trTitle">
+            <td class="title">项目申报单位</td>
+            <td>
+                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+            </td>
+            <td class="title">联合申报单位</td>
+            <td>
+                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+            </td>
+        </tr>
+        <tr class="trTitle">
+            <td class="title">目的</td>
+            <td colspan="3">
+                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="panel2" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应分析" iconCls="icon-add" style="width: 100%;height: 100%;"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
+    <table class="table">
+        <tr class="trTitle">
+            <td class="title">安全性</td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
+            <td class="title">可靠性</td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
+        </tr>
+        <tr class="trTitle">
+            <td class="title">经济性</td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
+            <td class="title">其他</td>
+            <td>
+                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="panel3" class="mini-panel" title="审批意见" iconCls="icon-add" style="width: 100%;height: 100%;"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
+    <table class="table">
+        <tr class="trTitle">
+            <td class="title">审批意见</td>
+            <td>
+                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+            </td>
+            <td class="title">常用词条</td>
+            <td>
+                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

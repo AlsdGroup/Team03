@@ -15,103 +15,103 @@
     <script src="/scripts/boot.js" type="text/javascript"></script>
 
     <style type="text/css">
-        .table{
+        .table {
             width: 100%;
             height: 100%;
-            background-color: #CCEEFF;
+            border: 1px solid #d5e9fa;
             border-collapse: collapse;
+            margin: auto;
+        }
 
+        .trTitle {
+            background-color: #d2f0f0;
+            border: solid white 2px;
         }
-        .trTitle{
-            background-color:#CCEEFF ;
-            width: 200px;
-            height: 40px;
-            border:2px solid white;
 
-        }
-        .trTitle1{
-            background-color: #CCEEFF;
-            width: 100%;
+        .title {
+            width: 100px;
             height: 40px;
-            border:2px solid white;
-            text-align: right;
+            text-align: center;
         }
-        .button{
-            float: right;
-        }
+
     </style>
 </head>
 <body>
-<table  class="table" border="0" cellpadding="1" cellspacing="2">
-    <tr>
-        <td class="trTitle" colspan="2">当前位置：科研项目申报 >> 项目其他信息</td>
-    </tr>
-    <tr>
-        <td class="trTitle" colspan="2">技术第一负责人信息</td>
-    </tr>
-    <tr>
-        <td class="trTitle1">姓名、专业经历和能力简述</td>
-        <td >
-            <input class="mini-textarea" style="width: 900px;height: 60px;"/>
-        </td>
-    </tr>
-    <tr>
-        <td class="trTitle" colspan="2">产品信息</td>
-    </tr>
-    <tr>
-        <td class="trTitle1">产品形式</td>
-        <td>
-            <%--输入线问题--%>
-            <div id="cbl1" class="mini-checkboxlist" textField="text" valueField="id"
-                 data="[{'id':1001,'text':'专题报告'},{'id':1002,'text':'技术方案'},{'id':1003,'text':'技术标准'},{'id':1004,'text':'硬件产品'},{'id':1005,'text':'生产性文件'},{'id':1006,'text':'设计文件'},{'id':1007,'text':'计算机软件'},{'id':1008,'text':'其他 ________'}]">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td class="trTitle1">预计产权说明</td>
-        <td >
-            <input class="mini-textarea" style="width: 900px;height: 60px;"/>
-        </td>
-    </tr>
-    <tr>
-        <td class="trTitle1">经济效益</td>
-        <td >
-            <input class="mini-textarea" style="width: 900px;height: 60px;"/>
-        </td>
-    </tr>
-    <tr>
-        <td class="trTitle1">固定资产</td>
-        <td >
-            <input class="mini-textarea" style="width: 900px;height: 60px;"/>
-        </td>
-    </tr>
-    <tr>
-        <td class="trTitle1">验收标准</td>
-        <td >
-            <input class="mini-textarea" style="width: 900px;height: 60px;"/>
-        </td>
-    </tr>
-    <tr>
-        <td class="trTitle" colspan="2">附件信息</td>
-    </tr>
-    <tr>
-        <td class="trTitle1">立项报告书*</td>
-        <td>
-            <div>
-                <input class="mini-htmlfile" name="Fdata" id="file1" style="width: 900px;height: 30px">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td class="trTitle" colspan="2">流程信息</td>
-    </tr>
-    <tr>
-        <td class="trTitle1">审批（部门经理)*</td>
-        <td>
-            <input id="btnEdit1" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b" style="width: 900px;height: 30px"/>
-        </td>
-    </tr>
-</table>
+<div id="panel1" class="mini-panel" title="技术第一负责人信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
+    <table class="table">
+        <tr class="trTitle">
+            <td class="title">姓名、专业经历和能力简述</td>
+            <td>
+                <input class="mini-textarea" style="width: 900px;height: 30px" value="" name=""/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="panel2" class="mini-panel" title="产品信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
+    <table class="table">
+        <tr class="trTitle">
+            <td class="title">产品形式</td>
+            <td>
+                <div id="cbl1" class="mini-checkboxlist" textField="text" valueField="id"
+                     data="[{'id':1001,'text':'专题报告'},{'id':1002,'text':'技术方案'},{'id':1003,'text':'技术标准'},{'id':1004,'text':'硬件产品'},{'id':1005,'text':'生产性文件'},{'id':1006,'text':'设计文件'},{'id':1007,'text':'计算机软件'},{'id':1008,'text':'其他 ________'}]">
+                </div>
+            </td>
+        </tr>
+        <tr class="trTitle">
+            <td class="title">预计产权说明</td>
+            <td>
+                <input class="mini-textarea" style="width: 900px;height: 30px;" value="" name=""/>
+            </td>
+        </tr>
+        <tr class="trTitle">
+            <td class="title">经济效益</td>
+            <td>
+                <input class="mini-textarea" style="width: 900px;height: 30px;" value="" name=""/>
+            </td>
+        </tr>
+        <tr class="trTitle">
+            <td class="title">固定资产</td>
+            <td>
+                <input class="mini-textarea" style="width: 900px;height: 30px;" value="" name=""/>
+            </td>
+        </tr>
+        <tr class="trTitle">
+            <td class="title">验收标准</td>
+            <td>
+                <input class="mini-textarea" style="width: 900px;height: 30px;" value="" name=""/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="panel3" class="mini-panel" title="附件信息" iconCls="icon-add" style="width: 100%;height: 100%;background-color: #d2f0f0"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true"
+     collapseOnTitleClick="true">
+    <table class="table">
+        <tr>
+            <td class="trTitle">立项报告书*</td>
+            <td>
+                <div>
+                    <input class="mini-htmlfile" name="Fdata" id="file1" style="width: 900px;height: 30px">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="panel4" class="mini-panel" title="流程信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true"
+     collapseOnTitleClick="true">
+    <table class="table">
+        <tr>
+            <td class="trTitle">审批（部门经理)*</td>
+            <td>
+                <input id="btnEdit1" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
+                       style="width: 900px;height: 30px"/>
+            </td>
+        </tr>
+    </table>
+</div>
 <button type="submit" value="提交" class="button" id="button">提交</button>
 </body>
 </html>

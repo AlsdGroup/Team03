@@ -18,7 +18,7 @@
 
         .table {
             width: 100%;
-            height: 100%;
+            height: auto;
             border: 1px solid #d5e9fa;
             border-collapse: collapse;
             margin: auto;
@@ -35,14 +35,9 @@
             width: 100px;
             height: 40px;
             text-align: center;
-            border: solid white 2px;
-            padding: 0px;
+
         }
 
-        .t {
-            width: 100%;
-            height: 40px;
-        }
     </style>
 </head>
 <body>
@@ -51,7 +46,7 @@
     <table class="table">
         <tr class="trTitle">
             <td class="title">项目名称*</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
             <td colspan="2" style="background-color: white"></td>
         </tr>
         <tr class="trTitle">
@@ -69,7 +64,7 @@
         <tr class="trTitle">
             <td class="title">目的*</td>
             <td colspan="3">
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+                <input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/>
             </td>
         </tr>
     </table>
@@ -80,16 +75,16 @@
     <table class="table">
         <tr class="trTitle">
             <td class="title">安全性</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
             <td class="title">可靠性</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">经济性</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
             <td class="title">其他</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:30px;"/>
+                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
             </td>
         </tr>
     </table>
@@ -99,23 +94,23 @@
     <table class="table">
         <tr class="trTitle">
             <td class="title">成果应用</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">实际用户</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">潜在用户</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">项目完成周期</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">项目完成路径简介</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
         </tr>
     </table>
 </div>
@@ -123,20 +118,17 @@
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">
-            <td class="t" colspan="4">预算信息</td>
-        </tr>
-        <tr class="trTitle">
             <td class="title">总预算</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
             <td class="title">公司经费</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
         </tr>
 
         <tr class="trTitle">
             <td class="title">外部支持经费</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
             <td class="title">国家经费</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;"/></td>
+            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
         </tr>
     </table>
 </div>
