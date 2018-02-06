@@ -148,18 +148,18 @@
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
-    var pageNo = 1; // 当前页
-    var pageSize = 5; // 每页数据数
+    var pageNo = '1'; // 当前页
+    var pageSize = '5'; // 每页数据数
     var pages = 0; // 总页数
-    var taskDate = "2018"; // 申请时间
+    var taskDate = "2016"; // 申请时间
     var taskName = "申请"; // 关键字 流程名称
-    var taskStaff = 10001; // 申请人id
-    var taskDep = 20001; // 所属部门id
+    var taskStaff = '10003'; // 申请人id
+    var taskDep = '20001'; // 所属部门id
     var begin = 1; // 数字页码开始数
     var end = 10; // 数字页码结束数
 
     // 刚进页面 搜索所有学生
-    loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+//    loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
 
     // 模糊查询
     $("#query").click(function () {
@@ -174,7 +174,7 @@
     // 获得当前页的数据 主要逻辑
     function loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep) {
         var data1 =  {
-            "pageNum:": pageNo,
+            "pageIndex:": pageNo,
             "pageSize": pageSize,
             "taskDate": taskDate,
             "taskName": taskName,
@@ -182,6 +182,7 @@
             "taskDep": taskDep
         };
         var json1 = mini.encode(data1);   //序列化成JSON
+        alert(json1);
         $.ajax({
             url: "/selectTask",
             type: "POST",
@@ -189,8 +190,13 @@
             contentType: "application/json",
             data: json1,
             success: function (result) {
-                alert(666);
                 console.log(result);
+
+
+
+
+
+
 
             }
         });

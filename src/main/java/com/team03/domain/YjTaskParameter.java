@@ -1,15 +1,18 @@
 package com.team03.domain;
 
+import java.io.Serializable;
+
 /**
  * AlsdGo 2018年02月06日 11:10
  */
-public class YjTaskParameter {
+public class YjTaskParameter implements Serializable{
     private int id;
     private String taskId;
     private String taskName;
     private int taskDep;
     private String taskDepName;
-    private int taskStep;
+    private String taskStep;
+    private int taskStaff;
     private String taskStaffName;
     private String taskDate;
     private int taskState;
@@ -17,20 +20,6 @@ public class YjTaskParameter {
     private int staffNow;
 
     public YjTaskParameter() {
-    }
-
-    public YjTaskParameter(int id, String taskId, String taskName, int taskDep, String taskDepName, int taskStep, String taskStaffName, String taskDate, int taskState, int staffBefore, int staffNow) {
-        this.id = id;
-        this.taskId = taskId;
-        this.taskName = taskName;
-        this.taskDep = taskDep;
-        this.taskDepName = taskDepName;
-        this.taskStep = taskStep;
-        this.taskStaffName = taskStaffName;
-        this.taskDate = taskDate;
-        this.taskState = taskState;
-        this.staffBefore = staffBefore;
-        this.staffNow = staffNow;
     }
 
     @Override
@@ -41,7 +30,8 @@ public class YjTaskParameter {
                 ", taskName='" + taskName + '\'' +
                 ", taskDep=" + taskDep +
                 ", taskDepName='" + taskDepName + '\'' +
-                ", taskStep=" + taskStep +
+                ", taskStep='" + taskStep + '\'' +
+                ", taskStaff=" + taskStaff +
                 ", taskStaffName='" + taskStaffName + '\'' +
                 ", taskDate='" + taskDate + '\'' +
                 ", taskState=" + taskState +
@@ -90,12 +80,20 @@ public class YjTaskParameter {
         this.taskDepName = taskDepName;
     }
 
-    public int getTaskStep() {
+    public String getTaskStep() {
         return taskStep;
     }
 
-    public void setTaskStep(int taskStep) {
+    public void setTaskStep(String taskStep) {
         this.taskStep = taskStep;
+    }
+
+    public int getTaskStaff() {
+        return taskStaff;
+    }
+
+    public void setTaskStaff(int taskStaff) {
+        this.taskStaff = taskStaff;
     }
 
     public String getTaskStaffName() {
