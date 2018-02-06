@@ -88,7 +88,7 @@
                 <%--<img src="../../../img/submitbtn1.jpg" onclick="">--%>
                 <input type="submit" value="登录" style="width: 225px;height: 30px;text-align: center"/>
             </form>
-            <h2>${loginMsg}</h2>
+            <h5>${loginMsg}</h5>
         </div>
     </div>
 </div>

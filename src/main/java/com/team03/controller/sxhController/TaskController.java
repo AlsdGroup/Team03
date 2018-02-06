@@ -8,6 +8,8 @@ import com.team03.page.PageBean;
 import com.team03.service.sxhSercice.TaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -64,7 +66,7 @@ public class TaskController {
     /**
      * 主要逻辑 查询任务
      */
-    @RequestMapping(value = {"/selectTask"})
+    @RequestMapping(value = {"/selectTask"}, method = RequestMethod.POST)
     @ResponseBody
     public PageBean<YjTaskParameter> selectTask(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep) {
         System.out.println(656565);

@@ -36,9 +36,10 @@ CREATE TABLE yj_staff(
   staff_pwd VARCHAR(64) NOT NULL,
   staff_dep_id INT
 );
-INSERT  INTO yj_staff VALUES (10001,'孙袖航','619676988@qq.com','sxh','123456',20001);
-INSERT  INTO yj_staff VALUES (10002,'井熙铎','1248334638@qq.com','jxd','123456',20001);
-INSERT  INTO yj_staff VALUES (10003,'郝旭东','1585651756@qq.com','hxd','123456',20001);
+INSERT  INTO yj_staff VALUES (10001,'孙袖航','619676988@qq.com','sxh','1',20001);
+INSERT  INTO yj_staff VALUES (10002,'井熙铎','1248334638@qq.com','jxd','1',20001);
+INSERT  INTO yj_staff VALUES (10003,'郝旭东','1585651756@qq.com','hxd','1',20001);
+INSERT  INTO yj_staff VALUES (10004,'肖玲玲','514847600@qq.com','xll','1',20001);
 # SELECT * FROM yj_staff;
 
 #部门表

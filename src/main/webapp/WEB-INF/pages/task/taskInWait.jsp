@@ -92,107 +92,113 @@
     </tr>
 </table>
 
-<script type="text/javascript" src="../../../js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
-        /* 加载mini组件, 后面的get方法才好用 */
-        mini.parse();
-        function GetFormData() {
-            var form1 = new mini.Form("#form1");
-            var data1 = form1.getData();      //获取表单多个控件的数据
+    /* 加载mini组件, 后面的get方法才好用 */
+    mini.parse();
+
+    function GetFormData() {
+        var form1 = new mini.Form("#form1");
+        var data1 = form1.getData();      //获取表单多个控件的数据
 //        var json1 = mini.encode(data1);   //序列化成JSON
-            return data1;
-        }
-        function onButtonEditStaff(e) {
-            var btnEdit = this;
-            mini.open({
-                url: "/selectStaffWindow",
-                title: "选择人员",
-                width: 650,
-                height: 380,
-                ondestroy: function (action) {
-                    if (action == "close") return false;
-                    if (action == "ok") {
-                        var iframe = this.getIFrameEl();
-                        var data = iframe.contentWindow.GetData();
-                        data = mini.clone(data);
-                        if (data) {
-                            btnEdit.setValue(data.staffId);
-                            btnEdit.setText(data.staffName);
-                        }
-                    }
-                }
-            });
-        }
-        function onButtonEditDep(e) {
-            var btnEdit = this;
-            mini.open({
-                url: "/selectDepWindow",
-                title: "选择部门",
-                width: 650,
-                height: 380,
-                ondestroy: function (action) {
-                    if (action == "close") return false;
-                    if (action == "ok") {
-                        var iframe = this.getIFrameEl();
-                        var data = iframe.contentWindow.GetData();
-                        data = mini.clone(data);
-                        if (data) {
-                            btnEdit.setValue(data.depId);
-                            btnEdit.setText(data.depName);
-                        }
-                    }
-                }
-            });
-        }
-///////////////////////////////////////////////////////////////////////////////////
-        var pageNo = 1; // 当前页
-        var pageSize = 5; // 每页数据数
-        var pages = 0; // 总页数
-        var taskDate = "2018"; // 申请时间
-        var taskName = "申请"; // 关键字 流程名称
-        var taskStaff = 10001; // 申请人id
-        var taskDep = 20001; // 所属部门id
-        var begin = 1; // 数字页码开始数
-        var end = 10; // 数字页码结束数
+        return data1;
+    }
 
-        // 刚进页面 搜索所有学生
+    function onButtonEditStaff(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/selectStaffWindow",
+            title: "选择人员",
+            width: 650,
+            height: 380,
+            ondestroy: function (action) {
+                if (action == "close") return false;
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);
+                    if (data) {
+                        btnEdit.setValue(data.staffId);
+                        btnEdit.setText(data.staffName);
+                    }
+                }
+            }
+        });
+    }
+
+    function onButtonEditDep(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/selectDepWindow",
+            title: "选择部门",
+            width: 650,
+            height: 380,
+            ondestroy: function (action) {
+                if (action == "close") return false;
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);
+                    if (data) {
+                        btnEdit.setValue(data.depId);
+                        btnEdit.setText(data.depName);
+                    }
+                }
+            }
+        });
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    var pageNo = 1; // 当前页
+    var pageSize = 5; // 每页数据数
+    var pages = 0; // 总页数
+    var taskDate = "2018"; // 申请时间
+    var taskName = "申请"; // 关键字 流程名称
+    var taskStaff = 10001; // 申请人id
+    var taskDep = 20001; // 所属部门id
+    var begin = 1; // 数字页码开始数
+    var end = 10; // 数字页码结束数
+
+    // 刚进页面 搜索所有学生
+    loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+
+    // 模糊查询
+    $("#query").click(function () {
+        pageNo = 1;
+        taskDate = $("#taskDate").val();
+        taskName = $("#taskName").val();
+        taskStaff = $("#btnEditStaff").val();
+        taskDep = $("#btnEditDep").val();
         loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+    })
 
-        // 模糊查询
-        $("#query").click(function () {
-            pageNo = 1;
-            taskDate = $("#taskDate").val();
-            taskName = $("#taskName").val();
-            taskStaff = $("#btnEditStaff").val();
-            taskDep = $("#btnEditDep").val();
-            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
-        })
+    // 获得当前页的数据 主要逻辑
+    function loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep) {
+        var data1 =  {
+            "pageNum:": pageNo,
+            "pageSize": pageSize,
+            "taskDate": taskDate,
+            "taskName": taskName,
+            "taskStaff": taskStaff,
+            "taskDep": taskDep
+        };
+        var json1 = mini.encode(data1);   //序列化成JSON
+        $.ajax({
+            url: "/selectTask",
+            type: "POST",
+            dataType: "JSON",
+            contentType: "application/json",
+            data: json1,
+            success: function (result) {
+                alert(666);
+                console.log(result);
 
-        // 获得当前页的数据 主要逻辑
-        function loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep) {
-            $.ajax({
-                url: "/selectTask",
-                type: "post",
-                data: {
-                    "pageNum": pageNo,
-                    "pageSize": pageSize,
-                    "taskDate": taskDate,
-                    "taskName": taskName,
-                    "taskStaff": taskStaff,
-                    "taskDep": taskDep
-                },
-                dataType: "json",
-                success: function (result) {
-                    alert(666);
-                    console.log(result);
+            }
+        });
+    }
 
-                }
-            });
-        }
-
-        function kkkk() {
-            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
-        }
+    function kkkk() {
+        loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+    }
 
 
 </script>
