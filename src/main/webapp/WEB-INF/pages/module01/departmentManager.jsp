@@ -12,40 +12,32 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link href="/css/demo.css" rel="stylesheet" type="text/css"/>
     <script src="/scripts/boot.js" type="text/javascript"></script>
-    <style type="text/css">
-
-
-        .table {
+    <style>
+        table {
             width: 100%;
-            height: 100%;
-            border: 1px solid #d5e9fa;
+            height: auto;
+            border: 0px solid #ffffff;
             border-collapse: collapse;
-            margin: auto;
+            padding: 0px;
         }
 
         .trTitle {
 
-            background-color: #CCEEFF;
+            background-color: #d2f0f0;
             border: solid white 2px;
 
         }
-
-        .title {
-            width: 100px;
+        .title{
+            width: 10%;
             height: 40px;
             text-align: center;
-            border: solid white 2px;
-            padding: 0px;
+
         }
 
-        .t {
-            width: 100%;
-            height: 40px;
-        }
     </style>
 </head>
 <body>
-<div id="panel1" class="mini-panel" title="项目基本信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+<div id="panel1" class="mini-panel" title="项目基本信息" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">
@@ -70,7 +62,7 @@
         </tr>
     </table>
 </div>
-<div id="panel2" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应分析" iconCls="icon-add" style="width: 100%;height: 100%;"
+<div id="panel2" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应分析" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">
@@ -89,7 +81,7 @@
         </tr>
     </table>
 </div>
-<div id="panel3" class="mini-panel" title="审批意见" iconCls="icon-add" style="width: 100%;height: 100%;"
+<div id="panel3" class="mini-panel" title="审批意见" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">

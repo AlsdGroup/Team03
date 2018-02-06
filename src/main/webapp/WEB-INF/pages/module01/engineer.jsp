@@ -13,36 +13,28 @@
     <link href="/css/demo.css" rel="stylesheet" type="text/css"/>
     <script src="/scripts/boot.js" type="text/javascript"></script>
     <style type="text/css">
-        .table {
+        table {
             width: 100%;
-            height: 100%;
-            background-color: #d2f0f0;
+            height: auto;
+            border: 0px solid #ffffff;
             border-collapse: collapse;
+            padding: 0px;
         }
 
         .trTitle {
             background-color: #d2f0f0;
-            width: 100px;
-            height: 20px;
-            border: 2px solid white;
-
+            border: solid white 2px;
         }
-
-        .trTitle1 {
-            background-color: #d2f0f0;
-            width: 100%;
+        .title{
+            width: 10%;
             height: 40px;
-            border: 2px solid white;
             text-align: center;
-        }
 
-        .button {
-            float: right;
         }
     </style>
 </head>
 <body>
-<div id="panel1" class="mini-panel" title="项目基本信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+<div id="panel1" class="mini-panel" title="项目基本信息" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">
@@ -67,7 +59,7 @@
         </tr>
     </table>
 </div>
-<div id="panel2" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应分析" iconCls="icon-add" style="width: 100%;height: 100%;"
+<div id="panel2" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应分析" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">
@@ -86,7 +78,7 @@
         </tr>
     </table>
 </div>
-<div id="panel3" class="mini-panel" title="评审信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+<div id="panel3" class="mini-panel" title="评审信息" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">
@@ -99,7 +91,7 @@
         </tr>
     </table>
 </div>
-<div id="panel4" class="mini-panel" title="流程信息" iconCls="icon-add" style="width: 100%;height: 100%;"
+<div id="panel4" class="mini-panel" title="流程信息" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table class="table">
         <tr class="trTitle">

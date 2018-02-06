@@ -15,7 +15,6 @@
     <script src="/scripts/boot.js" type="text/javascript"></script>
     <style type="text/css">
 
-
         .table {
             width: 100%;
             height: auto;
@@ -140,7 +139,7 @@
     function onButtonEdit(e) {
         var btnEdit = this;
         mini.open({
-            url: "page/code/SelectGridWindow.jsp",
+            url: "/selectDepWindow",
             title: "选择项目申报单位",
             width: 650,
             height: 380,
