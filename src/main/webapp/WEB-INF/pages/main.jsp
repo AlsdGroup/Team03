@@ -28,10 +28,10 @@
 
         .span1 {
             margin-left: 350px;
-            color: white;
+            color: #0069ab;
             font-size: 35px;
             font-family: "Arial Black";
-            text-shadow: 1px 1px 5px orange, -1px -1px 5px orange, 1px -1px 5px orange, -1px 1px 5px orange;
+            text-shadow: 1px 1px 5px white, -1px -1px 5px white, 1px -1px 5px white, -1px 1px 5px white;
         }
 
     </style>
@@ -78,7 +78,7 @@
     </div>
     <div showCollapseButton="false" bodyStyle="border:0;background:white;">
         <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
-            <div size="180px" showCollapseButton="true" borderStyle="border:0;" style="background-color: #d2f0f0">
+            <div size="180px" showCollapseButton="true" borderStyle="border:0;" style="background-color: #e5edef">
                 <div class="mini-outlookmenu" url="../../data/left_menu.txt" onitemselect="onItemSelect"
                      idField="id" parentField="pid" textField="text" activeIndex="-1">
                 </div>

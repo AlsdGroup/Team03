@@ -98,6 +98,9 @@
             <if test="taskDep > 0 ">
                 AND a.task_dep = #{taskDep}
             </if>
+            <if test="taskState > 0 ">
+                AND a.task_state = #{taskState}
+            </if>
         </where>
         limit #{pageIndex},#{pageSize}
     </select>
@@ -121,6 +124,9 @@
             </if>
             <if test="taskDep > 0 ">
                 AND a.task_dep = #{taskDep}
+            </if>
+            <if test="taskState > 0 ">
+                AND a.task_state = #{taskState}
             </if>
         </where>
     </select>

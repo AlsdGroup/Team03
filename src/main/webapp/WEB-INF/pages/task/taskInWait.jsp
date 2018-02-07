@@ -6,80 +6,134 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>待办任务</title>
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css">
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <style type="text/css">
         table {
             width: 100%;
             height: auto;
-            border: 0px solid #ffffff;
+            border: 0px solid #CBE4EC;
             border-collapse: collapse;
             padding: 0px;
         }
 
         td {
-            border: 1px solid #ffffff;
+            border: 1px solid #CBE4EC;
             border-collapse: collapse;
             padding: 0px;
-            background-color: #d2f0f0;
+            background-color: #F0F8FA;
+        }
+
+        /*input[type="button"] {*/
+        /*width: 40px;*/
+        /*background: #3CA6CE;*/
+        /*color: white;*/
+        /*border: 1px solid white;*/
+        /*}*/
+
+        .td0 {
+            background-color: #D3EAF8;
+            padding: 5px;
+        }
+
+        .td80 {
+            background-image: -moz-linear-gradient(top, #F0F8FA, #D3EAF8);
+            padding: 5px;
+            padding-right: 25px;
         }
 
         .td1 {
             width: 10%;
             text-align: right;
-            /*background-color: #dddddd;*/
+            background-color: #D3EAF8;
+            padding: 5px;
         }
 
         .td2 {
             width: 30%;
-            /*background-color: #dddddd;*/
+            background-color: #F0F8FA;
+        }
+
+        .td3 {
+            width: 10%;
+            background-color: #F0F8FA;
         }
 
         #outer {
             text-align: center;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         #footer {
-            background-color: lightyellow;
             text-align: center;
-            color: rgba(60, 166, 206, 1);
+            /*color: #3CA6CE;*/
+            color: black;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            position: relative;
+            padding: 2px;
+        }
+
+        #footerspan {
+            float: left;
+        }
+
+        #pageSize {
+            float: left;
+        }
+
+        #summary {
+            float: left;
         }
 
         #pagination {
+            margin-top: 2px;
+            margin-bottom: 2px;
+            margin-right: 40px;
             display: inline-block;
+            float: right;
         }
 
         #pagination li {
             display: inline;
         }
 
+        #inthead td {
+            font-weight: bold;
+            padding: 5px;
+            background-color: #D3EAF8;
+        }
+
+        #content td {
+            height: 50px;
+        }
+
+        #idtfoot td {
+            background-color: #E5EDEF;
+        }
+
         #select {
             display: inline-block;
             margin-left: 40px;
+            margin-right: 40px;
+            float: right;
         }
 
         #select input[type="text"] {
             width: 30px;
-            height: 20px;
+            /*height: 20px;*/
             background-color: #ffffff;
             border-width: 1px;
         }
 
-        #select input[type="button"] {
-            width: 40px;
-            height: 23px;
-            background: #629755;
-            border: none;
-        }
+        /*#select input[type="button"] {*/
+        /*width: 40px;*/
+        /*!*height: 23px;*!*/
+        /*background: #3CA6CE;*/
+        /*color: black;*/
+        /*border: none;*/
+        /*}*/
 
         ul li {
             cursor: pointer;
@@ -92,33 +146,33 @@
 <table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
     <tr>
-        <td colspan="6">当前位置: 个人工作台 >> 待办任务</td>
+        <td colspan="6" class="td0">当前位置: 个人工作台 >> 待办任务</td>
     </tr>
     <tr>
-        <td colspan="6">查询条件</td>
+        <td colspan="6" class="td80">查询条件</td>
     </tr>
     <tr>
         <td class="td1">申请时间</td>
         <td class="td2">
             <input class="mini-datepicker" width="100%" name="taskDate" id="taskDate"/>
         </td>
-        <td class="td1">&nbsp;</td>
+        <td class="td3">&nbsp;</td>
         <td class="td1">关键字</td>
         <td class="td2">
             <input class="mini-textbox" width="100%" name="taskName" id="taskName"/>
         </td>
-        <td class="td1">&nbsp;</td>
+        <td class="td3">&nbsp;</td>
     </tr>
     <tr>
         <td class="td1">申请人</td>
-        <td class="td2">
+        <td class="td2" id="btnEditStaffTd">
             <input id="btnEditStaff"
                    class="mini-buttonedit"
                    onbuttonclick="onButtonEditStaff"
                    style="width:100%;" allowInput="false"
                    name="staffId" textName="staffName"/>
         </td>
-        <td class="td1">&nbsp;</td>
+        <td class="td3">&nbsp;</td>
         <td class="td1">所属部门</td>
         <td class="td2">
             <input id="btnEditDep"
@@ -127,21 +181,21 @@
                    style="width:100%;" allowInput="false"
                    name="depId" textName="depName"/>
         </td>
-        <td class="td1">&nbsp;</td>
+        <td class="td3">&nbsp;</td>
     </tr>
     <tr>
         <td colspan="6">
             <div id="outer">
-                <table>
-                    <thead>
+                <table style="text-align: center">
+                    <thead id="inthead">
                     <tr>
-                        <td colspan="8" style="text-align: right;background-color: lightyellow">
+                        <td colspan="8" style="background-color: #E5EDEF;text-align: right">
                             <input type="button" value="查询" id="query"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" name="checkall" id="checkall"/>
+                            <input type="checkbox" name="checkall" id="checkall" onclick="checkall()"/>
                         </td>
                         <td>流程编号</td>
                         <td>流程名称</td>
@@ -154,25 +208,31 @@
                     </thead>
                     <tbody id="content">
                     </tbody>
+                    <tfoot id="idtfoot">
+                    <tr>
+                        <td colspan="8" class="td81">
+                            <div id="footer">
+                                <span id="footerspan">每页记录数:</span>
+                                <select id="pageSize" name="pageSize">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="5" selected="selected">5</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <span id="summary"></span>
+                                <div id="select">
+                                    <span>跳转到 </span>
+                                    <input type="text" name="page_num" style="text-align: center">
+                                    <span> 页  </span>
+                                    <input type="button" name="go_btn" value="跳转">
+                                </div>
+                                <ul id="pagination"></ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
-
-            <div id="footer">
-                <span id="summary"></span>
-                <ul id="pagination">
-                    <%--<li id="01">首页</li>--%>
-                    <%--<li id="02">上一页</li>--%>
-                    <%--<li id="03">下一页</li>--%>
-                    <%--<li id="04">尾页</li>--%>
-                </ul>
-                <div id="select">
-                    <span>跳转到 </span>
-                    <input type="text" name="page_num">
-                    <span> 页  </span>
-                    <input type="button" name="go_btn" value="跳转">
-                </div>
-            </div>
-
         </td>
     </tr>
 </table>
@@ -233,38 +293,46 @@
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
-    var pageNo = '1'; // 当前页
-    var pageSize = '5'; // 每页数据数
+    var pageNo = 1; // 当前页
+    var pageSize = 5; // 每页数据数
     var pages = 0; // 总页数
-    var taskDate = "2016"; // 申请时间
-    var taskName = "申请"; // 关键字 流程名称
-    var taskStaff = '10003'; // 申请人id
-    var taskDep = '20001'; // 所属部门id
+    var taskDate = ""; // 申请时间
+    var taskName = ""; // 关键字 流程名称
+    var taskStaff = 0; // 申请人id mapper中大于0才加这个参数
+    var taskDep = 0; // 所属部门id mapper中大于0才加这个参数
     var begin = 1; // 数字页码开始数
     var end = 10; // 数字页码结束数
+    var taskState = 1; //待办任务
 
-    // 刚进页面 搜索所有学生
-    //    loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+    // 刚进页面 查询所有任务信息
+    loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+
+    // 获取模糊查询的参数 和每页显示数据数
+    function getParameters() {
+        pageSize = $("#pageSize").val();
+        taskDate = $("input[name='taskDate']").val();
+        taskName = $("input[name='taskName']").val();
+        taskStaff = $("input[name='staffId']").val() == '' ? 0 : $("input[name='staffId']").val();
+        taskDep = $("input[name='depId']").val() == '' ? 0 : $("input[name='depId']").val();
+    }
 
     // 模糊查询
     $("#query").click(function () {
-        pageNo = '1';
-        taskDate = $("#taskDate").val();
-        taskName = $("#taskName").val();
-        taskStaff = $("#btnEditStaff").val();
-        taskDep = $("#btnEditDep").val();
+        pageNo = 1;
+        getParameters();
         loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
     })
 
     // 获得当前页的数据 主要逻辑
     function loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep) {
         var data1 = {
-            "pageIndex:": pageNo,
+            "pageIndex": pageNo,
             "pageSize": pageSize,
             "taskDate": taskDate,
             "taskName": taskName,
             "taskStaff": taskStaff,
-            "taskDep": taskDep
+            "taskDep": taskDep,
+            "taskState": taskState
         };
         var json1 = mini.encode(data1);
         $.ajax({
@@ -275,12 +343,13 @@
             data: json1,
             success: function (result) {
                 console.log(result);
+                $("#content").empty();
+                $("#footer").hide();
                 var list = result.beanList;
                 var totalCount = result.totalRecord;
                 pages = result.totalPage;
                 pageNo = result.pageNum;
                 if (list.length != 0) {
-                    $("#content").empty();
                     for (var i = 0; i < list.length; i++) {
                         var id = list[i].id;
                         var taskId = list[i].taskId;
@@ -294,7 +363,6 @@
                         var taskState = list[i].taskState;
                         var staffBefore = list[i].staffBefore;
                         var staffNow = list[i].staffNow;
-
                         var tr = $("<tr>");
                         var td1 = $("<td>").append("<input type='checkbox' value='" + id + "' name='checkone'/>");
                         var td2 = $("<td>").text(taskId);
@@ -315,15 +383,25 @@
                         $("#content").append(tr);
                     }
                     makePageNum();
-//                    $("#table").show();
+                    //$("#table").show();
                     $("#footer").show();
                     displayFooter(totalCount, pages, pageNo);
-                } else {
-//                    $("#table").hide();
-                    $("#footer").hide();
                 }
             }
         });
+    }
+
+    // 全选反选
+    function checkall() {
+        if ($("#checkall").prop("checked")) {
+            $('input[name="checkone"]').each(function (i) {
+                $(this).prop("checked", true);
+            });
+        } else {
+            $('input[name="checkone"]').each(function (i) {
+                $(this).prop("checked", false);
+            });
+        }
     }
 
     // 分页4功能加点击事件

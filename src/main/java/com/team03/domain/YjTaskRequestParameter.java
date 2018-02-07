@@ -5,24 +5,26 @@ import java.io.Serializable;
 /**
  * AlsdGo 2018年02月06日 19:54
  */
-public class YjTaskRequestParameter implements Serializable{
+public class YjTaskRequestParameter implements Serializable {
     private int pageIndex;
     private int pageSize;
     private String taskDate;
     private String taskName;
     private int taskStaff;
     private int taskDep;
+    private int taskState;
 
     public YjTaskRequestParameter() {
     }
 
-    public YjTaskRequestParameter(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep) {
+    public YjTaskRequestParameter(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep, int taskState) {
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
         this.taskDate = taskDate;
         this.taskName = taskName;
         this.taskStaff = taskStaff;
         this.taskDep = taskDep;
+        this.taskState = taskState;
     }
 
     @Override
@@ -34,6 +36,7 @@ public class YjTaskRequestParameter implements Serializable{
                 ", taskName='" + taskName + '\'' +
                 ", taskStaff=" + taskStaff +
                 ", taskDep=" + taskDep +
+                ", taskState=" + taskState +
                 '}';
     }
 
@@ -83,5 +86,13 @@ public class YjTaskRequestParameter implements Serializable{
 
     public void setTaskDep(int taskDep) {
         this.taskDep = taskDep;
+    }
+
+    public int getTaskState() {
+        return taskState;
+    }
+
+    public void setTaskState(int taskState) {
+        this.taskState = taskState;
     }
 }

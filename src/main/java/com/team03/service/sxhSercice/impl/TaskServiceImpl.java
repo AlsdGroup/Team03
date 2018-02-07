@@ -78,26 +78,22 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public PageBean<YjTaskParameter> selectTask(YjTaskRequestParameter yjTaskRequestParameter) {
-
-        // miniui框架 首页返回0 要加1
-        int pageIndex = yjTaskRequestParameter.getPageIndex() + 1;
+        // miniui框架 首页返回0 要加1 没用框架就不加
+        int pageIndex = yjTaskRequestParameter.getPageIndex();
         int pageSize = yjTaskRequestParameter.getPageSize();
-
         // 仅用到后四个参数进行总数量查询
         int total = taskDao.selectTotal2(yjTaskRequestParameter);
-
+        if(total==0){
+            return null;
+        }
         // 获取分页页码数据
         PageBean<YjTaskParameter> pageBean = new PageBean<>(pageIndex, pageSize, total);
-
         // 暂存一下 用于分页查询参数
         yjTaskRequestParameter.setPageIndex(pageBean.getStartIndex());
-
         // 获取结果集数组
         List<YjTaskParameter> beanList = taskDao.selectAll2(yjTaskRequestParameter);
-
         // 结果集打包
         pageBean.setBeanList(beanList);
-
         return pageBean;
     }
 }

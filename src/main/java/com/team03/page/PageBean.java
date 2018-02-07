@@ -81,6 +81,20 @@ public class PageBean<T> {
 
     }
 
+    @Override
+    public String toString() {
+        return "PageBean{" +
+                "pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                ", totalRecord=" + totalRecord +
+                ", startIndex=" + startIndex +
+                ", totalPage=" + totalPage +
+                ", beanList=" + beanList +
+                ", begin=" + begin +
+                ", end=" + end +
+                '}';
+    }
+
     public int getTotalPage() {
         return totalPage;
     }
