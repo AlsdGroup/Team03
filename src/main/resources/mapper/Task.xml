@@ -99,6 +99,7 @@
                 AND a.task_dep = #{taskDep}
             </if>
         </where>
+        limit #{pageIndex},#{pageSize}
     </select>
 
     <select id="selectTotal2"
