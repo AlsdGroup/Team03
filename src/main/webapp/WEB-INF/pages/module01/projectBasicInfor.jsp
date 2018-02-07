@@ -25,18 +25,22 @@
 
         .trTitle {
 
-            background-color: #CCEEFF;
+            background-color: #d2f0f0;
             border: solid white 2px;
 
         }
-
+        body{
+            padding: 0px;
+        }
         .title {
             width: 100px;
             height: 40px;
             text-align: center;
 
         }
-
+        div{
+            background-color: #d2f0f0;
+        }
     </style>
 </head>
 <body>

@@ -20,7 +20,9 @@
             border: 0px solid #ffffff;
             border-collapse: collapse;
         }
-
+        body{
+            padding: 0px;
+        }
         .trTitle {
 
             background-color: #d2f0f0;
@@ -32,6 +34,12 @@
             height: 40px;
             text-align: center;
 
+        }
+        div{
+            background-color: #d2f0f0;
+        }
+        #button{
+            float: right;
         }
     </style>
 </head>
@@ -46,11 +54,13 @@
         <tr class="trTitle">
             <td class="title">项目申报单位</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+                <input id="btnEdit1" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
+                       style="width: 100%;height: 30px"/>
             </td>
             <td class="title">联合申报单位</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
+                <input id="btnEdit2" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
+                       style="width: 100%;height: 30px"/>
             </td>
         </tr>
         <tr class="trTitle">
@@ -85,11 +95,11 @@
     <table class="table">
         <tr class="trTitle">
             <td class="title">评审结果</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:40px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">立项报告书</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:40px;" value="" name=""/></td>
         </tr>
     </table>
 </div>
@@ -98,17 +108,51 @@
     <table class="table">
         <tr class="trTitle">
             <td class="title">对阳江公司科技发展规划的符合性审定</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:40px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">对项目成果的应用领域和价</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:40px;" value="" name=""/></td>
         </tr>
         <tr class="trTitle">
             <td class="title">总体评价</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
+            <td colspan="3"><input class="mini-textarea" style="width:100%;height:40px;" value="" name=""/></td>
         </tr>
     </table>
+    <div id="button">
+        <a href="" class="mini-button" iconCls="icon-no" onclick="">不推荐</a>
+        <a href="" class="mini-button" iconCls="icon-addfolder" onclick="">推荐</a>
+    </div>
 </div>
+
+<script>
+    /* 加载mini组件，后面的get方法才好用 */
+    mini.parse();
+
+    /* 审批(部门经理)点击事件 */
+    function onButtonEdit(e) {
+        var btnEdit = this;
+        mini.open({
+            url: "/selectDepWindow",
+            title: "选择项目申报单位",
+            width: 650,
+            height: 380,
+            ondestroy: function (action) {
+                //if (action == "close") return false;
+                if (action == "ok") {
+                    var iframe = this.getIFrameEl();
+                    var data = iframe.contentWindow.GetData();
+                    data = mini.clone(data);    //必须
+                    if (data) {
+                        btnEdit.setValue(data.id);
+                        btnEdit.setText(data.name);
+                    }
+                }
+
+            }
+        });
+    }
+
+</script>
 </body>
 </html>
