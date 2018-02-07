@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>待办任务</title>
+    <title>个人工作台>>待办任务</title>
     <link href="../../css/demo.css" rel="stylesheet" type="text/css">
     <script src="../../scripts/boot.js" type="text/javascript"></script>
 
@@ -124,7 +124,7 @@
             </div>
 
         </div>
-        d="married" trueValue="1" falseValue="0" width="60" headerAlign="center">操作
+
     </div>
 </div>
 </div>

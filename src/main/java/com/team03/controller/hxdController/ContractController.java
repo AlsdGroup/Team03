@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ContractController {
 
 
-
     @RequestMapping(value = {"/declare"})
     public String declare() {
 
@@ -22,4 +21,17 @@ public class ContractController {
 
         return "module02/pendingtask";
     }
+
+    @RequestMapping(value = {"/examination"})
+    public String Examination() {
+
+        return "module02/examination";
+    }
+
+    @RequestMapping(value = {"/task"})
+    public String Task() {
+
+        return "module02/task";
+    }
+
 }

@@ -9,7 +9,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>科研合同项目申报</title>
+    <title>审批</title>
     <link href="../../../css/demo.css" rel="stylesheet" type="text/css">
     <script src="../../../scripts/boot.js" type="text/javascript"></script>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
@@ -115,25 +115,32 @@
             <td colspan="3"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
         </tr>
         <tr class="trTitle">
-            <td class="t">运作说明</td>
+            <td class="t">附件</td>
             <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
         </tr>
     </table>
 </div>
 
-<div id="panel4" class="mini-panel" title="流程信息" iconCls="icon-add" style="width: auto;height: auto;"
+<div id="panel4" class="mini-panel" title="审批意见" iconCls="icon-add" style="width: auto;height: auto;"
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
     <table>
 
         <tr class="trTitle">
-            <td class="t">技术部门经理</td>
+            <td class="t">审批意见</td>
             <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr>
-            <td colspan="4"><a class="mini-button" style="float: right" iconCls="submit" onclick="">提交</a></td>
+            <td class="t">常用词条</td>
+            <td ><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
         </tr>
 
+
+
+
+
     </table>
+    <div style="width: 150px;height: 30px;float: right;">
+    <a class="mini-button" style="float: left" iconCls="submit" onclick="">通过</a>
+    <a class="mini-button" style="float: right"iconCls="submit" onclick="">不通过</a>
+</div>
 </div>
 <script type="text/javascript">
 
