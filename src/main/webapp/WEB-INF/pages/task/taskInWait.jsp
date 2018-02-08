@@ -12,9 +12,10 @@
         table {
             width: 100%;
             height: auto;
-            border: 0px solid #CBE4EC;
+            border: 1px solid #CBE4EC;
             border-collapse: collapse;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
         }
 
         td {
@@ -141,7 +142,7 @@
 
     </style>
 </head>
-<body>
+<body style="margin: 0">
 
 <table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
@@ -149,9 +150,12 @@
         <td colspan="6" class="td0">当前位置: 个人工作台 >> 待办任务</td>
     </tr>
     <tr>
-        <td colspan="6" class="td80">查询条件</td>
+        <td colspan="6" class="td80">
+            <img src="../../../img/btn4.png" id="searchimg" onclick="searchHideOrShow()"/>
+            <span>查询条件</span>
+        </td>
     </tr>
-    <tr>
+    <tr id="searchtr1">
         <td class="td1">申请时间</td>
         <td class="td2">
             <input class="mini-datepicker" width="100%" name="taskDate" id="taskDate"/>
@@ -163,7 +167,7 @@
         </td>
         <td class="td3">&nbsp;</td>
     </tr>
-    <tr>
+    <tr id="searchtr2">
         <td class="td1">申请人</td>
         <td class="td2" id="btnEditStaffTd">
             <input id="btnEditStaff"
@@ -212,13 +216,14 @@
                     <tr>
                         <td colspan="8" class="td81">
                             <div id="footer">
-                                <span id="footerspan">每页记录数:</span>
+                                <span id="footerspan">每页记录数:&nbsp;&nbsp;</span>
                                 <select id="pageSize" name="pageSize">
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="5" selected="selected">5</option>
                                     <option value="10">10</option>
                                 </select>
+                                <span style="float: left">&nbsp;&nbsp;</span>
                                 <span id="summary"></span>
                                 <div id="select">
                                     <span>跳转到 </span>
@@ -349,7 +354,7 @@
                 var totalCount = result.totalRecord;
                 pages = result.totalPage;
                 pageNo = result.pageNum;
-                if (list.length != 0) {
+                if (list != null) {
                     for (var i = 0; i < list.length; i++) {
                         var id = list[i].id;
                         var taskId = list[i].taskId;
@@ -469,8 +474,11 @@
                 //"[" + i + "]";
                 $("#pagination").append("<li id=" + i + ">  " + i + "  </li>");
             } else {
+                alert(i);
                 $("#pagination").append("<li id=" + i + "> [" + i + "] </li>");
+                alert(666);
                 addEvent(i);
+                alert(777);
             }
         }
         $("#pagination").append(after8);
@@ -497,6 +505,23 @@
             return false;
         }
     });
+
+    // 查询伸缩
+    var flagHideOrShow = true;
+
+    function searchHideOrShow() {
+        if (flagHideOrShow) {
+            $("#searchtr1").hide();
+            $("#searchtr2").hide();
+            $("#searchimg").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr1").show();
+            $("#searchtr2").show();
+            $("#searchimg").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
+    }
 
 </script>
 </body>

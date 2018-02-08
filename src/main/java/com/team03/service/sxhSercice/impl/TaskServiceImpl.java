@@ -83,11 +83,12 @@ public class TaskServiceImpl implements TaskService {
         int pageSize = yjTaskRequestParameter.getPageSize();
         // 仅用到后四个参数进行总数量查询
         int total = taskDao.selectTotal2(yjTaskRequestParameter);
-        if(total==0){
-            return null;
-        }
         // 获取分页页码数据
         PageBean<YjTaskParameter> pageBean = new PageBean<>(pageIndex, pageSize, total);
+        // 没有数据返回空pagebean
+        if(total==0){
+            return pageBean;
+        }
         // 暂存一下 用于分页查询参数
         yjTaskRequestParameter.setPageIndex(pageBean.getStartIndex());
         // 获取结果集数组

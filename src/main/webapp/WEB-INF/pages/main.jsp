@@ -8,6 +8,7 @@
     <script src="../../scripts/jquery.min.js" type="text/javascript"></script>
     <style type="text/css">
         body {
+            font-family: "Arial Black";
             margin: 0;
             padding: 0;
             border: 0;
@@ -20,6 +21,19 @@
             user-select: none;
         }
 
+        .mini-tabs {
+            /*overflow: auto;*/
+            background-color: #e5edef;
+            border: 0px;
+        }
+
+        .imgtop{
+            width: 250px;
+            height: auto;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
         .top1 {
             background: url(../../img/logo1.bmp);
             background-size: cover;
@@ -27,11 +41,13 @@
         }
 
         .span1 {
-            margin-left: 350px;
-            color: #0069ab;
-            font-size: 35px;
+            /*margin-left: 20px;*/
+            /*color: #0069ab;*/
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
             font-family: "Arial Black";
-            text-shadow: 1px 1px 5px white, -1px -1px 5px white, 1px -1px 5px white, -1px 1px 5px white;
+            /*text-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;*/
         }
 
     </style>
@@ -43,7 +59,17 @@
     <div size="70px" showCollapseButton="true" borderStyle="border:0;">
         <table class="top1" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td width="55%">
+                <td width="18%" >
+                    <table>
+                        <tr>
+                            <td>
+                                <span><img src="../../img/log01.gif" class="imgtop"/></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td width="42%">
                     <span class="span1">阳江业务流程管理平台</span>
                 </td>
                 <td width="*">
@@ -53,16 +79,16 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <img src="../../img/btn1.png" ondragstart="return false">
-                                当前用户: ${login.staffUserName}[${login.staffId}]
+                                <span>当前用户: ${login.staffUserName}[${login.staffId}]</span>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <img src="../../img/btn2.png" ondragstart="return false">
-                                <a href="javascript:" ondragstart="return false">系统帮助</a>
+                                <span><a href="javascript:" ondragstart="return false">系统帮助</a></span>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <img src="../../img/btn3.png" ondragstart="return false">
-                                <a href="/logout" ondragstart="return false">安全退出</a>
+                                <a href="/logout" ondragstart="return false">安全退出</a></span>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <img src="../../img/btn4.png" ondragstart="return false">
-                                <a href="javascript:" ondragstart="return false">主题切换</a>
+                                <span><a href="javascript:" ondragstart="return false">主题切换</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -85,8 +111,9 @@
             </div>
             <div showCollapseButton="false" bodyStyle="border:0;background:white;">
                 <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%" border="0"></iframe>
-                <div id="mainTabs" class="mini-tabs bg-toolbar" activeIndex="0" style="width:100%;height:100%;"
-                     bodyStyle="border:0;background:white;">
+                <div id="mainTabs" class="mini-tabs" activeIndex="0" style="width:100%;height:100%;"
+                     iconStyle="background: red;"
+                     bodyStyle="border:0;background:#e5edef;">
                 </div>
             </div>
         </div>

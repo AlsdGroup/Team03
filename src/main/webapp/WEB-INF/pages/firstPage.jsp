@@ -7,7 +7,7 @@
 <head>
     <title>首页</title>
 </head>
-<body style="background-color: #e5edef">
+<body style="background-color: #e5edef;color: #0069ab">
 
 <h1>首页</h1>
 
