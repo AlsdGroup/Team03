@@ -18,19 +18,16 @@
             padding: 0;
         }
 
+        .mini-textbox-border, .mini-buttonedit-border {
+            border: none;
+        }
+
         td {
             border: 1px solid #CBE4EC;
             border-collapse: collapse;
             padding: 0px;
             background-color: #F0F8FA;
         }
-
-        /*input[type="button"] {*/
-        /*width: 40px;*/
-        /*background: #3CA6CE;*/
-        /*color: white;*/
-        /*border: 1px solid white;*/
-        /*}*/
 
         .td0 {
             background-color: #D3EAF8;
@@ -52,7 +49,7 @@
 
         .td2 {
             width: 30%;
-            background-color: #F0F8FA;
+            background-color: white;
         }
 
         .td3 {
@@ -65,6 +62,7 @@
         }
 
         #footer {
+            font-family: Verdana;
             text-align: center;
             /*color: #3CA6CE;*/
             color: black;
@@ -86,12 +84,13 @@
 
         #summary {
             float: left;
+            margin-left: 20px;
         }
 
         #pagination {
             margin-top: 2px;
             margin-bottom: 2px;
-            margin-right: 40px;
+            margin-right: 20px;
             display: inline-block;
             float: right;
         }
@@ -117,7 +116,7 @@
         #select {
             display: inline-block;
             margin-left: 40px;
-            margin-right: 40px;
+            margin-right: 20px;
             float: right;
         }
 
@@ -128,18 +127,56 @@
             border-width: 1px;
         }
 
-        /*#select input[type="button"] {*/
-        /*width: 40px;*/
-        /*!*height: 23px;*!*/
-        /*background: #3CA6CE;*/
-        /*color: black;*/
-        /*border: none;*/
-        /*}*/
-
-        ul li {
-            cursor: pointer;
+        #select input[type="button"] {
+            margin-left: 20px;
         }
 
+        ul li {
+            text-align: center;
+            width: 25px;
+            cursor: pointer;
+            border: none;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        /*查询按钮*/
+        .btn {
+            width: 64px;
+            height: 26px;
+            display: inline-block;
+            text-align: left;
+            font-family: Verdana;
+            border-radius: 2px;
+            background-color: #E1E1E2;
+            color: black;
+            cursor: pointer;
+            border: 1px solid black;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #D1DDFC;
+            border: 1px solid blue;
+        }
+
+        /*.bgbtn span {*/
+            /*margin-left: 6px;*/
+            /*padding-left: 18px;*/
+            /*background: url(../../../img/search3.png) left center no-repeat;*/
+        /*}*/
+
+        #spanSearch {
+            margin-left: 6px;
+            padding-left: 18px;
+            background: url(../../../img/search3.png) left center no-repeat;
+        }
+        #spanRefresh {
+            margin-left: 6px;
+            padding-left: 18px;
+            background: url(../../../img/reload1.png) left center no-repeat;
+        }
     </style>
 </head>
 <body style="margin: 0">
@@ -147,28 +184,43 @@
 <table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
     <tr>
-        <td colspan="6" class="td0">当前位置: 个人工作台 >> 待办任务</td>
+        <td colspan="6" class="td0">
+            <img src="../../../img/flag1.gif" style="width: 15px;height: 15px;"
+                 oncontextmenu="return false;" ondragstart="return false;"/>
+            <span>当前位置:&nbsp;</span>
+            <span style="font-weight: bold">个人工作台 >> 待办任务</span>
+        </td>
     </tr>
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg" onclick="searchHideOrShow()"/>
-            <span>查询条件</span>
+            <div><img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
+                      id="searchimg" title="隐藏查询条件"
+                      oncontextmenu="return false;"
+                      ondragstart="return false;"
+                      onclick="searchHideOrShow()"/></div>
+            <div style="margin-top: -17px;margin-left: 21px"><span>查询条件</span></div>
         </td>
     </tr>
     <tr id="searchtr1">
-        <td class="td1">申请时间</td>
+        <td class="td1">
+            <span style="margin-right: 6px">申请时间</span>
+        </td>
         <td class="td2">
             <input class="mini-datepicker" width="100%" name="taskDate" id="taskDate"/>
         </td>
         <td class="td3">&nbsp;</td>
-        <td class="td1">关键字</td>
+        <td class="td1">
+            <span style="margin-right: 6px">关键字</span>
+        </td>
         <td class="td2">
             <input class="mini-textbox" width="100%" name="taskName" id="taskName"/>
         </td>
         <td class="td3">&nbsp;</td>
     </tr>
     <tr id="searchtr2">
-        <td class="td1">申请人</td>
+        <td class="td1">
+            <span style="margin-right: 6px">申请人</span>
+        </td>
         <td class="td2" id="btnEditStaffTd">
             <input id="btnEditStaff"
                    class="mini-buttonedit"
@@ -177,7 +229,9 @@
                    name="staffId" textName="staffName"/>
         </td>
         <td class="td3">&nbsp;</td>
-        <td class="td1">所属部门</td>
+        <td class="td1">
+            <span style="margin-right: 6px">所属部门</span>
+        </td>
         <td class="td2">
             <input id="btnEditDep"
                    class="mini-buttonedit"
@@ -194,20 +248,25 @@
                     <thead id="inthead">
                     <tr>
                         <td colspan="8" style="background-color: #E5EDEF;text-align: right">
-                            <input type="button" value="查询" id="query"/>
+                            <a href="javascript:" class="bgbtn btn" id="query">
+                                <span id="spanSearch">查询</span>
+                            </a>
+                            <a href="javascript:" class="bgbtn btn" id="searchRefresh">
+                                <span id="spanRefresh">重置</span>
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="checkbox" name="checkall" id="checkall" onclick="checkall()"/>
                         </td>
-                        <td>流程编号</td>
-                        <td>流程名称</td>
-                        <td>所属部门</td>
-                        <td>当前环节</td>
-                        <td>提报人</td>
-                        <td>提报时间</td>
-                        <td>操作</td>
+                        <td><span>流程编号</span></td>
+                        <td><span>流程名称</span></td>
+                        <td><span>所属部门</span></td>
+                        <td><span>当前环节</span></td>
+                        <td><span>提报人</span></td>
+                        <td><span>提报时间</span></td>
+                        <td><span>操作</span></td>
                     </tr>
                     </thead>
                     <tbody id="content">
@@ -411,17 +470,17 @@
 
     // 分页4功能加点击事件
     function addEvent4() {
-        $("#01").click(function () {
+        $("#pp01").click(function () {
             pageNo = 1;
             loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
         });
 
-        $("#04").click(function () {
+        $("#pp04").click(function () {
             pageNo = pages;
             loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
         });
 
-        $("#02").click(function () {
+        $("#pp02").click(function () {
             if (pageNo == 1) {
                 return false;
             } else {
@@ -430,7 +489,7 @@
             }
         });
 
-        $("#03").click(function () {
+        $("#pp03").click(function () {
             if (pageNo == pages) {
                 return false;
             } else {
@@ -442,7 +501,7 @@
 
     // 分页加点击事件
     function addEvent(clickId) {
-        $("#" + clickId).click(function () {
+        $("#pp" + clickId).click(function () {
             pageNo = clickId;
             loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
         })
@@ -465,20 +524,23 @@
                 end = pages;
             }
         }
-        var before8 = "<li id=01>首页</li><li id=02>上一页</li>";
-        var after8 = "<li id=03>下一页</li><li id=04>尾页</li>";
+
+        var img1 = "<img src='../../../img/btnleft4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img2 = "<img src='../../../img/btnleft3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img3 = "<img src='../../../img/btnright3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img4 = "<img src='../../../img/btnright4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var before8 = "<li id=pp01>" + img1 + "</li><li id=pp02>" + img2 + "</li>";
+        var after8 = "<li id=pp03>" + img3 + "</li><li id=pp04>" + img4 + "</li>";
+
         $("#pagination").empty();
         $("#pagination").append(before8);
         for (var i = 1; i >= begin && i <= end; i++) {
             if (i == pageNo) {
                 //"[" + i + "]";
-                $("#pagination").append("<li id=" + i + ">  " + i + "  </li>");
+                $("#pagination").append("<li id=pp" + i + "><span style='font-weight: bold;color: #0069ab'>" + i + "</span></li>");
             } else {
-                alert(i);
-                $("#pagination").append("<li id=" + i + "> [" + i + "] </li>");
-                alert(666);
+                $("#pagination").append("<li id=pp" + i + "> [" + i + "] </li>");
                 addEvent(i);
-                alert(777);
             }
         }
         $("#pagination").append(after8);
@@ -486,8 +548,12 @@
     }
 
     function displayFooter(totalCount, pages, pageNo) {
-        var newText = '共' + totalCount + '条，' + '第' + pageNo + '页，' + '共' + pages + '页';
-        $("#summary").text(newText);
+        var newText = '  共'
+            + "<span style='color: #0069ab'>" + totalCount + "</span>"
+            + '条    ' + '第'
+            + "<span style='color: #0069ab'>" + pageNo + "</span>" + '页    ' + '共'
+            + "<span style='color: #0069ab'>" + pages + "</span>" + '页';
+        $("#summary").html(newText);
     }
 
     $("input[name='page_num']").keydown(function (e) {
@@ -506,6 +572,16 @@
         }
     });
 
+    // 查询条件重置
+    $("#searchRefresh").click(function () {
+        $(".mini-buttonedit-input").val("");
+        $(".mini-textbox-input").val("");
+        $("input[name='taskDate']").val("");
+        $("input[name='taskName']").val("");
+        $("input[name='staffId']").val("");
+        $("input[name='depId']").val("");
+    })
+
     // 查询伸缩
     var flagHideOrShow = true;
 
@@ -513,12 +589,14 @@
         if (flagHideOrShow) {
             $("#searchtr1").hide();
             $("#searchtr2").hide();
-            $("#searchimg").attr("src", "../../../img/btn3.png");
+            $("#searchimg").attr("src", "../../../img/plus3.png");
+            $("#searchimg").attr("title", "显示查询条件");
             flagHideOrShow = false;
         } else {
             $("#searchtr1").show();
             $("#searchtr2").show();
-            $("#searchimg").attr("src", "../../../img/btn4.png");
+            $("#searchimg").attr("src", "../../../img/minus3.png");
+            $("#searchimg").attr("title", "隐藏查询条件");
             flagHideOrShow = true;
         }
     }
