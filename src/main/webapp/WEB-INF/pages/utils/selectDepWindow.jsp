@@ -73,6 +73,7 @@
     }
 
     function CloseWindow(action) {
+        if(action === "close") action = "cancel";
         if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
         else window.close();
     }

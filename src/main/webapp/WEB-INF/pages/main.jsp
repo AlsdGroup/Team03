@@ -8,7 +8,7 @@
     <script src="../../scripts/jquery.min.js" type="text/javascript"></script>
     <style type="text/css">
         body {
-            font-family: "Arial Black";
+            font-family:Verdana;
             margin: 0;
             padding: 0;
             border: 0;
@@ -20,6 +20,15 @@
             -ms-user-select: none;
             user-select: none;
         }
+
+        span, a , input[type="button"]{
+            font-family:Verdana;
+        }
+
+        a:link {color: black}		/* 未访问的链接 */
+        a:visited {color: black}	/* 已访问的链接 */
+        a:hover {color: #0069ab}	    /* 鼠标移动到链接上 */
+        a:active {color: black}	    /* 选定的链接 */
 
         .mini-tabs {
             /*overflow: auto;*/
@@ -46,7 +55,7 @@
             color: white;
             font-size: 30px;
             font-weight: bold;
-            font-family: "Arial Black";
+            font-family:Verdana;
             /*text-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;*/
         }
 
@@ -63,7 +72,7 @@
                     <table>
                         <tr>
                             <td>
-                                <span><img src="../../img/log01.gif" class="imgtop"/></span>
+                                <span><img src="../../img/log01.gif" draggable="false" class="imgtop"/></span>
                             </td>
                         </tr>
                     </table>
