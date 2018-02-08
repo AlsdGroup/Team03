@@ -16,19 +16,23 @@
         table {
             width: 100%;
             height: auto;
-            border: 0px solid #ffffff;
+            border: 0px solid #CBE4EC;
             border-collapse: collapse;
             padding: 0px;
         }
-
-        .trTitle {
-
-            background-color: #d2f0f0;
-            border: solid white 2px;
-
-        }
-        body{
+        td{
+            border: 1px solid #CBE4EC;
+            border-collapse: collapse;
             padding: 0px;
+            background-color: #F0F8FA;
+        }
+        .td80 {
+            background-image: -moz-linear-gradient(top, #F0F8FA, #D3EAF8);
+            padding: 5px;
+            padding-right: 25px;
+        }
+        .trTitle {
+            background-color: #d2f0f0;
         }
         .title{
             width: 10%;
@@ -43,15 +47,20 @@
         }
     </style>
 </head>
-<body>
-<div id="panel1" class="mini-panel" title="项目基本信息" iconCls="icon-add" style="width: auto;height: auto;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <table class="table">
-        <tr class="trTitle">
+<body style="margin: 0">
+
+    <table class="form-table">
+        <tr>
+            <td colspan="6" class="td80">
+                <img src="../../../img/btn4.png" id="searchimg" onclick="searchHideOrShow()"/>
+                <span>项目基本信息</span>
+            </td>
+        </tr>
+        <tr class="trTitle" id="searchtr1">
             <td class="title">项目名称</td>
             <td colspan="3"><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
         </tr>
-        <tr class="trTitle">
+        <tr class="trTitle" id="searchtr2">
             <td class="title">项目申报单位</td>
             <td>
                 <input id="btnEdit1" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
@@ -63,25 +72,29 @@
                        style="width: 100%;height: 30px"/>
             </td>
         </tr>
-        <tr class="trTitle">
+        <tr class="trTitle" id="searchtr3">
             <td class="title">目的</td>
             <td colspan="3">
                 <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
             </td>
         </tr>
     </table>
-</div>
-<div id="panel2" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应分析" iconCls="icon-add" style="width: auto;height: auto;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true" showCloseButton="true">
-    <table class="table">
-        <tr class="trTitle">
+
+    <table class="form-table">
+        <tr>
+            <td colspan="6" class="td80">
+                <img src="../../../img/btn4.png" id="searchimg1" onclick="searchHideOrShow1()"/>
+                <span>与核电生产运营安全性、可靠性、经济的适应分析</span>
+            </td>
+        </tr>
+        <tr class="trTitle" id="searchtr4">
             <td class="title">安全性</td>
             <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
             <td class="title">可靠性</td>
             <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
         </tr>
-        <tr class="trTitle">
-            <td class="title">经济性</td>
+        <tr class="trTitle" id="searchtr5">
+            <td class="title" >经济性</td>
             <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
             <td class="title">其他</td>
             <td>
@@ -89,11 +102,12 @@
             </td>
         </tr>
     </table>
-</div>
-<div id="panel3" class="mini-panel" title="审批意见" iconCls="icon-add" style="width: auto;height: auto;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true" showCloseButton="true">
-    <table class="table">
-        <tr class="trTitle">
+    <table class="form-table">
+        <td colspan="6" class="td80">
+            <img src="../../../img/btn4.png" id="searchimg2" onclick="searchHideOrShow2()"/>
+            <span>审批意见</span>
+        </td>
+        <tr class="trTitle" id="searchtr6">
             <td class="title">审批意见</td>
             <td>
                 <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
@@ -108,10 +122,6 @@
         <a href="" class="mini-button" iconCls="icon-no" onclick="">驳回</a>
         <a href="" class="mini-button" iconCls="icon-addfolder" onclick="">通过</a>
     </div>
-</div>
-
-
-
 <script>
     /* 加载mini组件，后面的get方法才好用 */
     mini.parse();
@@ -138,6 +148,51 @@
 
             }
         });
+    }
+
+    // 查询伸缩
+    var flagHideOrShow = true;
+
+    function searchHideOrShow() {
+        if (flagHideOrShow) {
+            $("#searchtr1").hide();
+            $("#searchtr2").hide();
+            $("#searchtr3").hide();
+            $("#searchimg").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr1").show();
+            $("#searchtr2").show();
+            $("#searchtr3").show();
+            $("#searchimg").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
+    }
+
+    function searchHideOrShow1() {
+        if (flagHideOrShow) {
+            $("#searchtr4").hide();
+            $("#searchtr5").hide();
+            $("#searchimg1").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr4").show();
+            $("#searchtr5").show();
+            $("#searchimg1").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
+    }
+
+    function searchHideOrShow2() {
+        if (flagHideOrShow) {
+            $("#searchtr6").hide();
+            $("#searchimg2").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr6").show();
+            $("#searchimg2").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
     }
 
 </script>
