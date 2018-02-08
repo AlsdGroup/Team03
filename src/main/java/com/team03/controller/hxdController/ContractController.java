@@ -28,10 +28,10 @@ public class ContractController {
         return "module02/examination";
     }
 
-    @RequestMapping(value = {"/task"})
-    public String Task() {
+    @RequestMapping(value = {"/dotask"})
+    public String DoTask() {
 
-        return "module02/task";
+        return "module02/dotask";
     }
 
 }

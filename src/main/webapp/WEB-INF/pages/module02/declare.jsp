@@ -18,76 +18,164 @@
         table {
             width: 100%;
             height: auto;
-            border: 0px solid #ffffff;
+            border: 0px solid #CBE4EC;
             border-collapse: collapse;
             padding: 0px;
         }
-
-        .trTitle {
-
-            background-color: #d2f0f0;
-            border: solid white 2px;
-
+        td {
+            border: 1px solid #CBE4EC;
+            border-collapse: collapse;
+            padding: 0px;
+            background-color: #F0F8FA;
         }
 
-        .t {
+        .td0 {
+            background-color: #D3EAF8;
+            padding: 5px;
+        }
+
+        .td80 {
+            background-image: -moz-linear-gradient(top, #F0F8FA, #D3EAF8);
+            padding: 5px;
+            padding-right: 25px;
+        }
+
+        .td1 {
             width: 10%;
-            height: 40px;
+            text-align: right;
+            background-color: #D3EAF8;
+            padding: 5px;
+        }
+
+        .td2 {
+            width: 30%;
+            background-color: #F0F8FA;
+        }
+
+        .td3 {
+            width: 10%;
+            background-color: #F0F8FA;
+        }
+
+        #pagination li {
+            display: inline;
+        }
+
+        #inthead td {
+            font-weight: bold;
+            padding: 5px;
+            background-color: #D3EAF8;
+        }
+
+        #content td {
+            height: 50px;
+        }
+
+        #idtfoot td {
+            background-color: #E5EDEF;
+        }
+
+        #select {
+            display: inline-block;
+            margin-left: 40px;
+            margin-right: 40px;
+            float: right;
+        }
+
+        #select input[type="text"] {
+            width: 30px;
+            /*height: 20px;*/
+            background-color: #ffffff;
+            border-width: 1px;
+        }
+
+        /*#select input[type="button"] {*/
+        /*width: 40px;*/
+        /*!*height: 23px;*!*/
+        /*background: #3CA6CE;*/
+        /*color: black;*/
+        /*border: none;*/
+        /*}*/
+
+        ul li {
+            cursor: pointer;
         }
 
 
     </style>
 </head>
-<body>
-<div id="panel1" class="mini-panel" title="当前位置:科研合同项目申报>>申请信息" iconCls="icon-add" style="width: auto;height: auto"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <table>
-        <tr class="trTitle">
-            <td class="t">合同名称</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+<body  style="margin: 0">
+<table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td colspan="6" class="td0">当前位置: 个人工作台 >> 待办任务</td>
+    </tr>
+    <tr>
+        <td colspan="6" class="td80">
+            <img src="../../../img/btn4.png" id="searchimg1" onclick="searchHideOrShow1()"/>
+            <span>申请信息</span>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr1">
+        <td class="td1">合同名称</td>
+        <td class="td2">
+            <input class="mini-textbox" width="100%" name="taskDate" id="taskDate"/>
+        </td>
+        <td class="td3">&nbsp;</td>
+        <td class="td1">合同编号</td>
+        <td class="td2">
+            <input class="mini-textbox" width="100%"/>
+        </td>
+        <td class="td3">&nbsp;</td>
+    </tr>
+    <tr class="trTitle" id="searchtr2">
+        <td class="td1">合同时间</td>
+        <td class="td2">
+            <input class="mini-textbox" width="100%"/>
+        </td>
+        <td class="td3">&nbsp;</td>
 
-            <td class="t">合同编号</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr class="trTitle">
-            <td class="t">合同对方信息</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-            <td colspan="2"></td>
+    </tr>
+    <tr class="trTitle" id="searchtr3">
+        <td class="td1">合同起日期</td>
 
-        </tr>
-        <tr class="trTitle">
-            <td class="t">合同起日期</td>
+        <td class="td2"><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+        <td class="td1">合同止日期</td>
+        <td class="td2"><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
 
-            <td><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 30px"/></td>
+    <tr>
+        <td colspan="6" class="td80">
+            <img src="../../../img/btn4.png" id="searchimg2" onclick="searchHideOrShow2()"/>
+            <span>合同经费信息</span>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr4">
+        <td class="td1">总费用</td>
+        <td class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+        <td class="td1">对方拨付</td>
+        <td class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
+    <tr class="trTitle" id="searchtr5">
+        <td class="td1">公司自筹</td>
+        <td class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
 
-            <td class="t">合同止日期</td>
-            <td><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 30px"/></td>
-        </tr>
-    </table>
-</div>
-<div id="panel2" class="mini-panel" title="合同经费信息" iconCls="icon-add" style="width: auto;height: auto;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <table>
-        <tr class="trTitle">
-            <td class="t">总费用</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-            <td class="t">对方拨付</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr class="trTitle">
-            <td class="t">公司自筹</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-    </table>
-</div>
 
-<div id="panel3" class="mini-panel" title="项目成果分配" iconCls="icon-add" style="width: auto;height: auto;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <table>
-        <tr>
-            <td colspan="4">
-                <div id="cbl1" class="mini-checkboxlist" textField="text" valueField="id"
-                     data="[{'id':1001,'text':'专题报告'},
+    <tr>
+        <td colspan="6" class="td80">
+            <img src="../../../img/btn4.png" id="searchimg3" onclick="searchHideOrShow3()"/>
+            <span>项目成果分配</span>
+        </td>
+    </tr>
+    <tr id="searchtr6">
+        <td colspan="6">
+            <div id="cbl1" class="mini-checkboxlist" textField="text" valueField="id"
+                 data="[{'id':1001,'text':'专题报告'},
              {'id':1002,'text':'技术方案'},
              {'id':1003,'text':'技术标准'},
              {'id':1004,'text':'硬件产品'},
@@ -95,48 +183,118 @@
              {'id':1006,'text':'设计文件'},
              {'id':1007,'text':'计算机软件'},
              {'id':1008,'text':'其他'}]">
-                </div>
-            </td>
-        </tr>
-        <tr class="trTitle">
-            <td class="t">形成的知识产权及分配方式</td>
-            <td colspan="3"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr class="trTitle">
-            <td class="t">直接经济效益及分配方式</td>
-            <td colspan="3"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr class="trTitle">
-            <td class="t">形成的固定资产及分配方式</td>
-            <td colspan="3"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr class="trTitle">
-            <td class="t">合同运作情况简介</td>
-            <td colspan="3"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr class="trTitle">
-            <td class="t">运作说明</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-    </table>
-</div>
+            </div>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr7">
+        <td class="td1">形成的知识产权及分配方式</td>
+        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
+    <tr class="trTitle" id="searchtr8">
+        <td class="td1">直接经济效益及分配方式</td>
+        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
+    <tr class="trTitle" id="searchtr9">
+        <td class="td1">形成的固定资产及分配方式</td>
+        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
+    <tr class="trTitle" id="searchtr10">
+        <td class="td1">合同运作情况简介</td>
+        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
+    <tr class="trTitle" id="searchtr11">
+        <td class="td1">运作说明</td>
+        <td class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td><a class="mini-button">Browse</a> </td>
+        <td class="td3">&nbsp;</td>
+    </tr>
 
-<div id="panel4" class="mini-panel" title="流程信息" iconCls="icon-add" style="width: auto;height: auto;"
-     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="true" collapseOnTitleClick="true">
-    <table>
+    <tr class="trTitle">
+        <td colspan="6" class="td80">
+            <img src="../../../img/btn4.png" id="searchimg4" onclick="searchHideOrShow4()"/>
+            <span>申请信息</span>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr12">
+        <td class="td1">技术部门经理</td>
+        <td class="td2" colspan="6"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td class="td3">&nbsp;</td>
+    </tr>
+    <tr id="searchtr13">
+        <td colspan="6"><a class="mini-button" style="float: right" iconCls="submit" onclick="">提交</a></td>
+    </tr>
 
-        <tr class="trTitle">
-            <td class="t">技术部门经理</td>
-            <td><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
-        </tr>
-        <tr>
-            <td colspan="4"><a class="mini-button" style="float: right" iconCls="submit" onclick="">提交</a></td>
-        </tr>
-
-    </table>
+</table>
 </div>
 <script type="text/javascript">
-
+    mini.parse();
+    var flagHideOrShow = true;
+    function searchHideOrShow1() {
+        if (flagHideOrShow) {
+            $("#searchtr1").hide();
+            $("#searchtr2").hide();
+            $("#searchtr3").hide();
+            $("#searchimg1").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr1").show();
+            $("#searchtr2").show();
+            $("#searchtr3").show();
+            $("#searchimg1").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
+    }
+    function searchHideOrShow2() {
+        if (flagHideOrShow) {
+            $("#searchtr4").hide();
+            $("#searchtr5").hide();
+            $("#searchimg2").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr4").show();
+            $("#searchtr5").show();
+            $("#searchimg2").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
+    }
+    function searchHideOrShow3() {
+        if (flagHideOrShow) {
+            $("#searchtr6").hide();
+            $("#searchtr7").hide();
+            $("#searchtr8").hide();
+            $("#searchtr9").hide();
+            $("#searchtr10").hide();
+            $("#searchtr11").hide();
+            $("#searchimg3").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr6").show();
+            $("#searchtr7").show();
+            $("#searchtr8").show();
+            $("#searchtr9").show();
+            $("#searchtr10").show();
+            $("#searchtr11").show();
+            $("#searchimg3").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
+    }
+    function searchHideOrShow4() {
+        if (flagHideOrShow) {
+            $("#searchtr12").hide();
+            $("#searchtr13").hide();
+            $("#searchimg4").attr("src", "../../../img/btn3.png");
+            flagHideOrShow = false;
+        } else {
+            $("#searchtr12").show();
+            $("#searchtr13").show();
+            $("#searchimg4").attr("src", "../../../img/btn4.png");
+            flagHideOrShow = true;
+        }
+    }
 </script>
 </body>
 </html>
