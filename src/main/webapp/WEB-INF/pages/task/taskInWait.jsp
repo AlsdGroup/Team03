@@ -18,10 +18,6 @@
             padding: 0;
         }
 
-        .mini-textbox-border, .mini-buttonedit-border {
-            border: none;
-        }
-
         td {
             border: 1px solid #CBE4EC;
             border-collapse: collapse;
@@ -55,6 +51,14 @@
         .td3 {
             width: 10%;
             background-color: #F0F8FA;
+        }
+
+        .mini-textbox-border {
+            border: none;
+        }
+
+        .mini-buttonedit-border {
+            border: none;
         }
 
         #outer {
@@ -157,14 +161,14 @@
         }
 
         .btn:hover {
-            background-color: #D1DDFC;
+            background-color: #E5F1FB;
             border: 1px solid blue;
         }
 
         /*.bgbtn span {*/
-            /*margin-left: 6px;*/
-            /*padding-left: 18px;*/
-            /*background: url(../../../img/search3.png) left center no-repeat;*/
+        /*margin-left: 6px;*/
+        /*padding-left: 18px;*/
+        /*background: url(../../../img/search3.png) left center no-repeat;*/
         /*}*/
 
         #spanSearch {
@@ -172,10 +176,11 @@
             padding-left: 18px;
             background: url(../../../img/search3.png) left center no-repeat;
         }
+
         #spanRefresh {
             margin-left: 6px;
             padding-left: 18px;
-            background: url(../../../img/reload1.png) left center no-repeat;
+            background: url(../../../img/load1.png) left center no-repeat;
         }
     </style>
 </head>
@@ -194,10 +199,8 @@
     <tr>
         <td colspan="6" class="td80">
             <div><img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
-                      id="searchimg" title="隐藏查询条件"
-                      oncontextmenu="return false;"
-                      ondragstart="return false;"
-                      onclick="searchHideOrShow()"/></div>
+                      id="searchimg" title="隐藏查询条件" onclick="searchHideOrShow()"
+                      oncontextmenu="return false;" ondragstart="return false;"/></div>
             <div style="margin-top: -17px;margin-left: 21px"><span>查询条件</span></div>
         </td>
     </tr>
@@ -257,16 +260,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td width="3%">
                             <input type="checkbox" name="checkall" id="checkall" onclick="checkall()"/>
                         </td>
-                        <td><span>流程编号</span></td>
-                        <td><span>流程名称</span></td>
-                        <td><span>所属部门</span></td>
-                        <td><span>当前环节</span></td>
-                        <td><span>提报人</span></td>
-                        <td><span>提报时间</span></td>
-                        <td><span>操作</span></td>
+                        <td width="12%"><span>流程编号</span></td>
+                        <td width="20%"><span>流程名称</span></td>
+                        <td width="10%"><span>所属部门</span></td>
+                        <td width="20%"><span>当前环节</span></td>
+                        <td width="10%"><span>提报人</span></td>
+                        <td width="*"><span>提报时间</span></td>
+                        <td width="6%"><span>操作</span></td>
                     </tr>
                     </thead>
                     <tbody id="content">
@@ -302,7 +305,6 @@
 </table>
 
 <script type="text/javascript">
-    /* 加载mini组件, 后面的get方法才好用 */
     mini.parse();
 
     function GetFormData() {
@@ -582,9 +584,8 @@
         $("input[name='depId']").val("");
     })
 
-    // 查询伸缩
+    // 查询收缩
     var flagHideOrShow = true;
-
     function searchHideOrShow() {
         if (flagHideOrShow) {
             $("#searchtr1").hide();

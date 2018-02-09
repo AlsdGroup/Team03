@@ -58,7 +58,47 @@
             font-family:Verdana;
             /*text-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;*/
         }
-
+        .mini-outlookmenu {
+            background-color: #E5EDEF;
+            /*background-image: -moz-linear-gradient(top, #F0F8FA, #D3EAF8);*/
+            font-family:Verdana;
+            color: black;
+            font-size: 13px;
+        }
+        .mini-menuitem-icon
+        {
+            left:16px;
+            top:4px;
+        }
+        .mini-menuitem-inner
+        {
+            padding:2px 32px 2px 32px;
+        }
+        .mini-menuitem{
+            background-color: #e5edef;
+            font-family:Verdana;
+            color: #0069ab;
+        }
+        .mini-menu-border {
+            border-color:#aed0ea;
+        }
+        .mini-menuitem-hover,
+        .mini-menu-popup
+        {
+            background:#e4f1fb;
+            border-color:#74b2e2;
+        }
+        .mini-menuitem-selected
+        {
+            background-image: -moz-linear-gradient(top, #fffbd8, #f3e880);
+            border-color:#DED572;
+            color: #663300;
+        }
+        .mini-menuitem-text, .mini-menuitem-text a
+        {
+            font-family:Verdana;
+            color: black;
+        }
     </style>
 
 </head>
