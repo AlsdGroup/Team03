@@ -25,11 +25,16 @@
             padding: 0px;
             background-color: #F0F8FA;
         }
+        .td0 {
+            background-color: #D3EAF8;
+            padding: 5px;
+        }
 
         .td1 {
             width: 10%;
             text-align: right;
-            /*background-color: #dddddd;*/
+            background-color: #D3EAF8;
+            padding: 5px;
         }
 
         .td2 {
@@ -123,12 +128,21 @@
 
 <table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
-    <tr>
-        <td colspan="6" class="td0">当前位置: 个人工作台 >> 待办任务</td>
-    </tr>
+        <tr>
+            <td colspan="6" class="td0">
+                <img src="../../../img/flag1.gif" style="width: 15px;height: 15px;"
+                     oncontextmenu="return false;" ondragstart="return false;"/>
+                <span>当前位置:&nbsp;</span>
+                <span style="font-weight: bold">个人工作台 >> 待办任务</span>
+            </td>
+        </tr>
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg1" onclick="searchHideOrShow()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
+                 id="searchimg" title="隐藏查询条件"
+                 oncontextmenu="return false;"
+                 ondragstart="return false;"
+                 onclick="searchHideOrShow()"/>
             <span>查询条件</span>
         </td>
     </tr>
@@ -497,13 +511,13 @@
             $("#searchtr1").hide();
             $("#searchtr2").hide();
             $("#searchtr3").hide();
-            $("#searchimg1").attr("src", "../../../img/btn3.png");
+            $("#searchimg").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr1").show();
             $("#searchtr2").show();
             $("#searchtr3").show();
-            $("#searchimg1").attr("src", "../../../img/btn4.png");
+            $("#searchimg").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
