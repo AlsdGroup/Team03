@@ -61,7 +61,7 @@
     <table class="form-table">
         <tr>
             <td colspan="6" class="td80">
-                <img src="../../../img/btn4.png" id="searchimg" onclick="searchHideOrShow()"/>
+                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg" onclick="searchHideOrShow()"/>
                 <span>项目基本信息</span>
             </td>
         </tr>
@@ -93,7 +93,7 @@
     <table class="form-table">
         <tr>
             <td colspan="6" class="td80">
-                <img src="../../../img/btn4.png" id="searchimg1" onclick="searchHideOrShow1()"/>
+                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg1" onclick="searchHideOrShow1()"/>
                 <span>与核电生产运营安全性、可靠性、经济的适应分析</span>
             </td>
         </tr>
@@ -116,7 +116,7 @@
     <table class="form-table">
         <tr>
             <td colspan="6" class="td80">
-                <img src="../../../img/btn4.png" id="searchimg2" onclick="searchHideOrShow2()"/>
+                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg2" onclick="searchHideOrShow2()"/>
                 <span>其他信息</span>
             </td>
         </tr>
@@ -144,7 +144,7 @@
     <table class="form-table">
         <tr>
             <td colspan="6" class="td80">
-                <img src="../../../img/btn4.png" id="searchimg3" onclick="searchHideOrShow3()"/>
+                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg3" onclick="searchHideOrShow3()"/>
                 <span>预算信息</span>
             </td>
         </tr>
@@ -197,13 +197,13 @@
             $("#searchtr1").hide();
             $("#searchtr2").hide();
             $("#searchtr3").hide();
-            $("#searchimg").attr("src", "../../../img/btn3.png");
+            $("#searchimg").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr1").show();
             $("#searchtr2").show();
             $("#searchtr3").show();
-            $("#searchimg").attr("src", "../../../img/btn4.png");
+            $("#searchimg").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -212,12 +212,12 @@
         if (flagHideOrShow) {
             $("#searchtr4").hide();
             $("#searchtr5").hide();
-            $("#searchimg1").attr("src", "../../../img/btn3.png");
+            $("#searchimg1").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr4").show();
             $("#searchtr5").show();
-            $("#searchimg1").attr("src", "../../../img/btn4.png");
+            $("#searchimg1").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -229,7 +229,7 @@
             $("#searchtr8").hide();
             $("#searchtr9").hide();
             $("#searchtr10").hide();
-            $("#searchimg2").attr("src", "../../../img/btn3.png");
+            $("#searchimg2").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr6").show();
@@ -237,7 +237,7 @@
             $("#searchtr8").show();
             $("#searchtr9").show();
             $("#searchtr10").show();
-            $("#searchimg2").attr("src", "../../../img/btn4.png");
+            $("#searchimg2").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -245,12 +245,12 @@
         if (flagHideOrShow) {
             $("#searchtr11").hide();
             $("#searchtr12").hide();
-            $("#searchimg3").attr("src", "../../../img/btn3.png");
+            $("#searchimg3").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr11").show();
             $("#searchtr12").show();
-            $("#searchimg3").attr("src", "../../../img/btn4.png");
+            $("#searchimg3").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }

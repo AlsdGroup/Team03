@@ -61,7 +61,7 @@
 <table class="form-table">
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg" onclick="searchHideOrShow()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg" onclick="searchHideOrShow()"/>
             <span>技术第一负责人信息</span>
         </td>
     </tr>
@@ -76,7 +76,7 @@
 <table class="form-table">
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg1" onclick="searchHideOrShow1()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg1" onclick="searchHideOrShow1()"/>
             <span>产品信息</span>
         </td>
     </tr>
@@ -117,7 +117,7 @@
 <table class="form-table">
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg2" onclick="searchHideOrShow2()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg2" onclick="searchHideOrShow2()"/>
             <span>附件信息</span>
         </td>
     </tr>
@@ -135,7 +135,7 @@
 <table class="form-table">
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg3" onclick="searchHideOrShow3()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg3" onclick="searchHideOrShow3()"/>
             <span>流程信息</span>
         </td>
     </tr>
@@ -158,11 +158,11 @@
     function searchHideOrShow() {
         if (flagHideOrShow) {
             $("#searchtr1").hide();
-            $("#searchimg").attr("src", "../../../img/btn3.png");
+            $("#searchimg").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr1").show();
-            $("#searchimg").attr("src", "../../../img/btn4.png");
+            $("#searchimg").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -174,7 +174,7 @@
             $("#searchtr4").hide();
             $("#searchtr5").hide();
             $("#searchtr6").hide();
-            $("#searchimg1").attr("src", "../../../img/btn3.png");
+            $("#searchimg1").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr2").show();
@@ -182,7 +182,7 @@
             $("#searchtr4").show();
             $("#searchtr5").show();
             $("#searchtr6").show();
-            $("#searchimg1").attr("src", "../../../img/btn4.png");
+            $("#searchimg1").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -190,22 +190,22 @@
     function searchHideOrShow2() {
         if (flagHideOrShow) {
             $("#searchtr7").hide();
-            $("#searchimg2").attr("src", "../../../img/btn3.png");
+            $("#searchimg2").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr7").show();
-            $("#searchimg2").attr("src", "../../../img/btn4.png");
+            $("#searchimg2").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
     function searchHideOrShow3() {
         if (flagHideOrShow) {
             $("#searchtr8").hide();
-            $("#searchimg3").attr("src", "../../../img/btn3.png");
+            $("#searchimg3").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr8").show();
-            $("#searchimg3").attr("src", "../../../img/btn4.png");
+            $("#searchimg3").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
