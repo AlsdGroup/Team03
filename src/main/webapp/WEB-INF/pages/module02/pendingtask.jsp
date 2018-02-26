@@ -25,11 +25,16 @@
             padding: 0px;
             background-color: #F0F8FA;
         }
+        .td0 {
+            background-color: #D3EAF8;
+            padding: 5px;
+        }
 
         .td1 {
             width: 10%;
             text-align: right;
-            /*background-color: #dddddd;*/
+            background-color: #D3EAF8;
+            padding: 5px;
         }
 
         .td2 {
@@ -123,12 +128,21 @@
 
 <table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
-    <tr>
-        <td colspan="6" class="td0">当前位置: 个人工作台 >> 待办任务</td>
-    </tr>
+        <tr>
+            <td colspan="6" class="td0">
+                <img src="../../../img/flag1.gif" style="width: 15px;height: 15px;"
+                     oncontextmenu="return false;" ondragstart="return false;"/>
+                <span>当前位置:&nbsp;</span>
+                <span style="font-weight: bold">个人工作台 >> 待办任务</span>
+            </td>
+        </tr>
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg1" onclick="searchHideOrShow()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
+                 id="searchimg" title="隐藏查询条件"
+                 oncontextmenu="return false;"
+                 ondragstart="return false;"
+                 onclick="searchHideOrShow()"/>
             <span>查询条件</span>
         </td>
     </tr>
@@ -453,16 +467,22 @@
                 end = pages;
             }
         }
-        var before8 = "<li id=01>首页</li><li id=02>上一页</li>";
-        var after8 = "<li id=03>下一页</li><li id=04>尾页</li>";
+
+        var img1 = "<img src='../../../img/btnleft4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img2 = "<img src='../../../img/btnleft3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img3 = "<img src='../../../img/btnright3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img4 = "<img src='../../../img/btnright4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var before8 = "<li id=pp01>" + img1 + "</li><li id=pp02>" + img2 + "</li>";
+        var after8 = "<li id=pp03>" + img3 + "</li><li id=pp04>" + img4 + "</li>";
+
         $("#pagination").empty();
         $("#pagination").append(before8);
         for (var i = 1; i >= begin && i <= end; i++) {
             if (i == pageNo) {
                 //"[" + i + "]";
-                $("#pagination").append("<li id=" + i + ">  " + i + "  </li>");
+                $("#pagination").append("<li id=pp" + i + "><span style='font-weight: bold;color: #0069ab'>" + i + "</span></li>");
             } else {
-                $("#pagination").append("<li id=" + i + "> [" + i + "] </li>");
+                $("#pagination").append("<li id=pp" + i + "> [" + i + "] </li>");
                 addEvent(i);
             }
         }
@@ -471,8 +491,12 @@
     }
 
     function displayFooter(totalCount, pages, pageNo) {
-        var newText = '共' + totalCount + '条，' + '第' + pageNo + '页，' + '共' + pages + '页';
-        $("#summary").text(newText);
+        var newText = '  共'
+            + "<span style='color: #0069ab'>" + totalCount + "</span>"
+            + '条    ' + '第'
+            + "<span style='color: #0069ab'>" + pageNo + "</span>" + '页    ' + '共'
+            + "<span style='color: #0069ab'>" + pages + "</span>" + '页';
+        $("#summary").html(newText);
     }
 
     $("input[name='page_num']").keydown(function (e) {
@@ -497,13 +521,13 @@
             $("#searchtr1").hide();
             $("#searchtr2").hide();
             $("#searchtr3").hide();
-            $("#searchimg1").attr("src", "../../../img/btn3.png");
+            $("#searchimg").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr1").show();
             $("#searchtr2").show();
             $("#searchtr3").show();
-            $("#searchimg1").attr("src", "../../../img/btn4.png");
+            $("#searchimg").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }

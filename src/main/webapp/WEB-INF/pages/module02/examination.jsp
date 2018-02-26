@@ -112,7 +112,11 @@
     </tr>
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg1" onclick="searchHideOrShow1()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
+                 id="searchimg1" title="隐藏查询条件"
+                 oncontextmenu="return false;"
+                 ondragstart="return false;"
+                 onclick="searchHideOrShow1()"/>
             <span>申请信息</span>
         </td>
     </tr>
@@ -150,7 +154,11 @@
 
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg2" onclick="searchHideOrShow2()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
+                 id="searchimg2" title="隐藏查询条件"
+                 oncontextmenu="return false;"
+                 ondragstart="return false;"
+                 onclick="searchHideOrShow2()"/>
             <span>合同经费信息</span>
         </td>
     </tr>
@@ -171,7 +179,11 @@
 
     <tr>
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg3" onclick="searchHideOrShow3()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
+                 id="searchimg3" title="隐藏查询条件"
+                 oncontextmenu="return false;"
+                 ondragstart="return false;"
+                 onclick="searchHideOrShow3()"/>
             <span>项目成果分配</span>
         </td>
     </tr>
@@ -218,7 +230,11 @@
 
     <tr class="trTitle">
         <td colspan="6" class="td80">
-            <img src="../../../img/btn4.png" id="searchimg4" onclick="searchHideOrShow4()"/>
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
+                 id="searchimg4" title="隐藏查询条件"
+                 oncontextmenu="return false;"
+                 ondragstart="return false;"
+                 onclick="searchHideOrShow4()"/>
             <span>申请信息</span>
         </td>
     </tr>
@@ -227,11 +243,16 @@
         <td class="td2" colspan="6"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
         <td class="td3">&nbsp;</td>
     </tr>
+    <tr id="searchtr13">
+        <td colspan="6">
+            <div style="width: 150px;height: 30px;float: right;">
+                <a class="mini-button" style="float: left" iconCls="submit" onclick="">通过</a>
+                <a class="mini-button" style="float: right" iconCls="submit" onclick="">不通过</a>
+            </div>
+        </td>
+    </tr>
     <tr>
-        <div style="width: 150px;height: 30px;float: right;">
-            <a class="mini-button" style="float: left" iconCls="submit" onclick="">通过</a>
-            <a class="mini-button" style="float: right" iconCls="submit" onclick="">不通过</a>
-        </div>
+
     </tr>
 
 
@@ -245,13 +266,13 @@
             $("#searchtr1").hide();
             $("#searchtr2").hide();
             $("#searchtr3").hide();
-            $("#searchimg1").attr("src", "../../../img/btn3.png");
+            $("#searchimg1").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr1").show();
             $("#searchtr2").show();
             $("#searchtr3").show();
-            $("#searchimg1").attr("src", "../../../img/btn4.png");
+            $("#searchimg1").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -259,12 +280,12 @@
         if (flagHideOrShow) {
             $("#searchtr4").hide();
             $("#searchtr5").hide();
-            $("#searchimg2").attr("src", "../../../img/btn3.png");
+            $("#searchimg2").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr4").show();
             $("#searchtr5").show();
-            $("#searchimg2").attr("src", "../../../img/btn4.png");
+            $("#searchimg2").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -276,7 +297,7 @@
             $("#searchtr9").hide();
             $("#searchtr10").hide();
             $("#searchtr11").hide();
-            $("#searchimg3").attr("src", "../../../img/btn3.png");
+            $("#searchimg3").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr6").show();
@@ -285,7 +306,7 @@
             $("#searchtr9").show();
             $("#searchtr10").show();
             $("#searchtr11").show();
-            $("#searchimg3").attr("src", "../../../img/btn4.png");
+            $("#searchimg3").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
@@ -293,12 +314,12 @@
         if (flagHideOrShow) {
             $("#searchtr12").hide();
             $("#searchtr13").hide();
-            $("#searchimg4").attr("src", "../../../img/btn3.png");
+            $("#searchimg4").attr("src", "../../../img/plus3.png");
             flagHideOrShow = false;
         } else {
             $("#searchtr12").show();
             $("#searchtr13").show();
-            $("#searchimg4").attr("src", "../../../img/btn4.png");
+            $("#searchimg4").attr("src", "../../../img/minus3.png");
             flagHideOrShow = true;
         }
     }
