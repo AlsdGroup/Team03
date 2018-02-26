@@ -77,7 +77,7 @@
         <div id="div211">
             <form action="/login">
                 用户名: &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" id="staffUserName" name="staffUserName" value="sxh"/>
+                <input type="text" id="staffUserName" name="staffUserName" value="xll"/>
                 <br><br>
                 密码哦: &nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="password" id="staffPwd" name="staffPwd" value="1"/>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #canvas1 {
+            border: 1px solid black;
+            width: 250px;
+            height: 250px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="divcanvas1" style="position: absolute;left: 100px">
+    <canvas id="canvas1" width=500 height=500></canvas>
+    <span style="position: absolute;left: 100px">666</span>
+    <span style="left: -1500px">666</span>
+</div>
+
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas1");
+    var context = canvas.getContext("2d");
+    var linearGradient1 = context.createLinearGradient(0, 0, 0, 100);
+    linearGradient1.addColorStop(0, '#F9FDFF');
+    linearGradient1.addColorStop(1, '#DFF2FE');
+    context.fillStyle = linearGradient1;
+    context.strokeStyle = linearGradient1;
+    context.lineWidth = 1;
+    context.arc(0, 31, 31, Math.PI*1.5, Math.PI/6+Math.PI*1.5, 0);
+    context.arc(31*1.5, 4, 31, Math.PI/6+Math.PI*0.5, Math.PI*0.5, 1);
+    context.lineTo(500, 35);
+    context.lineTo(500, 0);
+    context.stroke();
+    context.fill();
+</script>
+
+
+</body>
+</html>

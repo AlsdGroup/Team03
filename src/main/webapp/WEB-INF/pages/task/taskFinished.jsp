@@ -18,10 +18,6 @@
             padding: 0;
         }
 
-        .mini-textbox-border, .mini-buttonedit-border {
-            border: none;
-        }
-
         td {
             border: 1px solid #CBE4EC;
             border-collapse: collapse;
@@ -55,6 +51,14 @@
         .td3 {
             width: 10%;
             background-color: #F0F8FA;
+        }
+
+        .mini-textbox-border {
+            border: none;
+        }
+
+        .mini-buttonedit-border {
+            border: none;
         }
 
         #outer {
@@ -97,6 +101,11 @@
 
         #pagination li {
             display: inline;
+        }
+
+        #searchtd{
+            background-color: #E5EDEF;
+            text-align: right;
         }
 
         #inthead td {
@@ -157,7 +166,7 @@
         }
 
         .btn:hover {
-            background-color: #D1DDFC;
+            background-color: #E5F1FB;
             border: 1px solid blue;
         }
 
@@ -172,14 +181,15 @@
             padding-left: 18px;
             background: url(../../../img/search3.png) left center no-repeat;
         }
+
         #spanRefresh {
             margin-left: 6px;
             padding-left: 18px;
-            background: url(../../../img/reload1.png) left center no-repeat;
+            background: url(../../../img/load1.png) left center no-repeat;
         }
     </style>
 </head>
-<body style="margin: 0">
+<body id="body1" style="margin: 0">
 
 <table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
@@ -194,10 +204,8 @@
     <tr>
         <td colspan="6" class="td80">
             <div><img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer"
-                      id="searchimg" title="隐藏查询条件"
-                      oncontextmenu="return false;"
-                      ondragstart="return false;"
-                      onclick="searchHideOrShow()"/></div>
+                      id="searchimg" title="隐藏查询条件" onclick="searchHideOrShow()"
+                      oncontextmenu="return false;" ondragstart="return false;"/></div>
             <div style="margin-top: -17px;margin-left: 21px"><span>查询条件</span></div>
         </td>
     </tr>
@@ -247,7 +255,7 @@
                 <table style="text-align: center">
                     <thead id="inthead">
                     <tr>
-                        <td colspan="8" style="background-color: #E5EDEF;text-align: right">
+                        <td id="searchtd" colspan="8">
                             <a href="javascript:" class="bgbtn btn" id="query">
                                 <span id="spanSearch">查询</span>
                             </a>
@@ -257,16 +265,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td width="3%">
                             <input type="checkbox" name="checkall" id="checkall" onclick="checkall()"/>
                         </td>
-                        <td><span>流程编号</span></td>
-                        <td><span>流程名称</span></td>
-                        <td><span>所属部门</span></td>
-                        <td><span>当前环节</span></td>
-                        <td><span>提报人</span></td>
-                        <td><span>提报时间</span></td>
-                        <td><span>操作</span></td>
+                        <td width="12%"><span>流程编号</span></td>
+                        <td width="20%"><span>流程名称</span></td>
+                        <td width="10%"><span>所属部门</span></td>
+                        <td width="20%"><span>当前环节</span></td>
+                        <td width="10%"><span>提报人</span></td>
+                        <td width="*"><span>提报时间</span></td>
+                        <td width="6%"><span>操作</span></td>
                     </tr>
                     </thead>
                     <tbody id="content">
@@ -302,8 +310,48 @@
 </table>
 
 <script type="text/javascript">
-    /* 加载mini组件, 后面的get方法才好用 */
     mini.parse();
+
+    top["taskInWait"]=window;
+
+    function changebodybccolor() {
+        // 获取父页面背景颜色
+        var bccolor = window.parent.parentbccolor;
+        $("#body1").css({'background-color': bccolor});
+
+        if(bccolor=='#f0f3ef'){
+            $(" table").css({'border': '1px solid #c2aa7d'});
+            $(" td").css({'background-color': '#ffffff','border': '1px solid #c2aa7d'});
+            $(".td0").css({'background-color': '#e3e4e5'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e3e4e5)'});
+            $(".td1").css({'background-color': '#e3e4e5'});
+            $(".td3").css({'background-color': '#ffffff'});
+            $("#inthead td").css({'background-color': '#e3e4e5'});
+            $("#idtfoot td").css({'background-color': '#e3e4e5'});
+            $("#searchtd").css({'background-color': '#f0f3ef'});
+        }else if(bccolor=='white'){
+            $(" table").css({'border': '1px solid #000000'});
+            $(" td").css({'background-color': '#ffffff','border': '1px solid #000000'});
+            $(".td0").css({'background-color': '#e5edef'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e5edef)'});
+            $(".td1").css({'background-color': '#e5edef'});
+            $(".td3").css({'background-color': '#ffffff'});
+            $("#inthead td").css({'background-color': '#e5edef'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#ffffff'});
+        }else if(bccolor=='#e5edef'){
+            $(" table").css({'border': '1px solid #CBE4EC'});
+            $(" td").css({'background-color': '#f0f8fa','border': '1px solid #CBE4EC'});
+            $(".td0").css({'background-color': '#d3eaf8'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #F0F8FA, #D3EAF8)'});
+            $(".td1").css({'background-color': '#d3eaf8'});
+            $(".td3").css({'background-color': '#f0f8fa'});
+            $("#inthead td").css({'background-color': '#d3eaf8'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#e5edef'});
+        }
+    }
+    changebodybccolor();
 
     function GetFormData() {
         var form1 = new mini.Form("#form1");
@@ -366,7 +414,7 @@
     var taskDep = 0; // 所属部门id mapper中大于0才加这个参数
     var begin = 1; // 数字页码开始数
     var end = 10; // 数字页码结束数
-    var taskState = 2; //yi办任务
+    var taskState = 2; //
 
     // 刚进页面 查询所有任务信息
     loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
@@ -450,6 +498,7 @@
                     //$("#table").show();
                     $("#footer").show();
                     displayFooter(totalCount, pages, pageNo);
+                    changebodybccolor();
                 }
             }
         });
@@ -582,7 +631,7 @@
         $("input[name='depId']").val("");
     })
 
-    // 查询伸缩
+    // 查询收缩
     var flagHideOrShow = true;
 
     function searchHideOrShow() {

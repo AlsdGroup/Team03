@@ -103,6 +103,11 @@
             display: inline;
         }
 
+        #searchtd{
+            background-color: #E5EDEF;
+            text-align: right;
+        }
+
         #inthead td {
             font-weight: bold;
             padding: 5px;
@@ -184,7 +189,7 @@
         }
     </style>
 </head>
-<body style="margin: 0">
+<body id="body1" style="margin: 0">
 
 <table class="form-table" id="form1" border="0" cellpadding="0" cellspacing="0">
     <%----%>
@@ -250,7 +255,7 @@
                 <table style="text-align: center">
                     <thead id="inthead">
                     <tr>
-                        <td colspan="8" style="background-color: #E5EDEF;text-align: right">
+                        <td id="searchtd" colspan="8">
                             <a href="javascript:" class="bgbtn btn" id="query">
                                 <span id="spanSearch">查询</span>
                             </a>
@@ -306,6 +311,47 @@
 
 <script type="text/javascript">
     mini.parse();
+
+    top["taskInWait"]=window;
+
+    function changebodybccolor() {
+        // 获取父页面背景颜色
+        var bccolor = window.parent.parentbccolor;
+        $("#body1").css({'background-color': bccolor});
+
+        if(bccolor=='#f0f3ef'){
+            $(" table").css({'border': '1px solid #c2aa7d'});
+            $(" td").css({'background-color': '#ffffff','border': '1px solid #c2aa7d'});
+            $(".td0").css({'background-color': '#e3e4e5'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e3e4e5)'});
+            $(".td1").css({'background-color': '#e3e4e5'});
+            $(".td3").css({'background-color': '#ffffff'});
+            $("#inthead td").css({'background-color': '#e3e4e5'});
+            $("#idtfoot td").css({'background-color': '#e3e4e5'});
+            $("#searchtd").css({'background-color': '#f0f3ef'});
+        }else if(bccolor=='white'){
+            $(" table").css({'border': '1px solid #000000'});
+            $(" td").css({'background-color': '#ffffff','border': '1px solid #000000'});
+            $(".td0").css({'background-color': '#e5edef'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e5edef)'});
+            $(".td1").css({'background-color': '#e5edef'});
+            $(".td3").css({'background-color': '#ffffff'});
+            $("#inthead td").css({'background-color': '#e5edef'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#ffffff'});
+        }else if(bccolor=='#e5edef'){
+            $(" table").css({'border': '1px solid #CBE4EC'});
+            $(" td").css({'background-color': '#f0f8fa','border': '1px solid #CBE4EC'});
+            $(".td0").css({'background-color': '#d3eaf8'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #F0F8FA, #D3EAF8)'});
+            $(".td1").css({'background-color': '#d3eaf8'});
+            $(".td3").css({'background-color': '#f0f8fa'});
+            $("#inthead td").css({'background-color': '#d3eaf8'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#e5edef'});
+        }
+    }
+    changebodybccolor();
 
     function GetFormData() {
         var form1 = new mini.Form("#form1");
@@ -452,6 +498,7 @@
                     //$("#table").show();
                     $("#footer").show();
                     displayFooter(totalCount, pages, pageNo);
+                    changebodybccolor();
                 }
             }
         });
@@ -586,6 +633,7 @@
 
     // 查询收缩
     var flagHideOrShow = true;
+
     function searchHideOrShow() {
         if (flagHideOrShow) {
             $("#searchtr1").hide();
