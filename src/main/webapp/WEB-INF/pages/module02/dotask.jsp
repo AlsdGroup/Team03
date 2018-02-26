@@ -9,7 +9,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>已办任务</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <link href="/css/demo.css" rel="stylesheet" type="text/css"/>
 
@@ -356,11 +356,81 @@ function makePageNum() {
     $("#pagination").append(after8);
     addEvent4();
 }
+// 计算分页页码
+function makePageNum() {
+    if (pages < 10) {
+        begin = 1;
+        end = pages;
+    } else {
+        begin = pageNo - 5;
+        end = pageNo + 4;
+        if (begin < 1) {
+            begin = 1;
+            end = 10;
+        }
+        if (end > pages) {
+            begin = pages - 9;
+            end = pages;
+        }
+    }
+
+var img1 = "<img src='../../../img/btnleft4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+var img2 = "<img src='../../../img/btnleft3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+var img3 = "<img src='../../../img/btnright3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+var img4 = "<img src='../../../img/btnright4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+var before8 = "<li id=pp01>" + img1 + "</li><li id=pp02>" + img2 + "</li>";
+var after8 = "<li id=pp03>" + img3 + "</li><li id=pp04>" + img4 + "</li>";
+
+$("#pagination").empty();
+$("#pagination").append(before8);
+for (var i = 1; i >= begin && i <= end; i++) {
+    if (i == pageNo) {
+        //"[" + i + "]";
+        $("#pagination").append("<li id=pp" + i + "><span style='font-weight: bold;color: #0069ab'>" + i + "</span></li>");
+    } else {
+        $("#pagination").append("<li id=pp" + i + "> [" + i + "] </li>");
+        addEvent(i);
+    }
+}
+$("#pagination").append(after8);
+addEvent4();
+}
 
 function displayFooter(totalCount, pages, pageNo) {
-    var newText = '共' + totalCount + '条，' + '第' + pageNo + '页，' + '共' + pages + '页';
-    $("#summary").text(newText);
+    var newText = '  共'
+        + "<span style='color: #0069ab'>" + totalCount + "</span>"
+        + '条    ' + '第'
+        + "<span style='color: #0069ab'>" + pageNo + "</span>" + '页    ' + '共'
+        + "<span style='color: #0069ab'>" + pages + "</span>" + '页';
+    $("#summary").html(newText);
 }
+
+$("input[name='page_num']").keydown(function (e) {
+    if (e.keyCode == 13) {
+        $("input[name='go_btn']").click();
+    }
+});
+
+$("input[name='go_btn']").click(function () {
+    var goPage = $("input[name='page_num']").val();
+    if (goPage >= 1 && goPage <= pages && goPage != pageNo) {
+        pageNo = goPage;
+        loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+    } else {
+        return false;
+    }
+});
+
+
+// 查询条件重置
+$("#searchRefresh").click(function () {
+    $(".mini-buttonedit-input").val("");
+    $(".mini-textbox-input").val("");
+    $("input[name='taskDate']").val("");
+    $("input[name='taskName']").val("");
+    $("input[name='staffId']").val("");
+    $("input[name='depId']").val("");
+})
 
 $("input[name='page_num']").keydown(function (e) {
     if (e.keyCode == 13) {

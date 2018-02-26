@@ -467,16 +467,22 @@
                 end = pages;
             }
         }
-        var before8 = "<li id=01>首页</li><li id=02>上一页</li>";
-        var after8 = "<li id=03>下一页</li><li id=04>尾页</li>";
+
+        var img1 = "<img src='../../../img/btnleft4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img2 = "<img src='../../../img/btnleft3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img3 = "<img src='../../../img/btnright3.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var img4 = "<img src='../../../img/btnright4.png' style='width: 15px;height: 15px;' oncontextmenu='return false;' ondragstart='return false;'/>";
+        var before8 = "<li id=pp01>" + img1 + "</li><li id=pp02>" + img2 + "</li>";
+        var after8 = "<li id=pp03>" + img3 + "</li><li id=pp04>" + img4 + "</li>";
+
         $("#pagination").empty();
         $("#pagination").append(before8);
         for (var i = 1; i >= begin && i <= end; i++) {
             if (i == pageNo) {
                 //"[" + i + "]";
-                $("#pagination").append("<li id=" + i + ">  " + i + "  </li>");
+                $("#pagination").append("<li id=pp" + i + "><span style='font-weight: bold;color: #0069ab'>" + i + "</span></li>");
             } else {
-                $("#pagination").append("<li id=" + i + "> [" + i + "] </li>");
+                $("#pagination").append("<li id=pp" + i + "> [" + i + "] </li>");
                 addEvent(i);
             }
         }
@@ -485,8 +491,12 @@
     }
 
     function displayFooter(totalCount, pages, pageNo) {
-        var newText = '共' + totalCount + '条，' + '第' + pageNo + '页，' + '共' + pages + '页';
-        $("#summary").text(newText);
+        var newText = '  共'
+            + "<span style='color: #0069ab'>" + totalCount + "</span>"
+            + '条    ' + '第'
+            + "<span style='color: #0069ab'>" + pageNo + "</span>" + '页    ' + '共'
+            + "<span style='color: #0069ab'>" + pages + "</span>" + '页';
+        $("#summary").html(newText);
     }
 
     $("input[name='page_num']").keydown(function (e) {
