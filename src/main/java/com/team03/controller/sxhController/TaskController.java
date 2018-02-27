@@ -37,6 +37,12 @@ public class TaskController {
         return "utils/selectDepWindow";
     }
 
+    @RequestMapping(value = {"/printPreview"})
+    public String printPreview() {
+        return "utils/printPreview";
+    }
+
+
     /**
      * 弹出窗口 查询所有员工
      */

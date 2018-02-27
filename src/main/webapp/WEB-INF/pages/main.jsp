@@ -318,7 +318,7 @@
         <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;" handlerSize="7">
             <div id="divleftmenu" size="180px" showCollapseButton="true" borderStyle="border:0;"
                  style="background-color: #e5edef">
-                <div class="mini-outlookmenu" url="../../data/left_menu.txt" onitemselect="onItemSelect"
+                <div id="divoutlookmenu" class="mini-outlookmenu" url="../../data/left_menu.txt" onitemselect="onItemSelect"
                      idField="id" parentField="pid" textField="text" activeIndex="-1">
                 </div>
             </div>
@@ -384,6 +384,14 @@
         $("#mainTabs").show();
         showTab(item);
     }
+
+    var menu = mini.get("divoutlookmenu");
+    menu.on("itemclick",function(e){
+        var item = e.item;
+        if(item.id=="10080101"){
+            onItemSelect(e);
+        }
+    })
 
     // 右上角曲边
     var canvas = document.getElementById("canvas1");
