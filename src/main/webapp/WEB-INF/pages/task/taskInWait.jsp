@@ -320,12 +320,14 @@
         $("#body1").css({'background-color': bccolor});
 
         if(bccolor=='#f0f3ef'){
-            $(" table").css({'border': '1px solid #c2aa7d'});
-            $(" td").css({'background-color': '#ffffff','border': '1px solid #c2aa7d'});
+            // 红色主题
+            $(" table").css({'border': '1px solid #e31d1a'});
+            $(" td").css({'background-color': '#f0f3ef','border': '1px solid #e31d1a'});
             $(".td0").css({'background-color': '#e3e4e5'});
             $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e3e4e5)'});
             $(".td1").css({'background-color': '#e3e4e5'});
-            $(".td3").css({'background-color': '#ffffff'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#f0f3ef'});
             $("#inthead td").css({'background-color': '#e3e4e5'});
             $("#idtfoot td").css({'background-color': '#e3e4e5'});
             $("#searchtd").css({'background-color': '#f0f3ef'});
@@ -335,6 +337,7 @@
             $(".td0").css({'background-color': '#e5edef'});
             $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e5edef)'});
             $(".td1").css({'background-color': '#e5edef'});
+            $(".td2").css({'background-color': '#ffffff'});
             $(".td3").css({'background-color': '#ffffff'});
             $("#inthead td").css({'background-color': '#e5edef'});
             $("#idtfoot td").css({'background-color': '#e5edef'});
@@ -345,6 +348,7 @@
             $(".td0").css({'background-color': '#d3eaf8'});
             $(".td80").css({'background-image': '-moz-linear-gradient(top, #F0F8FA, #D3EAF8)'});
             $(".td1").css({'background-color': '#d3eaf8'});
+            $(".td2").css({'background-color': '#ffffff'});
             $(".td3").css({'background-color': '#f0f8fa'});
             $("#inthead td").css({'background-color': '#d3eaf8'});
             $("#idtfoot td").css({'background-color': '#e5edef'});

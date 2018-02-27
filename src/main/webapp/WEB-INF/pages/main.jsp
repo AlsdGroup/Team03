@@ -75,8 +75,103 @@
             /*text-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;*/
         }
 
+        .mini-splitter-pane1 {
+            border-width: 0px;
+            border-color: #ffffff;
+            border-style: solid;
+            border-right: solid 1px #ffffff;
+        }
+
+        .mini-splitter-pane2 {
+            border-width: 0px;
+            border-color: #ffffff;
+            border-style: solid;
+            border-left: solid 1px #ffffff;
+        }
+
+        .mini-splitter-pane1-vertical {
+            border: 0;
+            border-bottom: solid 1px #ffffff;
+        }
+
+        .mini-splitter-pane2-vertical {
+            border: 0;
+            border-top: solid 1px #ffffff;
+        }
+
+        .mini-splitter-pane1-button, .mini-splitter-pane2-button {
+            display: inline-block;
+            width: 7px;
+            height: 70px;
+            background: url(../../img/splitterblueleft.png) no-repeat 100% 100%;
+            cursor: pointer;
+        }
+
+        .mini-splitter-pane2-button {
+            background: url(../../img/splitterblueright.png) no-repeat 100% 100%;
+        }
+
+        .mini-splitter-handler-vertical .mini-splitter-pane1-button,
+        .mini-splitter-handler-vertical .mini-splitter-pane2-button {
+            display: inline-block;
+            width: 70px;
+            height: 7px;
+            zoom: 1;
+            float: left;
+            background: url(../../img/splitterbluetop.png) no-repeat 0px 0px;
+        }
+
+        .mini-splitter-handler-vertical .mini-splitter-pane2-button {
+            background: url(../../img/splitterbluedown.png) no-repeat 0px 0px;
+        }
+
+        .mini-outlookbar {
+            font-size: 9pt;
+            font-family: Verdana;
+            overflow: hidden;
+        }
+
+        .mini-outlookbar-border {
+            border: 0px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mini-outlookbar-group {
+            overflow: hidden;
+            height: auto;
+            border-bottom: solid 0px #a7abb0;
+            position: relative;
+        }
+
+        .mini-outlookbar-groupHeader {
+            position: relative;
+            color: white;
+            background: none;
+            background-color: #0069ab;
+            cursor: pointer;
+            overflow: hidden;
+            line-height: 13px;
+            padding: 5px 25px 5px 4px;
+            font-weight: normal;
+            font-family: Verdana;
+            font-size: 13px;
+            *zoom: 1;
+            border: 0px;
+            border-bottom: 1px solid white;
+        }
+
+        .mini-outlookbar-groupBody {
+            clear: both;
+            border: 0px;
+            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+        }
+
         .mini-outlookmenu {
-            background-color: #E5EDEF;
+            background-color: #e5edef;
             /*background-image: -moz-linear-gradient(top, #F0F8FA, #D3EAF8);*/
             font-family: Verdana;
             color: black;
@@ -140,21 +235,24 @@
             position: absolute;
         }
 
-        #tablecanvas1 tr td span{
+        #tablecanvas1 tr td span {
             margin-left: 15px;
             padding-left: 24px;
         }
 
-        #topimg01{
+        #topimg01 {
             background: url(../../img/blue01.png) left center no-repeat;
         }
-        #topimg02{
+
+        #topimg02 {
             background: url(../../img/blue02.png) left center no-repeat;
         }
-        #topimg03{
+
+        #topimg03 {
             background: url(../../img/blue03.png) left center no-repeat;
         }
-        #topimg04{
+
+        #topimg04 {
             background: url(../../img/blue04.png) left center no-repeat;
         }
     </style>
@@ -162,7 +260,7 @@
 </head>
 <body id="bodycss" style="background-color: #0069ab">
 
-<div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;" vertical="true" handlerSize="6">
+<div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;" vertical="true" handlerSize="7">
     <div size="70px" showCollapseButton="true" borderStyle="border:0;">
         <table class="top1" id="top1css" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -189,9 +287,11 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;
                                     <span id="topimg01">当前用户: ${login.staffName}[${login.staffId}]</span>
-                                    <span id="topimg02"><a href="javascript:" ondragstart="return false">系统帮助</a></span>
+                                    <span id="topimg02"><a href="javascript:" ondragstart="return false"
+                                                           onclick="syshelp()">系统帮助</a></span>
                                     <span id="topimg03"><a href="/logout" ondragstart="return false">安全退出</a></span>
-                                    <span id="topimg04"><a href="javascript:" ondragstart="return false" onclick="colorchange()">主题切换</a></span>
+                                    <span id="topimg04"><a href="javascript:" ondragstart="return false"
+                                                           onclick="colorchange()">主题切换</a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -215,7 +315,7 @@
         </table>
     </div>
     <div showCollapseButton="false" bodyStyle="border:0;background:white;">
-        <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;">
+        <div class="mini-splitter" style="width:100%;height:100%;" borderStyle="border:0;" handlerSize="7">
             <div id="divleftmenu" size="180px" showCollapseButton="true" borderStyle="border:0;"
                  style="background-color: #e5edef">
                 <div class="mini-outlookmenu" url="../../data/left_menu.txt" onitemselect="onItemSelect"
@@ -232,7 +332,6 @@
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript">
     mini.parse();
@@ -296,6 +395,7 @@
     linearGradient1.addColorStop(1, '#DFF2FE');
     context.fillStyle = linearGradient1;
     context.strokeStyle = linearGradient1;
+
     // 共同方法 改变样式
     function color01() {
         context.lineWidth = 1;
@@ -306,6 +406,7 @@
         context.stroke();
         context.fill();
     }
+
     color01();
 
     // 初始body背景颜色
@@ -316,11 +417,12 @@
     // 主题切换
     function colorchange() {
         var colornum88 = colornum % 3;
-        context.clearRect(0,0,1400,70);
+        context.clearRect(0, 0, 1400, 70);
         if (colornum88 == 0) {
             $(".mini-tabs").css({'background-color': '#ffffff'});
             $(".mini-outlookmenu").css({'background-color': '#ffffff'});
             $(".mini-menuitem").css({'background-color': '#ffffff'});
+            $(".mini-outlookbar-groupHeader").css({'background-color': '#000000'});
             $("#bodycss").css({'background-color': 'black'});
             $("#top1css").css({'background-color': 'black'});
             parentbccolor = 'white';
@@ -340,10 +442,16 @@
             $("#topimg02").css({'background': 'url(../../img/black02.png) left center no-repeat'});
             $("#topimg03").css({'background': 'url(../../img/black03.png) left center no-repeat'});
             $("#topimg04").css({'background': 'url(../../img/black04.png) left center no-repeat'});
+            // splitter箭头变换
+            $(".mini-splitter-pane1-button").css({'background': 'url(../../img/splitterblackleft.png) no-repeat 100% 100%'});
+            $(".mini-splitter-pane2-button").css({'background': 'url(../../img/splitterblackright.png) no-repeat 100% 100%'});
+            $(".mini-splitter-handler-vertical .mini-splitter-pane1-button").css({'background': 'url(../../img/splitterblacktop.png) no-repeat 100% 100%'});
+            $(".mini-splitter-handler-vertical .mini-splitter-pane2-button").css({'background': 'url(../../img/splitterblackdown.png) no-repeat 100% 100%'});
         } else if (colornum88 == 1) {
             $(".mini-tabs").css({'background-color': '#f0f3ef'});
             $(".mini-outlookmenu").css({'background-color': '#f0f3ef'});
             $(".mini-menuitem").css({'background-color': '#f0f3ef'});
+            $(".mini-outlookbar-groupHeader").css({'background-color': '#e31d1a'});
             $("#bodycss").css({'background-color': '#e31d1a'});
             $("#top1css").css({'background-color': '#e31d1a'});
             parentbccolor = '#f0f3ef';
@@ -357,6 +465,13 @@
                 top["taskFinished"].changebodybccolor();
             }
             var linearGradient2 = context.createLinearGradient(0, 0, 0, 100);
+//            for(var i = 0;i<=20;i++){
+//                if(i%2==0){
+//                    linearGradient2.addColorStop(i/20, '#f3b92e');
+//                }else{
+//                    linearGradient2.addColorStop(i/20, '#ffffff');
+//                }
+//            }
             linearGradient2.addColorStop(0, '#ffffff');
             linearGradient2.addColorStop(1, '#f0f3ef');
             context.fillStyle = linearGradient2;
@@ -366,10 +481,16 @@
             $("#topimg02").css({'background': 'url(../../img/red02.png) left center no-repeat'});
             $("#topimg03").css({'background': 'url(../../img/red03.png) left center no-repeat'});
             $("#topimg04").css({'background': 'url(../../img/red04.png) left center no-repeat'});
+            // splitter箭头变换
+            $(".mini-splitter-pane1-button").css({'background': 'url(../../img/splitterredleft.png) no-repeat 100% 100%'});
+            $(".mini-splitter-pane2-button").css({'background': 'url(../../img/splitterredright.png) no-repeat 100% 100%'});
+            $(".mini-splitter-handler-vertical .mini-splitter-pane1-button").css({'background': 'url(../../img/splitterredtop.png) no-repeat 100% 100%'});
+            $(".mini-splitter-handler-vertical .mini-splitter-pane2-button").css({'background': 'url(../../img/splitterreddown.png) no-repeat 100% 100%'});
         } else if (colornum88 == 2) {
             $(".mini-tabs").css({'background-color': '#e5edef'});
             $(".mini-outlookmenu").css({'background-color': '#e5edef'});
             $(".mini-menuitem").css({'background-color': '#e5edef'});
+            $(".mini-outlookbar-groupHeader").css({'background-color': '#0069ab'});
             $("#bodycss").css({'background-color': '#0069ab'});
             $("#top1css").css({'background-color': '#0069ab'});
             parentbccolor = '#e5edef';
@@ -392,6 +513,11 @@
             $("#topimg02").css({'background': 'url(../../img/blue02.png) left center no-repeat'});
             $("#topimg03").css({'background': 'url(../../img/blue03.png) left center no-repeat'});
             $("#topimg04").css({'background': 'url(../../img/blue04.png) left center no-repeat'});
+            // splitter箭头变换
+            $(".mini-splitter-pane1-button").css({'background': 'url(../../img/splitterblueleft.png) no-repeat 100% 100%'});
+            $(".mini-splitter-pane2-button").css({'background': 'url(../../img/splitterblueright.png) no-repeat 100% 100%'});
+            $(".mini-splitter-handler-vertical .mini-splitter-pane1-button").css({'background': 'url(../../img/splitterbluetop.png) no-repeat 100% 100%'});
+            $(".mini-splitter-handler-vertical .mini-splitter-pane2-button").css({'background': 'url(../../img/splitterbluedown.png) no-repeat 100% 100%'});
         }
         color01();
         colornum++;
