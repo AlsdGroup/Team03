@@ -23,11 +23,34 @@
             padding: 0px;
         }
 
+        .title {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .mini-textbox-border {
+            border: none;
+            height: 100%;
+        }
+
+        .mini-buttonedit-border {
+            border: none;
+            height: 100%;
+        }
+
         td {
             border: 1px solid #CBE4EC;
             border-collapse: collapse;
             padding: 0px;
             background-color: #F0F8FA;
+        }
+
+        .mini-textbox-border {
+            border: none;
+        }
+
+        .mini-buttonedit-border {
+            border: none;
         }
 
         .td0 {
@@ -143,12 +166,10 @@
     <tr class="trTitle" id="searchtr3">
         <td class="td1">合同起日期</td>
 
-        <td class="td2"><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 30px"/>
-        </td>
+        <td class="td2"><input type="date" class="mini-datepicker" width = "100%"/></td>
         <td class="td3">&nbsp;</td>
         <td class="td1">合同止日期</td>
-        <td class="td2"><input type="date" class="mini-datepicker" required="true" style="width: 100%;height: 30px"/>
-        </td>
+        <td class="td2"><input type="date" class="mini-datepicker" width = "100%"/></td>
         <td class="td3">&nbsp;</td>
     </tr>
 
@@ -188,8 +209,9 @@
         </td>
     </tr>
     <tr id="searchtr6">
-        <td colspan="6">
-            <div id="cbl1" class="mini-checkboxlist" textField="text" valueField="id"
+        <td colspan="6" class="td80">
+
+            <div style="height: 40px;margin-top: auto" id="cbl1" class="mini-checkboxlist" textField="text" valueField="id"
                  data="[{'id':1001,'text':'专题报告'},
              {'id':1002,'text':'技术方案'},
              {'id':1003,'text':'技术标准'},
@@ -199,26 +221,27 @@
              {'id':1007,'text':'计算机软件'},
              {'id':1008,'text':'其他'}]">
             </div>
+
         </td>
     </tr>
     <tr class="trTitle" id="searchtr7">
         <td class="td1">形成的知识产权及分配方式</td>
-        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td colspan="6" class="td2"><input class="mini-textarea" width= "100%"/></td>
         <td class="td3">&nbsp;</td>
     </tr>
     <tr class="trTitle" id="searchtr8">
         <td class="td1">直接经济效益及分配方式</td>
-        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td colspan="6" class="td2"><input class="mini-textarea" width= "100%"/></td>
         <td class="td3">&nbsp;</td>
     </tr>
     <tr class="trTitle" id="searchtr9">
         <td class="td1">形成的固定资产及分配方式</td>
-        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td colspan="6" class="td2"><input class="mini-textarea" width= "100%"/></td>
         <td class="td3">&nbsp;</td>
     </tr>
     <tr class="trTitle" id="searchtr10">
         <td class="td1">合同运作情况简介</td>
-        <td colspan="6" class="td2"><input class="mini-textarea" style="width: 100%;height: 30px"/></td>
+        <td colspan="6" class="td2"><input class="mini-textarea" width= "100%"/></td>
         <td class="td3">&nbsp;</td>
     </tr>
     <tr class="trTitle" id="searchtr11">
@@ -260,6 +283,51 @@
 </div>
 <script type="text/javascript">
     mini.parse();
+
+    top["taskInWait"]=window;
+
+    function changebodybccolor() {
+        // 获取父页面背景颜色
+        var bccolor = window.parent.parentbccolor;
+        $("#body1").css({'background-color': bccolor});
+
+        if(bccolor=='#f0f3ef'){
+            // 红色主题
+            $(" table").css({'border': '1px solid #e31d1a'});
+            $(" td").css({'background-color': '#f0f3ef','border': '1px solid #e31d1a'});
+            $(".td0").css({'background-color': '#e3e4e5'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e3e4e5)'});
+            $(".td1").css({'background-color': '#e3e4e5'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#f0f3ef'});
+            $("#inthead td").css({'background-color': '#e3e4e5'});
+            $("#idtfoot td").css({'background-color': '#e3e4e5'});
+            $("#searchtd").css({'background-color': '#f0f3ef'});
+        }else if(bccolor=='white'){
+            $(" table").css({'border': '1px solid #000000'});
+            $(" td").css({'background-color': '#ffffff','border': '1px solid #000000'});
+            $(".td0").css({'background-color': '#e5edef'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e5edef)'});
+            $(".td1").css({'background-color': '#e5edef'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#ffffff'});
+            $("#inthead td").css({'background-color': '#e5edef'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#ffffff'});
+        }else if(bccolor=='#e5edef'){
+            $(" table").css({'border': '1px solid #CBE4EC'});
+            $(" td").css({'background-color': '#f0f8fa','border': '1px solid #CBE4EC'});
+            $(".td0").css({'background-color': '#d3eaf8'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #F0F8FA, #D3EAF8)'});
+            $(".td1").css({'background-color': '#d3eaf8'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#f0f8fa'});
+            $("#inthead td").css({'background-color': '#d3eaf8'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#e5edef'});
+        }
+    }
+    changebodybccolor();
     var flagHideOrShow = true;
     function searchHideOrShow1() {
         if (flagHideOrShow) {
