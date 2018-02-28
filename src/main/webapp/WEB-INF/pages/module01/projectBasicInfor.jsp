@@ -29,16 +29,30 @@
 
         }
 
-        td{
+        td {
             border: 1px solid #CBE4EC;
             border-collapse: collapse;
             padding: 0px;
             background-color: #F0F8FA;
         }
-        .title {
+
+        .td1 {
             width: 10%;
-            height: 40px;
+            height: 30px;
+            background-color: #D3EAF8;
             text-align: center;
+        }
+
+        .td2 {
+            width: 30%;
+            background-color: white;
+        }
+        .mini-textbox-border {
+            border: none;
+        }
+
+        .mini-buttonedit-border {
+            border: none;
         }
 
         .td80 {
@@ -58,113 +72,168 @@
 </head>
 <body style="margin: 0">
 
-    <table class="form-table">
-        <tr>
-            <td colspan="6" class="td80">
-                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg" onclick="searchHideOrShow()"/>
-                <span>项目基本信息</span>
-            </td>
-        </tr>
-        <tr class="trTitle" id="searchtr1">
-            <td class="title">项目名称*</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-            <td colspan="2" style="background-color: white"></td>
-        </tr>
-        <tr class="trTitle" id="searchtr2">
-            <td class="title">项目申报单位*</td>
-            <td>
-                <input id="btnEdit1" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
-                       style="width: 100%;height: 30px"/>
-            </td>
-            <td class="title">联合申报单位*</td>
-            <td>
-                <input id="btnEdit2" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
-                       style="width: 100%;height: 30px"/>
-            </td>
-        </tr>
-        <tr class="trTitle" id="searchtr3">
-            <td class="title">目的*</td>
-            <td colspan="3">
-                <input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/>
-            </td>
-        </tr>
-    </table>
+<table class="form-table">
+    <tr>
+        <td colspan="6" class="td80">
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg"
+                 onclick="searchHideOrShow()"/>
+            <span>项目基本信息</span>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr1">
+        <td class="td1">项目名称*</td>
+        <td class="td2"><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
+        <td colspan="2" style="background-color: white"></td>
+    </tr>
+    <tr class="trTitle" id="searchtr2">
+        <td class="td1">项目申报单位*</td>
+        <td class="td2">
+            <input id="btnEdit1" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
+                   style="width:100%"/>
+        </td>
+        <td class="td1">联合申报单位*</td>
+        <td class="td2">
+            <input id="btnEdit2" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
+                   style="width:100%"/>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr3">
+        <td class="td1">目的*</td>
+        <td colspan="3">
+            <input class="mini-textarea" width="100%" value="" name=""/>
+        </td>
+    </tr>
+</table>
 
-    <table class="form-table">
-        <tr>
-            <td colspan="6" class="td80">
-                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg1" onclick="searchHideOrShow1()"/>
-                <span>与核电生产运营安全性、可靠性、经济的适应分析</span>
-            </td>
-        </tr>
-        <tr class="trTitle" id="searchtr4">
-            <td class="title">安全性</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-            <td class="title">可靠性</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-        </tr>
-        <tr class="trTitle" id="searchtr5">
-            <td class="title">经济性</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-            <td class="title">其他</td>
-            <td>
-                <input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/>
-            </td>
-        </tr>
-    </table>
+<table class="form-table">
+    <tr>
+        <td colspan="6" class="td80">
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg1"
+                 onclick="searchHideOrShow1()"/>
+            <span>与核电生产运营安全性、可靠性、经济的适应分析</span>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr4">
+        <td class="td1">安全性</td>
+        <td class="td2"><input class="mini-textarea" width="100%"/></td>
+        <td class="td1">可靠性</td>
+        <td class="td2"><input class="mini-textarea" width="100%"/></td>
+    </tr>
+    <tr class="trTitle" id="searchtr5">
+        <td class="td1">经济性</td>
+        <td class="td2"><input class="mini-textarea" width="100%"/></td>
+        <td class="td1">其他</td>
+        <td class="td2">
+            <input class="mini-textarea" width="100%"/>
+        </td>
+    </tr>
+</table>
 
-    <table class="form-table">
-        <tr>
-            <td colspan="6" class="td80">
-                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg2" onclick="searchHideOrShow2()"/>
-                <span>其他信息</span>
-            </td>
-        </tr>
-        <tr class="trTitle" id="searchtr6">
-            <td class="title">成果应用</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
-        </tr>
-        <tr class="trTitle" id="searchtr7">
-            <td class="title">实际用户</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
-        </tr>
-        <tr class="trTitle" id="searchtr8">
-            <td class="title">潜在用户</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
-        </tr>
-        <tr class="trTitle" id="searchtr9">
-            <td class="title">项目完成周期</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
-        </tr>
-        <tr class="trTitle" id="searchtr10">
-            <td class="title">项目完成路径简介</td>
-            <td colspan="3"><input class="mini-textarea" style="width:100%;height:60px;" value="" name=""/></td>
-        </tr>
-    </table>
-    <table class="form-table">
-        <tr>
-            <td colspan="6" class="td80">
-                <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg3" onclick="searchHideOrShow3()"/>
-                <span>预算信息</span>
-            </td>
-        </tr>
-        <tr class="trTitle" id="searchtr11">
-            <td class="title">总预算</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-            <td class="title">公司经费</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-        </tr>
+<table class="form-table">
+    <tr>
+        <td colspan="6" class="td80">
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg2"
+                 onclick="searchHideOrShow2()"/>
+            <span>其他信息</span>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr6">
+        <td class="td1">成果应用</td>
+        <td colspan="3" class="td2"><input class="mini-textarea" width="100%" name="results"
+                               style="border: 0px;outline:none;cursor: pointer;"/></td>
+    </tr>
+    <tr class="trTitle" id="searchtr7">
+        <td class="td1">实际用户</td>
+        <td colspan="3" class="td2"><input class="mini-textarea" width="100%" name="actualUser"
+                               style="border: 0px;outline:none;cursor: pointer;"/></td>
+    </tr>
+    <tr class="trTitle" id="searchtr8">
+        <td class="td1">潜在用户</td>
+        <td colspan="3" class="td2"><input class="mini-textarea" width="100%" name="potentialUser"
+                               style="border: 0px;outline:none;cursor: pointer;"/></td>
+    </tr>
+    <tr class="trTitle" id="searchtr9">
+        <td class="td1">项目完成周期</td>
+        <td colspan="3" class="td2"><input class="mini-textarea" width="100%" name="cycle"/></td>
+    </tr>
+    <tr class="trTitle" id="searchtr10">
+        <td class="td1">项目完成路径简介</td>
+        <td colspan="3" class="td2"><input class="mini-textarea" width="100%" name="route"/></td>
+    </tr>
+</table>
+<table class="form-table">
+    <tr>
+        <td colspan="6" class="td80">
+            <img src="../../../img/minus3.png" style="width: 15px;height: 15px;cursor: pointer" id="searchimg3"
+                 onclick="searchHideOrShow3()"/>
+            <span>预算信息</span>
+        </td>
+    </tr>
+    <tr class="trTitle" id="searchtr11">
+        <td class="td1">总预算</td>
+        <td class="td2"><input class="mini-textarea" width="100%" name="totalFee"/></td>
+        <td class="td1">公司经费</td>
+        <td><input class="mini-textarea" width="100%" name="company"/></td>
+    </tr>
 
-        <tr class="trTitle" id="searchtr12">
-            <td class="title">外部支持经费</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-            <td class="title">国家经费</td>
-            <td><input class="mini-textarea" style="width:100%;height:30px;" value="" name=""/></td>
-        </tr>
-    </table>
+    <tr class="trTitle" id="searchtr12">
+        <td class="td1">外部支持经费</td>
+        <td class="td2"><input class="mini-textarea" width="100%" name="outerFee"/></td>
+        <td class="td1">国家经费</td>
+        <td class="td2"><input class="mini-textarea" width="100%" name="countryFee"/></td>
+    </tr>
+</table>
+<div id="button">
+    <a href="" class="mini-button" iconCls="icon-addfolder" onclick="">提交</a>
+</div>
 <script>
     /* 加载mini组件，后面的get方法才好用 */
     mini.parse();
+
+    top["taskInWait"]=window;
+
+    function changebodybccolor() {
+        // 获取父页面背景颜色
+        var bccolor = window.parent.parentbccolor;
+        $("#body1").css({'background-color': bccolor});
+
+        if(bccolor=='#f0f3ef'){
+            // 红色主题
+            $(" table").css({'border': '1px solid #e31d1a'});
+            $(" td").css({'background-color': '#f0f3ef','border': '1px solid #e31d1a'});
+            $(".td0").css({'background-color': '#e3e4e5'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e3e4e5)'});
+            $(".td1").css({'background-color': '#e3e4e5'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#f0f3ef'});
+            $("#inthead td").css({'background-color': '#e3e4e5'});
+            $("#idtfoot td").css({'background-color': '#e3e4e5'});
+            $("#searchtd").css({'background-color': '#f0f3ef'});
+        }else if(bccolor=='white'){
+            $(" table").css({'border': '1px solid #000000'});
+            $(" td").css({'background-color': '#ffffff','border': '1px solid #000000'});
+            $(".td0").css({'background-color': '#e5edef'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e5edef)'});
+            $(".td1").css({'background-color': '#e5edef'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#ffffff'});
+            $("#inthead td").css({'background-color': '#e5edef'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#ffffff'});
+        }else if(bccolor=='#e5edef'){
+            $(" table").css({'border': '1px solid #CBE4EC'});
+            $(" td").css({'background-color': '#f0f8fa','border': '1px solid #CBE4EC'});
+            $(".td0").css({'background-color': '#d3eaf8'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #F0F8FA, #D3EAF8)'});
+            $(".td1").css({'background-color': '#d3eaf8'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#f0f8fa'});
+            $("#inthead td").css({'background-color': '#d3eaf8'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#e5edef'});
+        }
+    }
+    changebodybccolor();
 
     /* 审批(部门经理)点击事件 */
     function onButtonEdit(e) {

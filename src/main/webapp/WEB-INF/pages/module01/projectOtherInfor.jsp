@@ -35,16 +35,33 @@
             padding: 0px;
             background-color: #F0F8FA;
         }
-        .title {
+        .td1{
             width: 10%;
-            height: 40px;
+            height: 30px;
+            background-color: #D3EAF8;
             text-align: center;
         }
 
+        .td2 {
+            width: 30%;
+            background-color: white;
+        }
         .td80 {
             background-image: -moz-linear-gradient(top, #F0F8FA, #D3EAF8);
             padding: 5px;
             padding-right: 25px;
+        }
+
+        .mini-textbox-border {
+            border: none;
+        }
+
+        .mini-buttonedit-border {
+            border: none;
+        }
+
+        .mini-checkboxlist{
+            background-color: white;
         }
 
         div {
@@ -66,8 +83,8 @@
         </td>
     </tr>
     <tr class="trTitle" id="searchtr1">
-        <td class="title">姓名、专业经历和能力简述</td>
-        <td>
+        <td class="td1">姓名、专业经历和能力简述</td>
+        <td class="td2">
             <input class="mini-textarea" style="width: 100%;height: 30px" value="" name=""/>
         </td>
     </tr>
@@ -81,35 +98,35 @@
         </td>
     </tr>
     <tr class="trTitle" id="searchtr2">
-        <td class="title">产品形式</td>
-        <td>
+        <td class="td1">产品形式</td>
+        <td class="td2">
             <div id="cbl1" class="mini-checkboxlist" textField="text" valueField="id"
                  data="[{'id':1001,'text':'专题报告'},{'id':1002,'text':'技术方案'},{'id':1003,'text':'技术标准'},{'id':1004,'text':'硬件产品'},{'id':1005,'text':'生产性文件'},{'id':1006,'text':'设计文件'},{'id':1007,'text':'计算机软件'},{'id':1008,'text':'其他 ________'}]">
             </div>
         </td>
     </tr>
     <tr class="trTitle" id="searchtr3">
-        <td class="title">预计产权说明</td>
-        <td>
-            <input class="mini-textarea" style="width: 100%;height: 30px;" value="" name=""/>
+        <td class="td1">预计产权说明</td>
+        <td class="td2">
+            <input class="mini-textarea" style="width: 100%;height: 30px;"  name="propertyRight"/>
         </td>
     </tr>
     <tr class="trTitle" id="searchtr4">
-        <td class="title">经济效益</td>
-        <td>
-            <input class="mini-textarea" style="width: 100%;height: 30px;" value="" name=""/>
+        <td class="td1">经济效益</td>
+        <td class="td2">
+            <input class="mini-textarea" style="width: 100%;height: 30px;"  name="benefit"/>
         </td>
     </tr>
     <tr class="trTitle" id="searchtr5">
-        <td class="title">固定资产</td>
-        <td>
-            <input class="mini-textarea" style="width: 100%;height: 30px;" value="" name=""/>
+        <td class="td1">固定资产</td>
+        <td class="td2">
+            <input class="mini-textarea" style="width: 100%;height: 30px;"  name="Assets"/>
         </td>
     </tr>
     <tr class="trTitle" id="searchtr6">
-        <td class="title">验收标准</td>
-        <td>
-            <input class="mini-textarea" style="width: 100%;height: 30px;" value="" name=""/>
+        <td class="td1">验收标准</td>
+        <td class="td2">
+            <input class="mini-textarea" style="width: 100%;height: 30px;" name="standard"/>
         </td>
     </tr>
 </table>
@@ -122,8 +139,8 @@
         </td>
     </tr>
     <tr class="trTitle" id="searchtr7">
-        <td>立项报告书*</td>
-        <td>
+        <td class="td1">立项报告书*</td>
+        <td class="td2">
             <div>
                 <input class="mini-htmlfile" name="Fdata" id="file1"
                        style="width: 100%;height: 30px;background-color: #d2f0f0">
@@ -140,10 +157,10 @@
         </td>
     </tr>
     <tr class="trTitle" id="searchtr8">
-        <td>审批(部门经理)*</td>
-        <td>
+        <td class="td1">审批(部门经理)*</td>
+        <td class="td2">
             <input id="btnEdit1" class="mini-buttonedit" onbuttonclick="onButtonEdit" name="a" textName="b"
-                   style="width: 100%;height: 30px"/>
+                   style="width: 100%;height: 30px;background-color: white"/>
         </td>
     </tr>
 </table>
@@ -153,6 +170,50 @@
 </div>
 <script>
 
+    top["taskInWait"]=window;
+
+    function changebodybccolor() {
+        // 获取父页面背景颜色
+        var bccolor = window.parent.parentbccolor;
+        $("#body1").css({'background-color': bccolor});
+
+        if(bccolor=='#f0f3ef'){
+            // 红色主题
+            $(" table").css({'border': '1px solid #e31d1a'});
+            $(" td").css({'background-color': '#f0f3ef','border': '1px solid #e31d1a'});
+            $(".td0").css({'background-color': '#e3e4e5'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e3e4e5)'});
+            $(".td1").css({'background-color': '#e3e4e5'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#f0f3ef'});
+            $("#inthead td").css({'background-color': '#e3e4e5'});
+            $("#idtfoot td").css({'background-color': '#e3e4e5'});
+            $("#searchtd").css({'background-color': '#f0f3ef'});
+        }else if(bccolor=='white'){
+            $(" table").css({'border': '1px solid #000000'});
+            $(" td").css({'background-color': '#ffffff','border': '1px solid #000000'});
+            $(".td0").css({'background-color': '#e5edef'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #ffffff, #e5edef)'});
+            $(".td1").css({'background-color': '#e5edef'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#ffffff'});
+            $("#inthead td").css({'background-color': '#e5edef'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#ffffff'});
+        }else if(bccolor=='#e5edef'){
+            $(" table").css({'border': '1px solid #CBE4EC'});
+            $(" td").css({'background-color': '#f0f8fa','border': '1px solid #CBE4EC'});
+            $(".td0").css({'background-color': '#d3eaf8'});
+            $(".td80").css({'background-image': '-moz-linear-gradient(top, #F0F8FA, #D3EAF8)'});
+            $(".td1").css({'background-color': '#d3eaf8'});
+            $(".td2").css({'background-color': '#ffffff'});
+            $(".td3").css({'background-color': '#f0f8fa'});
+            $("#inthead td").css({'background-color': '#d3eaf8'});
+            $("#idtfoot td").css({'background-color': '#e5edef'});
+            $("#searchtd").css({'background-color': '#e5edef'});
+        }
+    }
+    changebodybccolor();
     // 查询伸缩
     var flagHideOrShow = true;
     function searchHideOrShow() {
