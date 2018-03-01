@@ -434,15 +434,7 @@
             $("#bodycss").css({'background-color': 'black'});
             $("#top1css").css({'background-color': 'black'});
             parentbccolor = 'white';
-            if (top["firstPage"] != null) {
-                top["firstPage"].changebodybccolor();
-            }
-            if (top["taskInWait"] != null) {
-                top["taskInWait"].changebodybccolor();
-            }
-            if (top["taskFinished"] != null) {
-                top["taskFinished"].changebodybccolor();
-            }
+            childchangecolor();
             context.fillStyle = 'white';
             context.strokeStyle = 'white';
             // 图标变换
@@ -463,15 +455,7 @@
             $("#bodycss").css({'background-color': '#e31d1a'});
             $("#top1css").css({'background-color': '#e31d1a'});
             parentbccolor = '#f0f3ef';
-            if (top["firstPage"] != null) {
-                top["firstPage"].changebodybccolor();
-            }
-            if (top["taskInWait"] != null) {
-                top["taskInWait"].changebodybccolor();
-            }
-            if (top["taskFinished"] != null) {
-                top["taskFinished"].changebodybccolor();
-            }
+            childchangecolor();
             var linearGradient2 = context.createLinearGradient(0, 0, 0, 100);
 //            for(var i = 0;i<=20;i++){
 //                if(i%2==0){
@@ -502,15 +486,7 @@
             $("#bodycss").css({'background-color': '#0069ab'});
             $("#top1css").css({'background-color': '#0069ab'});
             parentbccolor = '#e5edef';
-            if (top["firstPage"] != null) {
-                top["firstPage"].changebodybccolor();
-            }
-            if (top["taskInWait"] != null) {
-                top["taskInWait"].changebodybccolor();
-            }
-            if (top["taskFinished"] != null) {
-                top["taskFinished"].changebodybccolor();
-            }
+            childchangecolor();
             var linearGradient3 = context.createLinearGradient(0, 0, 0, 100);
             linearGradient3.addColorStop(0, '#F9FDFF');
             linearGradient3.addColorStop(1, '#DFF2FE');
@@ -529,6 +505,34 @@
         }
         color01();
         colornum++;
+    }
+
+    // 子页面变换颜色
+    function childchangecolor() {
+        if (top["firstPage"] != null) {
+            top["firstPage"].changebodybccolor();
+        }
+        if (top["taskInWait"] != null) {
+            top["taskInWait"].changebodybccolor();
+        }
+        if (top["taskFinished"] != null) {
+            top["taskFinished"].changebodybccolor();
+        }
+        if (top["totalManagement"] != null) {
+            top["totalManagement"].changebodybccolor();
+        }
+        if (top["bimsStore"] != null) {
+            top["bimsStore"].changebodybccolor();
+        }
+        if (top["mac"] != null) {
+            top["mac"].changebodybccolor();
+        }
+        if (top["room"] != null) {
+            top["room"].changebodybccolor();
+        }
+        if (top["rayUser"] != null) {
+            top["rayUser"].changebodybccolor();
+        }
     }
 
     // 显示或隐藏flag

@@ -477,6 +477,8 @@
                         var taskStaffName = list[i].taskStaffName;
                         var taskDate = list[i].taskDate;
                         var taskState = list[i].taskState;
+                        var taskPrint = list[i].taskPrint;
+                        var taskFinish = list[i].taskFinish;
                         var staffBefore = list[i].staffBefore;
                         var staffNow = list[i].staffNow;
                         var tr = $("<tr>");

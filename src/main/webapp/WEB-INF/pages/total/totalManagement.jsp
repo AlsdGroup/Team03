@@ -1,6 +1,3 @@
-<%--
-  AlsdGo 2018年02月05日 17:26
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -198,7 +195,7 @@
             <img src="../../../img/flag1.gif" style="width: 15px;height: 15px;"
                  oncontextmenu="return false;" ondragstart="return false;"/>
             <span>当前位置:&nbsp;</span>
-            <span style="font-weight: bold">个人工作台 >> 待办任务</span>
+            <span style="font-weight: bold">综合管理 >> 流程查询</span>
         </td>
     </tr>
     <tr>
@@ -249,6 +246,32 @@
         </td>
         <td class="td3">&nbsp;</td>
     </tr>
+        <tr>
+            <td class="td1">
+                <span style="margin-right: 6px">流程类型</span>
+            </td>
+            <td class="td2">
+                <select id="taskType" style="border: none;width: 99%">
+                    <option value ="0" selected="selected"></option>
+                    <option value ="1">卫星库授权</option>
+                    <option value="2">外部科技项目申报</option>
+                    <option value="3">项目成果与计划调整申报</option>
+                    <option value="4">科研项目申报</option>
+                </select>
+            </td>
+            <td class="td3">&nbsp;</td>
+            <td class="td1">
+                <span style="margin-right: 6px">是否可以打印</span>
+            </td>
+            <td class="td2">
+                <select id="taskPrint" style="border: none;width: 99%">
+                    <option value ="0" selected="selected"></option>
+                    <option value ="1">是</option>
+                    <option value="2">否</option>
+                </select>
+            </td>
+            <td class="td3">&nbsp;</td>
+        </tr>
     <tr>
         <td colspan="6">
             <div id="outer">
@@ -273,8 +296,8 @@
                         <td width="10%"><span>所属部门</span></td>
                         <td width="20%"><span>当前环节</span></td>
                         <td width="10%"><span>提报人</span></td>
-                        <td width="*"><span>提报时间</span></td>
-                        <td width="6%"><span>操作</span></td>
+                        <td width="*"><span>是否可以打印</span></td>
+                        <td width="12%"><span>操作</span></td>
                     </tr>
                     </thead>
                     <tbody id="content">
@@ -312,7 +335,7 @@
 <script type="text/javascript">
     mini.parse();
 
-    top["taskInWait"]=window;
+    top["totalManagement"]=window;
 
     function changebodybccolor() {
         // 获取父页面背景颜色
@@ -416,6 +439,9 @@
     var taskName = ""; // 关键字 流程名称
     var taskStaff = 0; // 申请人id mapper中大于0才加这个参数
     var taskDep = 0; // 所属部门id mapper中大于0才加这个参数
+    var taskPrint = "0"; // 是否可以打印 0空 1是 2否
+    var taskFinish = "0"; // 保留字段
+    var taskType = "0"; // 流程类型默认空 为0 暂时用taskFinish传值
     var begin = 1; // 数字页码开始数
     var end = 10; // 数字页码结束数
     var taskState = 1; //待办任务
@@ -430,17 +456,19 @@
         taskName = $("input[name='taskName']").val();
         taskStaff = $("input[name='staffId']").val() == '' ? 0 : $("input[name='staffId']").val();
         taskDep = $("input[name='depId']").val() == '' ? 0 : $("input[name='depId']").val();
+        taskType = $("#taskType").val();
+        taskPrint = $("#taskPrint").val();
     }
 
     // 模糊查询
     $("#query").click(function () {
         pageNo = 1;
         getParameters();
-        loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+        loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint);
     })
 
     // 获得当前页的数据 主要逻辑
-    function loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep) {
+    function loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint) {
         var data1 = {
             "pageIndex": pageNo,
             "pageSize": pageSize,
@@ -448,11 +476,13 @@
             "taskName": taskName,
             "taskStaff": taskStaff,
             "taskDep": taskDep,
-            "taskState": taskState
+            "taskState": taskState,
+            "taskPrint": taskPrint,
+            "taskFinish": taskType
         };
         var json1 = mini.encode(data1);
         $.ajax({
-            url: "/selectTask",
+            url: "/selectTotalTask",
             type: "POST",
             dataType: "JSON",
             contentType: "application/json",
@@ -477,7 +507,7 @@
                         var taskStaffName = list[i].taskStaffName;
                         var taskDate = list[i].taskDate;
                         var taskState = list[i].taskState;
-                        var taskPrint = list[i].taskPrint;
+                        var taskPrint = list[i].taskPrint == "1" ? "是":"否";
                         var taskFinish = list[i].taskFinish;
                         var staffBefore = list[i].staffBefore;
                         var staffNow = list[i].staffNow;
@@ -488,8 +518,13 @@
                         var td4 = $("<td>").text(taskDepName);
                         var td5 = $("<td>").text(taskStep);
                         var td6 = $("<td>").text(taskStaffName);
-                        var td7 = $("<td>").text(taskDate);
-                        var td8 = $("<td>").append("<input type='button' id='" + id + "' value='办理' name='dealone'/>");
+                        var td7 = $("<td>").text(taskPrint);
+                        var td8 = $("<td>").append("<input type='button' id='" + id + "' value='流程' name='dealone'/>")
+                                           .append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                        if(taskPrint=="是"){
+                            td8 = $("<td>").append("<input type='button' id='" + id + "' value='流程' name='dealone'/>")
+                                           .append("&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' id='" + id + "' value='打印' name='printone'/>");
+                        }
                         tr.append(td1);
                         tr.append(td2);
                         tr.append(td3);
@@ -527,12 +562,12 @@
     function addEvent4() {
         $("#pp01").click(function () {
             pageNo = 1;
-            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint);
         });
 
         $("#pp04").click(function () {
             pageNo = pages;
-            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint);
         });
 
         $("#pp02").click(function () {
@@ -540,7 +575,7 @@
                 return false;
             } else {
                 pageNo--;
-                loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+                loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint);
             }
         });
 
@@ -549,7 +584,7 @@
                 return false;
             } else {
                 pageNo++;
-                loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+                loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint);
             }
         });
     }
@@ -558,7 +593,7 @@
     function addEvent(clickId) {
         $("#pp" + clickId).click(function () {
             pageNo = clickId;
-            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint);
         })
     }
 
@@ -621,7 +656,7 @@
         var goPage = $("input[name='page_num']").val();
         if (goPage >= 1 && goPage <= pages && goPage != pageNo) {
             pageNo = goPage;
-            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep);
+            loadData(pageNo, pageSize, taskDate, taskName, taskStaff, taskDep, taskType, taskPrint);
         } else {
             return false;
         }
@@ -635,6 +670,8 @@
         $("input[name='taskName']").val("");
         $("input[name='staffId']").val("");
         $("input[name='depId']").val("");
+        $("#taskType").val("0");
+        $("#taskPrint").val("0");
     })
 
     // 查询收缩

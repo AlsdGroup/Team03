@@ -14,13 +14,15 @@ public class YjTask implements Serializable{
     private int taskStaff;
     private String taskDate;
     private int taskState;
+    private int taskPrint;
+    private int taskFinish;
     private int staffBefore;
     private int staffNow;
 
     public YjTask() {
     }
 
-    public YjTask(int id, String taskId, String taskName, int taskDep, String taskStep, int taskStaff, String taskDate, int taskState, int staffBefore, int staffNow) {
+    public YjTask(int id, String taskId, String taskName, int taskDep, String taskStep, int taskStaff, String taskDate, int taskState, int taskPrint, int taskFinish, int staffBefore, int staffNow) {
         this.id = id;
         this.taskId = taskId;
         this.taskName = taskName;
@@ -29,6 +31,8 @@ public class YjTask implements Serializable{
         this.taskStaff = taskStaff;
         this.taskDate = taskDate;
         this.taskState = taskState;
+        this.taskPrint = taskPrint;
+        this.taskFinish = taskFinish;
         this.staffBefore = staffBefore;
         this.staffNow = staffNow;
     }
@@ -44,9 +48,27 @@ public class YjTask implements Serializable{
                 ", taskStaff=" + taskStaff +
                 ", taskDate='" + taskDate + '\'' +
                 ", taskState=" + taskState +
+                ", taskPrint=" + taskPrint +
+                ", taskFinish=" + taskFinish +
                 ", staffBefore=" + staffBefore +
                 ", staffNow=" + staffNow +
                 '}';
+    }
+
+    public int getTaskPrint() {
+        return taskPrint;
+    }
+
+    public void setTaskPrint(int taskPrint) {
+        this.taskPrint = taskPrint;
+    }
+
+    public int getTaskFinish() {
+        return taskFinish;
+    }
+
+    public void setTaskFinish(int taskFinish) {
+        this.taskFinish = taskFinish;
     }
 
     public int getId() {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team03.mapper.TaskDao">
+<mapper namespace="com.team03.mapper.TotalDao">
     <sql id="staffColumns">
         a.staff_id,
         a.staff_name,
@@ -9,20 +9,20 @@
     </sql>
 
     <sql id="taskColumns">
-      a.id,
-      a.task_id,
-      a.task_name,
-      a.task_dep,
-      b.dep_name,
-      a.task_step,
-      a.task_staff,
-      c.staff_name,
-      a.task_date,
-      a.task_state,
-      a.task_print,
-      a.task_finish,
-      a.staff_before,
-      a.staff_now
+        a.id,
+        a.task_id,
+        a.task_name,
+        a.task_dep,
+        b.dep_name,
+        a.task_step,
+        a.task_staff,
+        c.staff_name,
+        a.task_date,
+        a.task_state,
+        a.task_print,
+        a.task_finish,
+        a.staff_before,
+        a.staff_now
     </sql>
 
     <resultMap id="staffMap" type="com.team03.domain.StaffParameter">
@@ -49,37 +49,8 @@
         <result property="staffNow" column="staff_now"/>
     </resultMap>
 
-    <select id="selectAll"
-            parameterType="com.team03.domain.StaffSqlParameter"
-            resultMap="staffMap">
-        SELECT
-        <include refid="staffColumns"/>
-        FROM yj_staff a LEFT JOIN yj_department b
-        ON a.staff_dep_id = b.dep_id
-        <where>
-            1=1
-            <if test="staffName != null">
-                AND a.staff_name LIKE '%${staffName}%'
-            </if>
-            limit #{pageIndex},#{pageSize}
-        </where>
-    </select>
-
-    <select id="selectTotal"
-            parameterType="java.lang.String"
-            resultType="java.lang.Integer">
-        SELECT
-        count(a.staff_id)
-        FROM yj_staff a
-        <where>
-            1=1
-            <if test="value != null">
-                AND a.staff_name LIKE '%${value}%'
-            </if>
-        </where>
-    </select>
-
-    <select id="selectAll2"
+    <!--综合查询-->
+    <select id="selectAll3"
             parameterType="com.team03.domain.YjTaskRequestParameter"
             resultMap="taskMap">
         SELECT
@@ -102,14 +73,17 @@
             <if test="taskDep > 0 ">
                 AND a.task_dep = #{taskDep}
             </if>
-            <if test="taskState > 0 ">
-                AND a.task_state = #{taskState}
+            <if test="taskFinish > 0 ">
+                AND a.task_finish = #{taskFinish}
+            </if>
+            <if test="taskPrint > 0 ">
+                AND a.task_print = #{taskPrint}
             </if>
         </where>
         limit #{pageIndex},#{pageSize}
     </select>
-
-    <select id="selectTotal2"
+    <!--综合查询-->
+    <select id="selectTotal3"
             parameterType="com.team03.domain.YjTaskRequestParameter"
             resultType="java.lang.Integer">
         SELECT
@@ -129,8 +103,11 @@
             <if test="taskDep > 0 ">
                 AND a.task_dep = #{taskDep}
             </if>
-            <if test="taskState > 0 ">
-                AND a.task_state = #{taskState}
+            <if test="taskFinish > 0 ">
+                AND a.task_finish = #{taskFinish}
+            </if>
+            <if test="taskPrint > 0 ">
+                AND a.task_print = #{taskPrint}
             </if>
         </where>
     </select>

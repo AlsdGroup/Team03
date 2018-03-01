@@ -16,6 +16,8 @@ public class YjTaskParameter implements Serializable{
     private String taskStaffName;
     private String taskDate;
     private int taskState;
+    private int taskPrint;
+    private int taskFinish;
     private int staffBefore;
     private int staffNow;
 
@@ -38,6 +40,22 @@ public class YjTaskParameter implements Serializable{
                 ", staffBefore=" + staffBefore +
                 ", staffNow=" + staffNow +
                 '}';
+    }
+
+    public int getTaskPrint() {
+        return taskPrint;
+    }
+
+    public void setTaskPrint(int taskPrint) {
+        this.taskPrint = taskPrint;
+    }
+
+    public int getTaskFinish() {
+        return taskFinish;
+    }
+
+    public void setTaskFinish(int taskFinish) {
+        this.taskFinish = taskFinish;
     }
 
     public int getId() {

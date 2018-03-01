@@ -13,11 +13,13 @@ public class YjTaskRequestParameter implements Serializable {
     private int taskStaff;
     private int taskDep;
     private int taskState;
+    private int taskPrint;
+    private int taskFinish;
 
     public YjTaskRequestParameter() {
     }
 
-    public YjTaskRequestParameter(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep, int taskState) {
+    public YjTaskRequestParameter(int pageIndex, int pageSize, String taskDate, String taskName, int taskStaff, int taskDep, int taskState, int taskPrint, int taskFinish) {
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
         this.taskDate = taskDate;
@@ -25,6 +27,8 @@ public class YjTaskRequestParameter implements Serializable {
         this.taskStaff = taskStaff;
         this.taskDep = taskDep;
         this.taskState = taskState;
+        this.taskPrint = taskPrint;
+        this.taskFinish = taskFinish;
     }
 
     @Override
@@ -38,6 +42,22 @@ public class YjTaskRequestParameter implements Serializable {
                 ", taskDep=" + taskDep +
                 ", taskState=" + taskState +
                 '}';
+    }
+
+    public int getTaskPrint() {
+        return taskPrint;
+    }
+
+    public void setTaskPrint(int taskPrint) {
+        this.taskPrint = taskPrint;
+    }
+
+    public int getTaskFinish() {
+        return taskFinish;
+    }
+
+    public void setTaskFinish(int taskFinish) {
+        this.taskFinish = taskFinish;
     }
 
     public int getPageIndex() {
