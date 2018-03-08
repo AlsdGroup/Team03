@@ -1,7 +1,6 @@
 package com.team03.service.sxhSercice;
 
-import com.team03.domain.YjTaskParameter;
-import com.team03.domain.YjTaskRequestParameter;
+import com.team03.domain.*;
 import com.team03.page.PageBean;
 
 /**
@@ -11,4 +10,11 @@ public interface TotalService {
 
     PageBean<YjTaskParameter> selectTask(YjTaskRequestParameter yjTaskRequestParameter);
 
+    PageBean<PmsMac> selectMac(PmsMacRequestParameter pmsMacRequestParameter);
+
+    void deleteMac(PmsMacRequestParameter pmsMacRequestParameter);
+
+    BaseResult<PmsMac> selectAllMac(String macManageStaffName, Integer pageIndex, Integer pageSize);
+
+    void addMac(PmsMacRequestParameter pmsMacRequestParameter);
 }

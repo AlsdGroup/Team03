@@ -99,13 +99,13 @@
                     <span>申请人姓名</span>
                 </td>
                 <td class="colorred" colspan="3">
-                    <span>张三</span>
+                    <span id="taskStaffNamePrint"></span>
                 </td>
                 <td class="td2" colspan="2">
                     <span>申请人单位</span>
                 </td>
                 <td class="colorred" colspan="3">
-                    <span>阳江公司</span>
+                    <span id="taskDepNamePrint"></span>
                 </td>
             </tr>
             <tr>
@@ -113,13 +113,13 @@
                     <span>申请人身份证号</span>
                 </td>
                 <td class="colorred" colspan="3">
-                    <span>53983707234720</span>
+                    <span>------</span>
                 </td>
                 <td class="td2" colspan="2">
                     <span>申请人磁卡号</span>
                 </td>
                 <td class="colorred" colspan="3">
-                    <span>12345678</span>
+                    <span>------</span>
                 </td>
             </tr>
             <tr>
@@ -140,7 +140,7 @@
                     <span>参观项目</span>
                 </td>
                 <td class="colorred" colspan="8">
-                    <span>辐射区安全作业</span>
+                    <span id="taskStepPrint"></span>
                 </td>
             </tr>
             <tr>
@@ -252,6 +252,12 @@
 </div>
 
 <script type="text/javascript">
+    var taskStaffNamePrint = top["totalManagement"].taskStaffNamePrint;
+    var taskDepNamePrint = top["totalManagement"].taskDepNamePrint;
+    var taskStepPrint = top["totalManagement"].taskStepPrint;
+    $("#taskStaffNamePrint").text(taskStaffNamePrint);
+    $("#taskDepNamePrint").text(taskDepNamePrint);
+    $("#taskStepPrint").text(taskStepPrint);
 </script>
 
 </body>

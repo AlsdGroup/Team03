@@ -25,6 +25,18 @@
         a.staff_now
     </sql>
 
+    <sql id="macColumns">
+        a.mac_Id,
+        a.mac_No,
+        a.mac_Name,
+        a.mac_Manage_Staff_No,
+        a.mac_Manage_Staff_Name,
+        a.effect_Flag,
+        a.create_Staff_No,
+        a.create_Staff_Name,
+        a.create_Date
+    </sql>
+
     <resultMap id="staffMap" type="com.team03.domain.StaffParameter">
         <result property="staffId" column="staff_id"/>
         <result property="staffName" column="staff_name"/>
@@ -47,6 +59,18 @@
         <result property="taskFinish" column="task_finish"/>
         <result property="staffBefore" column="staff_before"/>
         <result property="staffNow" column="staff_now"/>
+    </resultMap>
+
+    <resultMap id="macMap" type="com.team03.domain.PmsMac">
+        <result property="macId" column="mac_Id"/>
+        <result property="macNo" column="mac_No"/>
+        <result property="macName" column="mac_Name"/>
+        <result property="macManageStaffNo" column="mac_Manage_Staff_No"/>
+        <result property="macManageStaffName" column="mac_Manage_Staff_Name"/>
+        <result property="effectFlag" column="effect_Flag"/>
+        <result property="createStaffNo" column="create_Staff_No"/>
+        <result property="createStaffName" column="create_Staff_Name"/>
+        <result property="createDate" column="create_Date"/>
     </resultMap>
 
     <!--综合查询-->
@@ -112,4 +136,99 @@
         </where>
     </select>
 
+    <!--机组查询-->
+    <select id="selectAll4"
+            parameterType="com.team03.domain.PmsMacRequestParameter"
+            resultMap="macMap">
+        SELECT
+        <include refid="macColumns"/>
+        FROM pms_mac a
+        <where>
+            1=1
+            <if test="macName != null and macName != '' ">
+                AND a.mac_Name LIKE '%${macName}%'
+            </if>
+            <if test="macManageStaffNo != null and macManageStaffNo != '' ">
+                AND a.mac_Manage_Staff_No = #{macManageStaffNo}
+            </if>
+        </where>
+        limit #{pageIndex},#{pageSize}
+    </select>
+    <!--机组查询-->
+    <select id="selectTotal4"
+            parameterType="com.team03.domain.PmsMacRequestParameter"
+            resultType="java.lang.Integer">
+        SELECT
+        count(a.MAC_ID)
+        FROM pms_mac a
+        <where>
+            1=1
+            <if test="macName != null and macName != '' ">
+                AND a.mac_Name LIKE '%${macName}%'
+            </if>
+            <if test="macManageStaffNo != null and macManageStaffNo != '' ">
+                AND a.mac_Manage_Staff_No = #{macManageStaffNo}
+            </if>
+        </where>
+    </select>
+    <!--机组批量删除-->
+    <delete id="deleteMac" parameterType="java.util.List">
+        DELETE FROM pms_mac WHERE MAC_ID in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--机组添加-->
+    <insert id="addMac" parameterType="com.team03.domain.PmsMacRequestParameter">
+        INSERT INTO pms_mac (
+        mac_Id,
+        mac_No,
+        mac_Name,
+        mac_Manage_Staff_No,
+        mac_Manage_Staff_Name,
+        effect_Flag,
+        create_Staff_No,
+        create_Staff_Name,
+        create_Date
+        )
+        VALUES   (
+        #{macId},
+        '8888',
+        #{macName},
+        #{macId},
+        #{macManageStaffName},
+        '8888',
+        '8888',
+        '8888',
+        #{createDate})
+    </insert>
+    <!--查询机组信息 弹出窗口-->
+    <select id="selectAll5"
+            parameterType="com.team03.domain.PmsMacRequestParameter"
+            resultMap="macMap">
+        SELECT
+        <include refid="macColumns"/>
+        FROM pms_mac a
+        <where>
+            1=1
+            <if test="macManageStaffName != null and macManageStaffName != '' ">
+                AND a.mac_Manage_Staff_Name LIKE '%${macManageStaffName}%'
+            </if>
+        </where>
+        limit #{pageIndex},#{pageSize}
+    </select>
+    <!--查询机组信息 弹出窗口-->
+    <select id="selectTotal5"
+            parameterType="java.lang.String"
+            resultType="java.lang.Integer">
+        SELECT
+        count(a.MAC_ID)
+        FROM pms_mac a
+        <where>
+            1=1
+            <if test="value != null">
+                AND a.mac_Manage_Staff_Name LIKE '%${value}%'
+            </if>
+        </where>
+    </select>
 </mapper>

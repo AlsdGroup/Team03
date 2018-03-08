@@ -184,6 +184,8 @@
             padding-left: 18px;
             background: url(../../../img/load1.png) left center no-repeat;
         }
+        .printone{
+        }
     </style>
 </head>
 <body id="body1" style="margin: 0">
@@ -523,7 +525,7 @@
                                            .append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                         if(taskPrint=="是"){
                             td8 = $("<td>").append("<input type='button' id='" + id + "' value='流程' name='dealone'/>")
-                                           .append("&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' id='" + id + "' value='打印' name='printone'/>");
+                                           .append("&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' id='" + "print" + id + "' value='打印' class='printone' name='printone'/>");
                         }
                         tr.append(td1);
                         tr.append(td2);
@@ -534,6 +536,7 @@
                         tr.append(td7);
                         tr.append(td8);
                         $("#content").append(tr);
+                        addEventPrint(id,taskStaffName,taskDepName,taskStep);
                     }
                     makePageNum();
                     //$("#table").show();
@@ -556,6 +559,33 @@
                 $(this).prop("checked", false);
             });
         }
+    }
+
+    // 打印页面 获取提报人和流程名
+    var taskStaffNamePrint = "";
+    var taskDepNamePrint = "";
+    var taskStepPrint = "";
+    // 打印按钮加点击事件
+    function addEventPrint(clickId,taskStaffName,taskDepName,taskStep) {
+        $("#print" + clickId).click(function () {
+            taskStaffNamePrint = taskStaffName;
+            taskDepNamePrint = taskDepName;
+            taskStepPrint = taskStep;
+            printWindow();
+        })
+    }
+
+    // 打印弹出 打印预览
+    function printWindow() {
+        mini.open({
+            url: "/printPreview",
+            title: "打印预览",
+            width: 650,
+            height: 700,
+            ondestroy: function (action) {
+
+            }
+        });
     }
 
     // 分页4功能加点击事件
